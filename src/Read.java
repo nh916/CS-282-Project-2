@@ -70,6 +70,7 @@ public class Read {
         read.loadData();
         System.out.println(read.fileData);
         System.out.println(read.fileData.size());
+//        System.out.println(hellow world);
     }
 
 
