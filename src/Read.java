@@ -1,6 +1,6 @@
 /*
 Navid Hariri
-David Enaw
+David
 */
 
 import java.io.FileInputStream;
