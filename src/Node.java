@@ -54,7 +54,10 @@ public class Node implements Comparable<Node>{
         rightLink = node;
     }
 
+// this portion is just for the avl nodes
+    public void AVLHeight(){
 
+    }
 
     @Override
     public String toString() {
