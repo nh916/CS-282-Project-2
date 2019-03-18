@@ -1,6 +1,7 @@
 public class SplayTree {
     Node root;
 
+
     public SplayTree(){
         root = null;
     }
@@ -49,14 +50,20 @@ public class SplayTree {
 
 
 
-
-
-
-
-
-    public Node find(){
+// probably needed to splay after finding or doing something
+    private void splay(){
 
     }
 
+
+
+
+    public Node find(String toFind){
+        return find(root, new Node(toFind));
+    }
+
+    private Node find(Node node, Node toFind){
+
+    }
 
 }

@@ -8,9 +8,12 @@ public class Node implements Comparable<Node>{
     private Node leftLink;
     private Node rightLink;
 
+    public int height;
+
 
     public Node(String target) {
         element = new Element(target);
+        height = 0;
     }
 
 

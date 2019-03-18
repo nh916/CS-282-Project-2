@@ -7,12 +7,14 @@ public class AVLTree {
         height = 0;
     }
 
-    private int height( Node t ){
-        if (t == null){
-            return 0;
-        }
-//        return t == null ? -1 : t.height;
-        return t.height;
+    private int height(Node t){
+//        if (t == null){
+//            return 0;
+//        }
+//
+//        return t.height;
+
+        return t == null ? -1 : t.height;
     }
 
     public void insert(String toInsert){
@@ -25,30 +27,27 @@ public class AVLTree {
             return new Node(toInsert.getData());
         }
 
-        if( node.compareTo(toInsert) < 0 ){
+        if(node.compareTo(toInsert) < 0){
 //            node.getLeft() = insert( x, t.left );
             node.setLeft(insert(node.getLeft(), toInsert));
         }
-        else if( node.compareTo(toInsert) > 0 ){
+        else if(node.compareTo(toInsert) > 0){
 //            t.right = insert( x, t.right );
             node.setRight(insert(node.getRight(), toInsert));
         }
         else{
              // Duplicate; do nothing
-//            return balance( t );
+            return balance(toInsert);
 //            return toInsert;
         }
 //        todo becareful here! is this really null or something else?
         return null;
     }
 
-/*    private void insert(Node node, Node toInsert){
 
-    }*/
 
-    public void delete(String toDelete){
+    private static final int ALLOWED_IMBALANCE = 1;
 
-    }
 
     private Node balance( Node node ){
         if( node == null ){
@@ -77,7 +76,7 @@ public class AVLTree {
     }
 
 
-    private Node rotateWithLeftChild( Node k2 ){
+    private Node rotateWithLeftChild(Node k2){
 //        be sure these make any kind of sense or if the names should be changed because of current element class
         Node k1 = k2.getLeft();
         k2.setLeft(k1.getRight());
@@ -87,15 +86,39 @@ public class AVLTree {
         return k1;
     }
 
+//    todo is this even right?
+    private Node rotateWithRightChild(Node nodeToRotate){
+        Node k1 = nodeToRotate.getRight();
+        nodeToRotate.setRight(k1.getLeft());
+        k1.setLeft(nodeToRotate);
+        nodeToRotate.height = Math.max(height(nodeToRotate.getRight()), height(nodeToRotate.getLeft())) + 1;
+        k1.height = Math.max(height(k1.getRight()), nodeToRotate.height) + 1;
+        return k1;
+    }
+
 
     private Node doubleWithLeftChild(Node k3){
         k3.setLeft(rotateWithRightChild(k3.getLeft()));
         return rotateWithLeftChild(k3);
     }
 
+    /*todo check this*/
+    private Node doubleWithRightChild(Node k3){
+        k3.setRight(rotateWithLeftChild(k3.getRight()));
+        return rotateWithRightChild(k3);
+    }
+
+/*    public Node remove(String toRemove){
+        *//*wrong second argument*//*
+        return remove(root, new Node(toRemove));
+    }*/
+
+//    needs to be heavily changed
+//        from the arguments to the methods and the variable names
     private Node remove(Node t, String toRemove){
         if( t == null ){
-            return t; // Item not found; do nothing
+            // Item not found; do nothing
+            return t;
         }
 
         if(toRemove.compareTo(t.getData()) < 0){
@@ -107,20 +130,80 @@ public class AVLTree {
 
 // Two children
         else if( t.getLeft() != null && t.getRight() != null ){
-            t.setElement(findMin(t.getRight()).element);
-            t.setRight(remove(t.element, t.getRight()));
+
+//            t.setElement(findMin(t.getRight()).element);
+            t.setElement(findMin(t.getRight()).getData());
+
+//            is this a longer way of writing the above or is it different?
+            /*            Node minFound = findMin(t.getRight());
+            t.setElement(minFound.getData());*/
+
+//            t.setRight(remove(t.element, t.getRight()));
+            t.setRight(remove(t.getRight(), t.getData()));
         }
         else {
+//            again. hate shorthand
             t = ( t.getLeft() != null ) ? t.getLeft() : t.getRight();
         }
         return balance(t);
     }
 
 
+    private Node findMin(Node node){
+        if(node == null){
+            return null;
+        }
+        else if(node.getLeft() == null){
+            return node;
+        }
+        else {
+            return findMin(node.getLeft());
+        }
+    }
+
+
+// iteratively find the max.
+//    not needed but have the code so why not. just in case
+    private Node findMax(Node t){
+        if( t != null ){
+            while( t.getRight() != null ){
+                t = t.getRight();
+            }
+        }
+        return t;
+    }
 
 
 
 
+    public Node find(String toFind){
+        return find(root, new Node(toFind));
+    }
+
+
+//    straight out copied from the BST class
+    private Node find(Node node, Node toFind){
+//        if (node == null || node.getData() == toFind.getData())
+
+//        base case either the node is null or the node is equal to the node given
+        if (node == null || node.getData().compareTo(toFind.getData()) == 0){
+
+//            just checking one more time before returning that this is the exact node looking for
+            if (node.getData().equals(toFind.getData())){
+                return node;
+            }
+
+        }
+        if (node.getData().compareTo(toFind.getData()) > 0){
+            find(node.getLeft(), toFind);
+        }
+
+//        if (node.getData().compareTo(toFind.getData()) == -1){
+//            find(node.getRight(), toFind);
+//        }
+
+        return find(node.getRight(), toFind);
+    }
 
 
 
