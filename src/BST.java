@@ -8,13 +8,17 @@ public class BST {
 //    public insert a new String data
     public void insert(String target){
 //        calls insert on the root and the new node to insert
-        root = insert(root, new Node(target));
+//        root = insert(root, new Node(target));
+        /*todo check if this is correct or not*/
+        insert(root, new Node(target));
     }
 
     /*should this return anything?*/
 //    private recursive inserts a new data
     private Node insert(Node node, Node target) {
 //        we are at a leaf, (no lef or right)
+
+        /*I did not insert the Node here! todo be careful and make sure to insert*/
         if (node == null) {
             return target;
         }
