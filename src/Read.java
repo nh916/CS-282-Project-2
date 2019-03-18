@@ -60,6 +60,7 @@ public class Read {
 //        System.out.println(fileData);
     }
 
+
     public static void main(String[] args){
         /*the Read class requires at least 4 files but you can later add more if needed
         because fileName linkedList is public
@@ -68,9 +69,8 @@ public class Read {
         Read read = new Read("file1.txt", "file2.txt", "file3.txt", "file4.txt");
 
         read.loadData();
-        System.out.println(read.fileData);
-        System.out.println(read.fileData.size());
-//        System.out.println(hellow world);
+//        System.out.println(read.fileData);
+//        System.out.println(read.fileData.size());
     }
 
 
