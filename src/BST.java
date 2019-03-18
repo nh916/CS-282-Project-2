@@ -38,7 +38,7 @@ public class BST {
         return verifyInorder(root);
     }
 
-    public boolean verifyInorder(Node root){
+    private boolean verifyInorder(Node root){
         if (root == null){
             return true;
         }
@@ -51,7 +51,7 @@ public class BST {
 
     }
 
-    public boolean compare(Node parent, Node child, boolean isLeft){
+    private boolean compare(Node parent, Node child, boolean isLeft){
         if (child == null){
             return true;
         }
@@ -147,7 +147,7 @@ public class BST {
             }
 
         }
-        if (node.getData().compareTo(toFind.getData()) == 1){
+        if (node.getData().compareTo(toFind.getData()) > 0){
             find(node.getLeft(), toFind);
         }
 
