@@ -2,6 +2,13 @@ public class SplayTree {
     Node root;
 
 
+    /*im thinking when we want to:
+    find something we splay and then return
+    delete something splay then delete from the top
+    insert I am not sure about*/
+
+
+
     public SplayTree(){
         root = null;
     }
@@ -22,6 +29,8 @@ public class SplayTree {
         remove(root, new Node(toRemove));
     }
 
+
+//    todo found online and needs to be changed and checked
     private void remove(Node node, Node toRemove){
         if (root == null) {
 //            empty tree
@@ -63,6 +72,15 @@ public class SplayTree {
     }
 
     private Node find(Node node, Node toFind){
+
+    }
+
+    /*todo needs to be written out*/
+    public boolean isValid(){
+        return isValid(root);
+    }
+
+    private boolean isValid(Node node){
 
     }
 

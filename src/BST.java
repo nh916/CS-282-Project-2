@@ -139,6 +139,7 @@ public class BST {
         return find(root, toFind);
     }
 
+//    todo should i do this a different way instead of repeating code?
     private Node find(Node node, Element toFind){
 //        if (node == null || node.getData() == toFind.getData())
 

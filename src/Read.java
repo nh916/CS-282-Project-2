@@ -60,6 +60,10 @@ public class Read {
 //        System.out.println(fileData);
     }
 
+// method that takes all the data gathered int the ArrayList of words and inserts them into the trees
+    public void insert(){
+
+    }
 
     public static void main(String[] args){
         /*the Read class requires at least 4 files but you can later add more if needed

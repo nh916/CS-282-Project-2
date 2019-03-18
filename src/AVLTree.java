@@ -182,7 +182,9 @@ public class AVLTree {
     }
 
 
+
 //    straight out copied from the BST class
+//    todo duplicate code
     private Node find(Node node, Node toFind){
 //        if (node == null || node.getData() == toFind.getData())
 
@@ -208,7 +210,14 @@ public class AVLTree {
 
 
 
+    public boolean isValid(){
+        return isValid(root);
+    }
 
+
+    private boolean isValid(Node node){
+
+    }
 
 
 
