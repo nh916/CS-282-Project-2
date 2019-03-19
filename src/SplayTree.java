@@ -17,10 +17,10 @@ public class SplayTree {
         insert(root, new Node(toInsert));
     }
 
+//    incomplete insert
     private void insert(Node node, Node toInsert){
         if (node == null){
             node = toInsert;
-            return;
         }
 
     }

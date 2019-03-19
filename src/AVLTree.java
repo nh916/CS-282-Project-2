@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class AVLTree {
 
     Node root;
@@ -230,11 +232,11 @@ public class AVLTree {
         if (root == null)
             return;
         if (level == 1)
-            System.out.print(root.data + " ");
+            System.out.print(root.getData() + " ");
         else if (level > 1)
         {
-            printGivenLevel(root.left, level-1);
-            printGivenLevel(root.right, level-1);
+            printGivenLevel(root.getLeft(), level-1);
+            printGivenLevel(root.getRight(), level-1);
         }
     }
 
@@ -249,11 +251,30 @@ public class AVLTree {
 
     /*todo try to write an algorithm that displays the tree in cmd*/
 
+    ArrayList <String> testing = new ArrayList<String>();
+    public void inOrder(Node node){
+        if (node == null){
+            return;
+        }
+        inOrder(node.getLeft());
+//        testing.add(node.getData());
+        System.out.println(node.getData());
+        inOrder(node.getRight());
+
+    }
 
 
+    public static void main(String[] args){
+//        todo tree is currently broken as there are no nodes and they do not point to anything. can be seen by inorder traversal
+        AVLTree tree = new AVLTree();
+        tree.insert("the");
+        tree.insert("Apple");
+        tree.insert("table");
+        tree.insert("Zig Zig");
 
-
-
+        tree.inOrder(tree.root);
+        System.out.println(tree.testing);
+    }
 
 }
 
