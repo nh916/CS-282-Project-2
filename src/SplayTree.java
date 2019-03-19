@@ -76,11 +76,11 @@ public class SplayTree {
     }
 
     /*todo needs to be written out*/
-    public boolean isValid(){
-        return isValid(root);
+    public boolean isBST(){
+        return isBst(root);
     }
 
-    private boolean isValid(Node node){
+    private boolean isBst(Node node){
 
     }
 

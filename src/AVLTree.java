@@ -38,6 +38,7 @@ public class AVLTree {
         }
         else{
              // Duplicate; do nothing
+//            todo i believe we need to keep track of duplicates so we cant just do nothing. it has to be stored somewhere
             return balance(toInsert);
 //            return toInsert;
         }
@@ -216,12 +217,37 @@ public class AVLTree {
 
 
     private boolean isValid(Node node){
-
+        return true;
     }
 
 
 
 
+
+    /* Print nodes at the given level */
+    void printGivenLevel (Node root ,int level)
+    {
+        if (root == null)
+            return;
+        if (level == 1)
+            System.out.print(root.data + " ");
+        else if (level > 1)
+        {
+            printGivenLevel(root.left, level-1);
+            printGivenLevel(root.right, level-1);
+        }
+    }
+
+    /* function to print level order traversal of tree*/
+    void printLevelOrder()
+    {
+        int h = height(root);
+        int i;
+        for (i=1; i<=h; i++)
+            printGivenLevel(root, i);
+    }
+
+    /*todo try to write an algorithm that displays the tree in cmd*/
 
 
 

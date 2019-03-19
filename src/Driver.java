@@ -3,6 +3,10 @@ import java.util.Scanner;
 public class Driver {
 
 
+
+
+
+
 //    this might possibly call for a switch statement of menus
     public void options(){
         Scanner input = new Scanner(System.in);
@@ -23,6 +27,7 @@ public class Driver {
 
             case ("quit"):{
                 System.exit(0);
+//                flag = false;
             }
 
             default:{
@@ -41,5 +46,7 @@ public class Driver {
         SplayTree splayTree = new SplayTree();
 
         Read read = new Read("file1.txt", "file2.txt", "file3.txt", "file4.txt");
+//        read.loadData();
+//        read.insertDataFromFile();
     }
 }
