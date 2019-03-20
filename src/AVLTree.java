@@ -21,7 +21,7 @@ public class AVLTree {
     }
 
     public void insert(String toInsert){
-        insert(root, new Node(toInsert));
+       root = insert(root, new Node(toInsert));
     }
 
 
@@ -45,7 +45,7 @@ public class AVLTree {
 //            return toInsert;
         }
 //        todo becareful here! is this really null or something else?
-        return null;
+        return node;
     }
 
 
@@ -227,8 +227,7 @@ public class AVLTree {
 
 
     /* Print nodes at the given level */
-    void printGivenLevel (Node root ,int level)
-    {
+    void printGivenLevel (Node root ,int level) {
         if (root == null)
             return;
         if (level == 1)
@@ -241,8 +240,7 @@ public class AVLTree {
     }
 
     /* function to print level order traversal of tree*/
-    void printLevelOrder()
-    {
+    void printLevelOrder() {
         int h = height(root);
         int i;
         for (i=1; i<=h; i++)
@@ -257,15 +255,15 @@ public class AVLTree {
             return;
         }
         inOrder(node.getLeft());
-//        testing.add(node.getData());
-        System.out.println(node.getData());
+        testing.add(node.getData());
+//        System.out.println(node.getData());
         inOrder(node.getRight());
 
     }
 
 
     public static void main(String[] args){
-//        todo tree is currently broken as there are no nodes and they do not point to anything. can be seen by inorder traversal
+//        wrong order!
         AVLTree tree = new AVLTree();
         tree.insert("the");
         tree.insert("Apple");
@@ -277,13 +275,3 @@ public class AVLTree {
     }
 
 }
-
-
-
-
-
-
-
-
-
-

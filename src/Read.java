@@ -64,13 +64,13 @@ public class Read {
     public void insertDataFromFile(){
         BST bst = new BST();
         AVLTree avlTree = new AVLTree();
-        SplayTree splayTree = new SplayTree();
+//        SplayTree splayTree = new SplayTree();
 
         /*todo whats gonna happen to the duplicates. how do i store them? a number perhaps saying how many there are or an ArrayList in the node*/
         for (int i = 0; i < fileData.size(); i++) {
             bst.insert(fileData.get(i));
             avlTree.insert(fileData.get(i));
-            splayTree.insert(fileData.get(i));
+//            splayTree.insert(fileData.get(i));
         }
     }
 

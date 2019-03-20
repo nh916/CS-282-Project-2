@@ -1,11 +1,14 @@
+/*
 public class SplayTree {
     Node root;
 
 
-    /*im thinking when we want to:
+    */
+/*im thinking when we want to:
     find something we splay and then return
     delete something splay then delete from the top
-    insert I am not sure about*/
+    insert I am not sure about*//*
+
 
 
 
@@ -75,7 +78,9 @@ public class SplayTree {
 
     }
 
-    /*todo needs to be written out*/
+    */
+/*todo needs to be written out*//*
+
     public boolean isBST(){
         return isBst(root);
     }
@@ -85,3 +90,4 @@ public class SplayTree {
     }
 
 }
+*/

@@ -43,7 +43,7 @@ public class Driver {
     public static void main(String[] args){
         BST binarySearchTree = new BST();
         AVLTree avlTree = new AVLTree();
-        SplayTree splayTree = new SplayTree();
+//        SplayTree splayTree = new SplayTree();
 
         Read read = new Read("file1.txt", "file2.txt", "file3.txt", "file4.txt");
 //        read.loadData();
