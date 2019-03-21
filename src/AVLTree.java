@@ -240,10 +240,11 @@ public class AVLTree {
     }
 
     /* function to print level order traversal of tree*/
-    void printLevelOrder() {
+    public void printLevelOrder() {
         int h = height(root);
         int i;
         for (i=1; i<=h; i++)
+            System.out.println();
             printGivenLevel(root, i);
     }
 
@@ -270,8 +271,9 @@ public class AVLTree {
         tree.insert("table");
         tree.insert("Zig Zig");
 
-        tree.inOrder(tree.root);
-        System.out.println(tree.testing);
+        /*todo there's a the on every level!*/
+        tree.printLevelOrder();
+        tree.printGivenLevel(tree.root, 3);
     }
 
 }
