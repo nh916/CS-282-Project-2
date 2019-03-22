@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class SplayTree extends BST{
 /* todo extends does not insert it into the SplayTree */
     Node root;
@@ -36,14 +34,17 @@ public class SplayTree extends BST{
 
 
 
-// todo started commenting from here
-//
-    public void insert(String target){
+
+    public Node insert(String target){
 //        calls insert on the root and the new node to insert
 //        root = insert(root, new Node(target));
         /*todo check if this is correct or not*/
         root = super.insert(root, new Node(target));
+        return null;
     }
+
+
+    // todo started commenting from here
 //
 //    /*should this return anything?*/
 ////    private recursive inserts a new data
@@ -194,14 +195,6 @@ public class SplayTree extends BST{
 //        return find(node.getRight(), toFind);
 //    }
 
-//    todo ended comment here
-
-
-
-
-
-
-
 
     // here to test the insertions
 //    ArrayList<String> testing = new ArrayList<String>();
@@ -215,6 +208,11 @@ public class SplayTree extends BST{
 //        inOrder(node.getRight());
 //
 //    }
+
+
+//    todo ended comment here
+
+
 
     public static void main(String[] args){
         SplayTree splayTree = new SplayTree();

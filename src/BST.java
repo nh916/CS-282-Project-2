@@ -1,18 +1,19 @@
 import java.util.ArrayList;
 
 public class BST {
-    public Node root;
+    private Node root;
 
     public BST(){
         root = null;
     }
 
 //    public insert a new String data
-    public void insert(String target){
+    public Node insert(String target){
 //        calls insert on the root and the new node to insert
 //        root = insert(root, new Node(target));
         /*todo check if this is correct or not*/
         root = insert(root, new Node(target));
+        return null;
     }
 
 
@@ -47,7 +48,7 @@ public class BST {
         return verifyInorder(root);
     }
 
-    private boolean verifyInorder(Node root){
+    protected boolean verifyInorder(Node root){
         if (root == null){
             return true;
         }
@@ -60,7 +61,7 @@ public class BST {
 
     }
 
-    private boolean compare(Node parent, Node child, boolean isLeft){
+    protected boolean compare(Node parent, Node child, boolean isLeft){
         if (child == null){
             return true;
         }
@@ -81,7 +82,7 @@ public class BST {
 
 
     //     A recursive function to insert a new key in BST
-    private Node deleteRec(Node node, Element key){
+    protected Node deleteRec(Node node, Element key){
 //         Base Case: If the tree is empty
         if (node == null) {
 //            return root;
@@ -122,7 +123,7 @@ public class BST {
     }
 
     //    find the successor
-    private String minValue(Node node){
+    protected String minValue(Node node){
 
 //        int minv = root.getData();
 //        while (root.getLeft() != null){
@@ -147,7 +148,7 @@ public class BST {
 
 //    todo should i do this a different way instead of repeating code?
 //      all the finds are the same so we should probably put this in somewhere and just reference it over and over
-    private Node find(Node node, Element toFind){
+    protected Node find(Node node, Element toFind){
 //        if (node == null || node.getData() == toFind.getData())
 
 //        base case either the node is null or the node is equal to the node given
@@ -173,8 +174,8 @@ public class BST {
 
 
 
-    ArrayList<String> testing = new ArrayList<String>();
-    public void inOrder(Node node){
+    protected ArrayList<String> testing = new ArrayList<String>();
+    protected void inOrder(Node node){
         if (node == null){
             return;
         }

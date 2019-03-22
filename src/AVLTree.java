@@ -1,13 +1,84 @@
-import java.util.ArrayList;
-
-public class AVLTree {
+public class AVLTree extends BST{
 
     Node root;
     int height;
 
     public AVLTree(){
+        super();
         height = 0;
     }
+
+
+
+
+
+
+
+    public Node insert(String toInsert){
+       root = super.insert(root, new Node(toInsert));
+       return balance(new Node(toInsert));
+    }
+
+
+//    private Node insert(Node node, Node toInsert){
+//        if( node == null ){
+//            return new Node(toInsert.getData());
+//        }
+//
+//        if(node.compareTo(toInsert) < 0){
+////            node.getLeft() = insert( x, t.left );
+//            node.setLeft(insert(node.getLeft(), toInsert));
+//        }
+//        else if(node.compareTo(toInsert) > 0){
+////            t.right = insert( x, t.right );
+//            node.setRight(insert(node.getRight(), toInsert));
+//        }
+//        else{
+//             // Duplicate; do nothing
+////            todo i believe we need to keep track of duplicates so we cant just do nothing. it has to be stored somewhere
+//            return balance(toInsert);
+////            return toInsert;
+//        }
+////        todo becareful here! is this really null or something else?
+//        return node;
+//    }
+//
+//
+//    public Node find(String toFind){
+//        return find(root, new Node(toFind));
+//    }
+//
+//
+//
+//    //    straight out copied from the BST class
+////    todo duplicate code
+//    private Node find(Node node, Node toFind){
+////        if (node == null || node.getData() == toFind.getData())
+//
+////        base case either the node is null or the node is equal to the node given
+//        if (node == null || node.getData().compareTo(toFind.getData()) == 0){
+//
+////            just checking one more time before returning that this is the exact node looking for
+//            if (node.getData().equals(toFind.getData())){
+//                return node;
+//            }
+//
+//        }
+//        if (node.getData().compareTo(toFind.getData()) > 0){
+//            find(node.getLeft(), toFind);
+//        }
+//
+////        if (node.getData().compareTo(toFind.getData()) == -1){
+////            find(node.getRight(), toFind);
+////        }
+//
+//        return find(node.getRight(), toFind);
+//    }
+
+
+
+
+
 
 
     private int height(Node t){
@@ -19,35 +90,6 @@ public class AVLTree {
 
         return t == null ? -1 : t.height;
     }
-
-    public void insert(String toInsert){
-       root = insert(root, new Node(toInsert));
-    }
-
-
-    private Node insert(Node node, Node toInsert){
-        if( node == null ){
-            return new Node(toInsert.getData());
-        }
-
-        if(node.compareTo(toInsert) < 0){
-//            node.getLeft() = insert( x, t.left );
-            node.setLeft(insert(node.getLeft(), toInsert));
-        }
-        else if(node.compareTo(toInsert) > 0){
-//            t.right = insert( x, t.right );
-            node.setRight(insert(node.getRight(), toInsert));
-        }
-        else{
-             // Duplicate; do nothing
-//            todo i believe we need to keep track of duplicates so we cant just do nothing. it has to be stored somewhere
-            return balance(toInsert);
-//            return toInsert;
-        }
-//        todo becareful here! is this really null or something else?
-        return node;
-    }
-
 
 
     private static final int ALLOWED_IMBALANCE = 1;
@@ -166,7 +208,8 @@ public class AVLTree {
     }
 
 
-// iteratively find the max.
+
+    // iteratively find the max.
 //    not needed but have the code so why not. just in case
     private Node findMax(Node t){
         if( t != null ){
@@ -175,51 +218,6 @@ public class AVLTree {
             }
         }
         return t;
-    }
-
-
-
-
-    public Node find(String toFind){
-        return find(root, new Node(toFind));
-    }
-
-
-
-//    straight out copied from the BST class
-//    todo duplicate code
-    private Node find(Node node, Node toFind){
-//        if (node == null || node.getData() == toFind.getData())
-
-//        base case either the node is null or the node is equal to the node given
-        if (node == null || node.getData().compareTo(toFind.getData()) == 0){
-
-//            just checking one more time before returning that this is the exact node looking for
-            if (node.getData().equals(toFind.getData())){
-                return node;
-            }
-
-        }
-        if (node.getData().compareTo(toFind.getData()) > 0){
-            find(node.getLeft(), toFind);
-        }
-
-//        if (node.getData().compareTo(toFind.getData()) == -1){
-//            find(node.getRight(), toFind);
-//        }
-
-        return find(node.getRight(), toFind);
-    }
-
-
-
-    public boolean isValid(){
-        return isValid(root);
-    }
-
-
-    private boolean isValid(Node node){
-        return true;
     }
 
 
@@ -239,6 +237,7 @@ public class AVLTree {
         }
     }
 
+
     /* function to print level order traversal of tree*/
     public void printLevelOrder() {
         int h = height(root);
@@ -249,19 +248,9 @@ public class AVLTree {
         }
     }
 
-    /*todo try to write an algorithm that displays the tree in cmd*/
 
-    ArrayList <String> testing = new ArrayList<String>();
-    public void inOrder(Node node){
-        if (node == null){
-            return;
-        }
-        inOrder(node.getLeft());
-        testing.add(node.getData());
-//        System.out.println(node.getData());
-        inOrder(node.getRight());
 
-    }
+
 
 
     public static void main(String[] args){
@@ -274,17 +263,15 @@ public class AVLTree {
 
         tree.inOrder(tree.root);
         System.out.println(tree.testing);
-        tree.printLevelOrder();
 
-        tree.printGivenLevel(tree.root, 0);
-        tree.printGivenLevel(tree.root, 1);
-        tree.printGivenLevel(tree.root, 2);
-        tree.printGivenLevel(tree.root, 3);
-        tree.printGivenLevel(tree.root, 4);
+//        tree.printLevelOrder();
+//
+//        tree.printGivenLevel(tree.root, 0);
+//        tree.printGivenLevel(tree.root, 1);
+//        tree.printGivenLevel(tree.root, 2);
+//        tree.printGivenLevel(tree.root, 3);
+//        tree.printGivenLevel(tree.root, 4);
 
-        tree.remove(tree.root,"apple");
-        tree.inOrder(tree.root);
-        System.out.println(tree.testing);
     }
 
 
