@@ -281,6 +281,10 @@ public class AVLTree {
         tree.printGivenLevel(tree.root, 2);
         tree.printGivenLevel(tree.root, 3);
         tree.printGivenLevel(tree.root, 4);
+
+        tree.remove(tree.root,"apple");
+        tree.inOrder(tree.root);
+        System.out.println(tree.testing);
     }
 
 }

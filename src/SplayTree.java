@@ -71,8 +71,8 @@ public class SplayTree {
 
 // todo duplicating code again from the bst. need to just refrence a code
     //    This method mainly calls deleteRec()
-    public void deleteKey(Element key) {
-        root = deleteRec(root, key);
+    public void deleteKey(String key) {
+        root = deleteRec(root, new Element(key));
     }
 
 
@@ -247,9 +247,17 @@ public class SplayTree {
         splayTree.insert("table");
         splayTree.insert("apple");
         splayTree.insert("zig zig");
+        splayTree.insert("new key");
+
+        splayTree.inOrder(splayTree.root);
+        System.out.println(splayTree.testing);
+
+        splayTree.deleteKey("zig zig");
 
         /*todo this is alphabetical order!
         but how?*/
+
+
         splayTree.inOrder(splayTree.root);
         System.out.println(splayTree.testing);
 
