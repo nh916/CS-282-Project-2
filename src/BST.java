@@ -16,6 +16,8 @@ public class BST {
     }
 
 
+
+
     /*should this return anything?*/
 //    private recursive inserts a new data
     public Node insert(Node node, Node target) {
