@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class BST {
-    private Node root;
+    public Node root;
 
     public BST(){
         root = null;
@@ -14,6 +14,7 @@ public class BST {
         /*todo check if this is correct or not*/
         root = insert(root, new Node(target));
     }
+
 
     /*should this return anything?*/
 //    private recursive inserts a new data
@@ -31,14 +32,10 @@ public class BST {
             node.setLeft(insert(node.getLeft(), target));
         }
 //            inserting to the right
-        else if (node.compareTo(target) < 0){
+        else {
             node.setRight(insert(node.getRight(), target));
         }
-        else {
-            return node;
-        }
-        /*todo right?*/
-        return null;
+        return node;
     }
 
 
@@ -214,7 +211,6 @@ public class BST {
         but how?*/
         bst.inOrder(bst.root);
         System.out.println(bst.testing);
-
 
     }
 

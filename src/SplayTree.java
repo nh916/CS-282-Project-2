@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class SplayTree {
+public class SplayTree{
     Node root;
 
 
@@ -16,6 +16,9 @@ public class SplayTree {
         root = null;
     }
 
+
+
+
 /*    public void insert(String toInsert){
         insert(root, new Node(toInsert));
     }
@@ -27,6 +30,11 @@ public class SplayTree {
         }
 
     }*/
+
+
+
+
+// todo started commenting from here
 
     public void insert(String target){
 //        calls insert on the root and the new node to insert
@@ -59,20 +67,10 @@ public class SplayTree {
 
 
 
-
-
-
-
-
-/*    public void remove(String toRemove){
-        remove(root, new Node(toRemove));
-    }*/
-
-
-// todo duplicating code again from the bst. need to just refrence a code
+    // todo duplicating code again from the bst. need to just refrence a code
     //    This method mainly calls deleteRec()
-    public void deleteKey(String key) {
-        root = deleteRec(root, new Element(key));
+    public void deleteKey(Element key) {
+        root = deleteRec(root, key);
     }
 
 
@@ -137,17 +135,6 @@ public class SplayTree {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
 //    todo found online and needs to be changed and checked
 //      i think it would be similar to the bst delete and then a splay method
     /*private void remove(Node node, Node toRemove){
@@ -174,16 +161,6 @@ public class SplayTree {
         // else: it wasn't in the tree to remove
     }
 */
-
-
-
-
-// probably needed to splay after finding or doing something
-    private void splay(){
-
-    }
-
-
 
 
     public Node find(Element toFind){
@@ -215,20 +192,16 @@ public class SplayTree {
         return find(node.getRight(), toFind);
     }
 
+//    todo ended comment here
 
 
 
-//todo needs to be written out
 
-//    public boolean isBST(){
-//        return isBst(root);
-//    }
-//
-//    private boolean isBst(Node node){
-//
-//    }
 
-// here to test the insertions
+
+
+
+    // here to test the insertions
     ArrayList<String> testing = new ArrayList<String>();
     public void inOrder(Node node){
         if (node == null){
@@ -247,17 +220,9 @@ public class SplayTree {
         splayTree.insert("table");
         splayTree.insert("apple");
         splayTree.insert("zig zig");
-        splayTree.insert("new key");
-
-        splayTree.inOrder(splayTree.root);
-        System.out.println(splayTree.testing);
-
-        splayTree.deleteKey("zig zig");
 
         /*todo this is alphabetical order!
         but how?*/
-
-
         splayTree.inOrder(splayTree.root);
         System.out.println(splayTree.testing);
 
