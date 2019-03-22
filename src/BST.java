@@ -18,7 +18,7 @@ public class BST {
 
     /*should this return anything?*/
 //    private recursive inserts a new data
-    private Node insert(Node node, Node target) {
+    public Node insert(Node node, Node target) {
 //        we are at a leaf, (no lef or right)
 
         /*I did not insert the Node here! todo be careful and make sure to insert*/
