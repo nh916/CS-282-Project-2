@@ -95,7 +95,7 @@ public class AVLTree extends BST{
     private static final int ALLOWED_IMBALANCE = 1;
 
 
-    private Node balance( Node node ){
+    private Node balance(Node node){
         if( node == null ){
             return node;
         }

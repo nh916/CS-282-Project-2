@@ -30,13 +30,15 @@ public class BST {
         }
         if (node.compareTo(target) > 0) {
             // node.key > nNode.key
-
 //            inserting to the left
             node.setLeft(insert(node.getLeft(), target));
         }
 //            inserting to the right
-        else {
+        else if (node.compareTo(target) < 0){
             node.setRight(insert(node.getRight(), target));
+        }
+        else {
+//            duplicate data
         }
         return node;
     }

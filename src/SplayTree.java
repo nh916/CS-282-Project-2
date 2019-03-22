@@ -220,6 +220,7 @@ public class SplayTree extends BST{
         splayTree.insert("table");
         splayTree.insert("apple");
         splayTree.insert("zig zig");
+        splayTree.insert("123");
 
         /*todo this is alphabetical order!
         but how?*/
