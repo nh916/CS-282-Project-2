@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class BST {
     private Node root;
 
@@ -10,7 +12,7 @@ public class BST {
 //        calls insert on the root and the new node to insert
 //        root = insert(root, new Node(target));
         /*todo check if this is correct or not*/
-        insert(root, new Node(target));
+        root = insert(root, new Node(target));
     }
 
     /*should this return anything?*/
@@ -140,6 +142,7 @@ public class BST {
     }
 
 //    todo should i do this a different way instead of repeating code?
+//      all the finds are the same so we should probably put this in somewhere and just reference it over and over
     private Node find(Node node, Element toFind){
 //        if (node == null || node.getData() == toFind.getData())
 
@@ -166,6 +169,17 @@ public class BST {
 
 
 
+    ArrayList<String> testing = new ArrayList<String>();
+    public void inOrder(Node node){
+        if (node == null){
+            return;
+        }
+        inOrder(node.getLeft());
+        testing.add(node.getData());
+//        System.out.println(node.getData());
+        inOrder(node.getRight());
+
+    }
 
 
 
@@ -184,7 +198,18 @@ public class BST {
 
 
 
+    public static void main(String[] args){
+        BST bst = new BST();
+        bst.insert("the");
+        bst.insert("table");
+        bst.insert("apple");
+        bst.insert("zig zig");
 
+        /*todo this is alphabetical order!
+        but how?*/
+        bst.inOrder(bst.root);
+        System.out.println(bst.testing);
+    }
 
 
 

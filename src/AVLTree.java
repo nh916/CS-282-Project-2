@@ -243,9 +243,10 @@ public class AVLTree {
     public void printLevelOrder() {
         int h = height(root);
         int i;
-        for (i=1; i<=h; i++)
+        for (i=1; i<=h; i++) {
             System.out.println();
             printGivenLevel(root, i);
+        }
     }
 
     /*todo try to write an algorithm that displays the tree in cmd*/
@@ -271,9 +272,15 @@ public class AVLTree {
         tree.insert("table");
         tree.insert("Zig Zig");
 
-        /*todo there's a the on every level!*/
+        tree.inOrder(tree.root);
+        System.out.println(tree.testing);
         tree.printLevelOrder();
+
+        tree.printGivenLevel(tree.root, 0);
+        tree.printGivenLevel(tree.root, 1);
+        tree.printGivenLevel(tree.root, 2);
         tree.printGivenLevel(tree.root, 3);
+        tree.printGivenLevel(tree.root, 4);
     }
 
 }
