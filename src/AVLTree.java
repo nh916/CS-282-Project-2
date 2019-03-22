@@ -223,30 +223,30 @@ public class AVLTree extends BST{
 
 
 
-
-    /* Print nodes at the given level */
-    void printGivenLevel (Node root ,int level) {
-        if (root == null)
-            return;
-        if (level == 1)
-            System.out.print(root.getData() + " ");
-        else if (level > 1)
-        {
-            printGivenLevel(root.getLeft(), level-1);
-            printGivenLevel(root.getRight(), level-1);
-        }
-    }
-
-
-    /* function to print level order traversal of tree*/
-    public void printLevelOrder() {
-        int h = height(root);
-        int i;
-        for (i=1; i<=h; i++) {
-            System.out.println();
-            printGivenLevel(root, i);
-        }
-    }
+//
+//    /* Print nodes at the given level */
+//    void printGivenLevel (Node root ,int level) {
+//        if (root == null)
+//            return;
+//        if (level == 1)
+//            System.out.print(root.getData() + " ");
+//        else if (level > 1)
+//        {
+//            printGivenLevel(root.getLeft(), level-1);
+//            printGivenLevel(root.getRight(), level-1);
+//        }
+//    }
+//
+//
+//    /* function to print level order traversal of tree*/
+//    public void printLevelOrder() {
+//        int h = height(root);
+//        int i;
+//        for (i=1; i<=h; i++) {
+//            System.out.println();
+//            printGivenLevel(root, i);
+//        }
+//    }
 
 
 
@@ -254,12 +254,12 @@ public class AVLTree extends BST{
 
 
     public static void main(String[] args){
-//        wrong order!
         AVLTree tree = new AVLTree();
         tree.insert("the");
-        tree.insert("Apple");
         tree.insert("table");
-        tree.insert("Zig Zig");
+        tree.insert("apple");
+        tree.insert("zig zig");
+
 
         tree.inOrder(tree.root);
         System.out.println(tree.testing);
