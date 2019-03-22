@@ -74,6 +74,7 @@ public class BST {
     }
 
 
+    // todo duplicating code again from the bst. need to just refrence a code
     //    This method mainly calls deleteRec()
     public void deleteKey(String key) {
         root = deleteRec(root, new Element(key));
@@ -81,35 +82,21 @@ public class BST {
 
 
     //     A recursive function to insert a new key in BST
-    private Node deleteRec(Node node, Element key) {
+    private Node deleteRec(Node node, Element key){
 //         Base Case: If the tree is empty
         if (node == null) {
 //            return root;
-            return node;
+            return null;
         }
 
 //         Otherwise, recur down the tree
-        if (key.compareTo(node.getData()) < 0) {
+        if (key.compareTo(node.getData()) > 0) {
             node.setLeft(deleteRec(node.getLeft(), key));
         }
-        else if (key.compareTo(node.getData()) > 0) {
+
+        else if (key.compareTo(node.getData()) < 0) {
             node.setRight(deleteRec(node.getRight(), key));
         }
-
-        // Two children
-        else if (node.getLeft() != null && node.getRight() != null) {
-            node.getData() = findMin(node.getRight()).getData();
-            node.getRight() = findMin(node.getData(), node.getRight());
-        } else {
-            node = (node.getLeft() != null) ? node.getLeft(): node.getRight();
-        }
-        return node;
-    }
-
-
-
-
-/*
 
         // if key is same as root's key, then This is the node
         // to be deleted
@@ -133,10 +120,8 @@ public class BST {
         }
 
         return node;
-*/
+    }
 
-
-/*
     //    find the successor
     private String minValue(Node node){
 
@@ -155,29 +140,6 @@ public class BST {
         }
 
     }
-*/
-
-
-    private Node findMin(Node node){
-        if( node == null ){
-            return null;
-        }
-        else if( node.getLeft() == null ){
-            return node;
-        }
-        else {
-            return findMin( node.getLeft() );
-        }
-    }
-
-
-
-
-
-
-
-
-
 
 
     public Node find(Element toFind){
