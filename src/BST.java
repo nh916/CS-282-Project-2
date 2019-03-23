@@ -144,8 +144,8 @@ public class BST {
     }
 
 
-    public Node find(Element toFind){
-        return find(root, toFind);
+    public Node find(String toFind){
+        return find(root, new Element(toFind));
     }
 
 //    todo should i do this a different way instead of repeating code?
@@ -217,6 +217,7 @@ public class BST {
         bst.inOrder(bst.root);
         System.out.println(bst.testing);
 
+        bst.find("the");
     }
 
 
