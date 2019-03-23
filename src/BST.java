@@ -157,9 +157,9 @@ public class BST {
         if (node == null || node.getData().compareTo(toFind.getData()) == 0){
 
 //            just checking one more time before returning that this is the exact node looking for
-            if (node.getData().equals(toFind.getData())){
-                return node;
-            }
+//            if (node.getData().equals(toFind.getData())){
+//                return node;
+//            }
 
         }
         if (node.getData().compareTo(toFind.getData()) > 0){

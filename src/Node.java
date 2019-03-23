@@ -65,8 +65,8 @@ public class Node implements Comparable<Node>{
     @Override
     public String toString() {
         return "BSTNode:" + "\n" +
-                "\t"+ "element=" + element.getData() + "\n" +
-                "\t" + "leftLink=" + leftLink.getData() + "\n" +
-                "\t" + "rightLink=" + rightLink.getData() + "\n";
+                "\t"+ "element= " + element.getData() + "\n" +
+                "\t" + "leftLink= " + leftLink.getData() + "\n" +
+                "\t" + "rightLink= " + rightLink.getData() + "\n";
     }
 }

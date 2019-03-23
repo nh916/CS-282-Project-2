@@ -20,6 +20,14 @@ public class AVLTree extends BST{
     }
 
 
+    public Node find(String Findthis){
+        return super.find(root, new Element(Findthis));
+    }
+
+
+    public void delete(String deleteThis){
+        super.deleteRec(root,new Element(deleteThis));
+    }
 //    private Node insert(Node node, Node toInsert){
 //        if( node == null ){
 //            return new Node(toInsert.getData());
@@ -259,10 +267,13 @@ public class AVLTree extends BST{
         tree.insert("table");
         tree.insert("apple");
         tree.insert("zig zig");
+        tree.insert("123456");
 
 
         tree.inOrder(tree.root);
         System.out.println(tree.testing);
+
+        tree.find("the");
 
 //        tree.printLevelOrder();
 //
@@ -271,6 +282,7 @@ public class AVLTree extends BST{
 //        tree.printGivenLevel(tree.root, 2);
 //        tree.printGivenLevel(tree.root, 3);
 //        tree.printGivenLevel(tree.root, 4);
+        tree.find("hello world");
 
     }
 
