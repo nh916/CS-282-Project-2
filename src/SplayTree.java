@@ -217,6 +217,9 @@ public class SplayTree extends BST{
 //    todo ended comment here
 
 
+    /*todo have to translate this code found online to our own cde
+    *   currently no part of it works*/
+
     // splay key in the tree rooted at Node h. If a node with that key exists,
     //   it is splayed to the root of the tree. If it does not, the last node
     //   along the search path for the key is splayed to the root.
