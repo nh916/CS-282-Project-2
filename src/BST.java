@@ -1,7 +1,5 @@
 import java.util.ArrayList;
 
-/* should this implement comparable as well?*/
-
 public class BST {
     private Node root;
 

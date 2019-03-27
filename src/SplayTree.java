@@ -223,6 +223,7 @@ public class SplayTree extends BST{
     // splay key in the tree rooted at Node h. If a node with that key exists,
     //   it is splayed to the root of the tree. If it does not, the last node
     //   along the search path for the key is splayed to the root.
+
     private Node splay(Node h, String key) {
         if (h == null) return null;
 
@@ -230,7 +231,7 @@ public class SplayTree extends BST{
 
         if (cmp1 < 0) {
             // key not in tree, so we're done
-            if (h.left == null) {
+            if (h.getLeft() == null) {
                 return h;
             }
             int cmp2 = key.compareTo(h.getLeft().getData());
@@ -239,34 +240,36 @@ public class SplayTree extends BST{
                 h = rotateRight(h);
             }
             else if (cmp2 > 0) {
-                h.getLeft().getRight() = splay(h.left.right, key);
-                if (h.getLeft().right != null)
-                    h.getLeft() = rotateLeft(h.left);
+                h.getLeft().getRight() = splay(h.getLeft().getRight(), key);
+                if (h.getLeft().getRight() != null)
+                    h.getLeft() = rotateLeft(h.getLeft());
             }
 
-            if (h.left == null) return h;
+            if (h.getLeft() == null) return h;
             else                return rotateRight(h);
         }
 
         else if (cmp1 > 0) {
             // key not in tree, so we're done
-            if (h.right == null) {
+            if (h.getRight() == null) {
                 return h;
             }
 
-            int cmp2 = key.compareTo(h.right.key);
+            int cmp2 = key.compareTo(h.getRight().getData());
             if (cmp2 < 0) {
-                h.right.left  = splay(h.right.left, key);
-                if (h.right.left != null)
-                    h.right = rotateRight(h.right);
+                h.getRight().getLeft()  = splay(h.getRight().getLeft(), key);
+                if (h.getRight().getLeft() != null)
+                    h.getRight() = rotateRight(h.getRight());
             }
             else if (cmp2 > 0) {
-                h.right.right = splay(h.right.right, key);
+                h.getRight().getRight() = splay(h.getRight().getRight(), key);
                 h = rotateLeft(h);
             }
 
-            if (h.right == null) return h;
-            else                 return rotateLeft(h);
+            if (h.getRight() == null) return h;
+            else{
+                return rotateLeft(h);
+            }
         }
 
         else return h;
