@@ -13,10 +13,20 @@ public class Driver {
     }
 
 
+
+
     private void insert(){
         Scanner input = new Scanner(System.in);
-        System.out.println("what would you like to insert?");
+
+        System.out.println("Which file?");
+//        this part is not working. i dont know how to only get those files and then only load those file data into the arraylist
+        String insertThisFile = input.nextLine();
+
+        System.out.println("word");
         String insertThis = input.nextLine();
+//        insertion is not done yet???
+        System.out.println("Insertion Done");
+
 
         System.out.println("what tree would you like to insert " + insertThis + " into?");
         System.out.println("type \"AVL\" for just AVL tree");
@@ -48,9 +58,10 @@ public class Driver {
         }
     }
 
+
     private void delete(){
         Scanner input = new Scanner(System.in);
-        System.out.println("what would you like to delete?");
+        System.out.println("Word?");
         String deleteThis = input.nextLine();
 
         System.out.println("what tree would you like to delete " + deleteThis + " from?");
@@ -87,7 +98,7 @@ public class Driver {
 
     private void find() {
         Scanner input = new Scanner(System.in);
-        System.out.println("what would you like to find?");
+        System.out.println("Word?");
         String findThis = input.nextLine();
 
         System.out.println("what tree would you like to find " + findThis + " from?");
@@ -121,6 +132,14 @@ public class Driver {
     }
 
 
+    private void help(){
+        System.out.println("your options are: ");
+        System.out.println("select (select the type of tree)");
+        System.out.println("find");
+        System.out.println("insert");
+        System.out.println("delete");
+        System.out.println("quit");
+    }
 
 
 //    this might possibly call for a switch statement of menus
@@ -130,10 +149,37 @@ public class Driver {
         String choice = input.nextLine();
 
         switch (choice){
+            case ("help"):{
+                help();
+                break;
+            }
+
+            case ("select"):{
+                System.out.println("type of tree");
+                String typeOfTree = input.nextLine();
+
+                switch (typeOfTree){
+                    case ("AVL"):{
+
+                    }
+                    case ("BST"):{
+
+                    }
+
+                    case ("Splay"):{
+
+                    }
+
+                }
+
+
+            }
             case ("insert"):{
+
                 insert();
                 break;
             }
+
             case ("delete"):{
                 delete();
             }

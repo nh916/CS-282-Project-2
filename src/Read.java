@@ -30,7 +30,7 @@ public class Read {
     }
 
 
-    public void loadData(){
+    public void insertDataintoList(){
         Scanner scan = null;
 
         for (int i = 0; i <fileName.size(); i++) {
@@ -81,7 +81,7 @@ public class Read {
 
         Read read = new Read("file1.txt", "file2.txt", "file3.txt", "file4.txt");
 
-        read.loadData();
+        read.insertDataintoList();
 //        System.out.println(read.fileData);
 //        System.out.println(read.fileData.size());
     }
