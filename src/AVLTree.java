@@ -162,6 +162,7 @@ public class AVLTree extends BST{
         return rotateWithRightChild(k3);
     }
 
+
 /*    public Node remove(String toRemove){
         *//*wrong second argument*//*
         return remove(root, new Node(toRemove));
@@ -169,6 +170,7 @@ public class AVLTree extends BST{
 
 //    needs to be heavily changed
 //        from the arguments to the methods and the variable names
+
     private Node remove(Node t, String toRemove){
         if( t == null ){
             // Item not found; do nothing
