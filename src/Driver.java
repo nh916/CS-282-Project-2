@@ -58,7 +58,7 @@ public class Driver {
             }
             case ("Splay"):{
                 try {
-                    splayTree.deleteKey(deleteThisWord);
+                    splayTree.delete(deleteThisWord);
                 }
                 catch (Exception e ){
                     System.out.println("err");

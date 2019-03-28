@@ -19,20 +19,6 @@ public class SplayTree extends BST{
 
 
 
-/*    public void insert(String toInsert){
-        insert(root, new Node(toInsert));
-    }
-
-//    incomplete insert
-    private void insert(Node node, Node toInsert){
-        if (node == null){
-            node = toInsert;
-        }
-
-    }*/
-
-
-
 
 
     public Node insert(String target){
@@ -47,6 +33,15 @@ public class SplayTree extends BST{
     public Node find(String target){
         return super.find(root, new Element(target));
     }
+
+
+//    todo same with this the bst should be different to allow for sending in strings
+    public void delete(String toDelete){
+        super.deleteRec(root, new Element(toDelete));
+    }
+
+
+
 
     // todo started commenting from here
 //
