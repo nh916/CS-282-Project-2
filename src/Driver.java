@@ -144,6 +144,7 @@ public class Driver {
                 break;
             }
 
+//            todo need more info on select?
             case ("select"):{
                 System.out.println("type of tree");
                 String typeOfTree = in.nextLine();
