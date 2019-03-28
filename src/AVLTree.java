@@ -231,16 +231,17 @@ public class AVLTree extends BST{
 
     public static void main(String[] args){
         AVLTree tree = new AVLTree();
+
         tree.insert("the");
         tree.insert("table");
         tree.insert("apple");
         tree.insert("zig zig");
         tree.insert("123456");
 
-
         tree.inOrder(tree.root);
         System.out.println(tree.testing);
 
+        System.out.println(tree.find("table"));
 
     }
 

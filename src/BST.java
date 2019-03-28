@@ -63,6 +63,7 @@ public class BST {
 
     }
 
+
     protected boolean compare(Node parent, Node child, boolean isLeft){
         if (child == null){
             return true;
@@ -151,7 +152,7 @@ public class BST {
         catch (NullPointerException e){
             System.out.println("the node was not found");
         }
-
+        System.out.println("Node not found");
         return null;
     }
 
@@ -223,15 +224,18 @@ public class BST {
 
         bst.inOrder(bst.root);
         System.out.println(bst.testing);
-        System.out.println(bst.find("zee"));
+//        todo when it cant find or delete a node it returns null instead of printing that it couldnt
+        System.out.println(bst.find("the"));
 
 
 
-//        bst.deleteKey("the");
-//        bst.testing.clear();
-//
-//        bst.inOrder(bst.root);
-//        System.out.println(bst.testing);
+
+
+
+        bst.testing.clear();
+
+        bst.inOrder(bst.root);
+        System.out.println(bst.testing);
 
     }
 
