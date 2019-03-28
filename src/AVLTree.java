@@ -22,9 +22,8 @@ public class AVLTree extends BST{
     }
 
 
-//    todo the bst should be taking a string and turning it into an element instead of this
-    public Node find(String Findthis){
-        return super.find(root, new Element(Findthis));
+    public Node find(String findThis){
+        return super.find(root, new Element(findThis));
     }
 
 
@@ -241,7 +240,8 @@ public class AVLTree extends BST{
         tree.inOrder(tree.root);
         System.out.println(tree.testing);
 
-        System.out.println(tree.find("table"));
+//        todo cant find anything
+        System.out.println(tree.find("apple"));
 
     }
 

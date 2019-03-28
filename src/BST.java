@@ -146,14 +146,8 @@ public class BST {
 
 
     public Node find(String toFind){
-        try {
-            return find(root, new Element(toFind));
-        }
-        catch (NullPointerException e){
-            System.out.println("the node was not found");
-        }
-        System.out.println("Node not found");
-        return null;
+        return find(root, new Element(toFind));
+
     }
 
 
@@ -227,9 +221,7 @@ public class BST {
 //        todo when it cant find or delete a node it returns null instead of printing that it couldnt
         System.out.println(bst.find("the"));
 
-
-
-
+        bst.deleteKey("apple");
 
 
         bst.testing.clear();
