@@ -7,7 +7,7 @@ public class BST {
         root = null;
     }
 
-//    public insert a new String data
+    //    public insert a new String data
     public Node insert(String target){
 //        calls insert on the root and the new node to insert
 //        root = insert(root, new Node(target));
@@ -76,7 +76,7 @@ public class BST {
     }
 
 
-    // todo duplicating code again from the bst. need to just refrence a code
+
     //    This method mainly calls deleteRec()
     public void deleteKey(String key) {
         root = deleteRec(root, new Element(key));
@@ -145,10 +145,17 @@ public class BST {
 
 
     public Node find(String toFind){
-        return find(root, new Element(toFind));
+        try {
+            return find(root, new Element(toFind));
+        }
+        catch (NullPointerException e){
+            System.out.println("the node was not found");
+        }
+
+        return null;
     }
 
-//    todo should i do this a different way instead of repeating code?
+
 //      all the finds are the same so we should probably put this in somewhere and just reference it over and over
     protected Node find(Node node, Element toFind){
 //        if (node == null || node.getData() == toFind.getData())
@@ -158,7 +165,7 @@ public class BST {
 
 //            just checking one more time before returning that this is the exact node looking for
 //            if (node.getData().equals(toFind.getData())){
-//                return node;
+                return node;
 //            }
 
         }
@@ -177,6 +184,7 @@ public class BST {
 
 
     protected ArrayList<String> testing = new ArrayList<String>();
+
     protected void inOrder(Node node){
         if (node == null){
             return;
@@ -203,7 +211,7 @@ public class BST {
 
 
 
-/* todo delete does not work */
+//    check delete and find
 
     public static void main(String[] args){
         BST bst = new BST();
@@ -212,12 +220,19 @@ public class BST {
         bst.insert("apple");
         bst.insert("zig zig");
 
-        /*todo this is alphabetical order!
-        but how?*/
+
         bst.inOrder(bst.root);
         System.out.println(bst.testing);
+        System.out.println(bst.find("zee"));
 
-        bst.find("the");
+
+
+//        bst.deleteKey("the");
+//        bst.testing.clear();
+//
+//        bst.inOrder(bst.root);
+//        System.out.println(bst.testing);
+
     }
 
 
