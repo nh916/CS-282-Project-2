@@ -19,7 +19,7 @@ public class BST {
 
 
 
-    /*should this return anything?*/
+/*todo not sure if the insert method works*/
 //    private recursive inserts a new data
     protected Node insert(Node node, Node target) {
 //        we are at a leaf, (no lef or right)
@@ -88,16 +88,16 @@ public class BST {
     protected Node deleteRec(Node node, Element key){
 //         Base Case: If the tree is empty
         if (node == null) {
-//            return root;
+//            return node;
             return null;
         }
 
 //         Otherwise, recur down the tree
-        if (key.compareTo(node.getData()) > 0) {
+        if (key.compareTo(node.getData()) < 0) {
             node.setLeft(deleteRec(node.getLeft(), key));
         }
 
-        else if (key.compareTo(node.getData()) < 0) {
+        else if (key.compareTo(node.getData()) > 0) {
             node.setRight(deleteRec(node.getRight(), key));
         }
 
@@ -147,16 +147,18 @@ public class BST {
 
     public Node find(String toFind){
         return find(root, new Element(toFind));
-
     }
 
 
 //      all the finds are the same so we should probably put this in somewhere and just reference it over and over
     protected Node find(Node node, Element toFind){
-//        if (node == null || node.getData() == toFind.getData())
+        if (node == null || node.getData().equals(toFind.getData())){
+
+//        if (node == null || node.getData().compareTo(toFind.getData()) == 0){
 
 //        base case either the node is null or the node is equal to the node given
-        if (node == null || node.getData().compareTo(toFind.getData()) == 0){
+
+//        if (node == null ||node.getData() == toFind.getData() ||node.getData().equals(toFind.getData()) || node.getData().compareTo(toFind.getData()) == 0){
 
 //            just checking one more time before returning that this is the exact node looking for
 //            if (node.getData().equals(toFind.getData())){
@@ -165,7 +167,7 @@ public class BST {
 
         }
         if (node.getData().compareTo(toFind.getData()) > 0){
-            find(node.getLeft(), toFind);
+            return find(node.getLeft(), toFind);
         }
 
 //        if (node.getData().compareTo(toFind.getData()) == -1){
@@ -174,6 +176,27 @@ public class BST {
 
         return find(node.getRight(), toFind);
     }
+
+
+
+// todo gives null
+//    protected Node find(Node node, Element name){
+//        if(node != null){
+//            if(node.getData().equals(name)){
+//                return node;
+//            }
+//            else {
+//                Node foundNode = find(node.getLeft(), name);
+//                if(foundNode == null) {
+//                    foundNode = find(node.getRight(), name);
+//                }
+//                return foundNode;
+//            }
+//        }
+//        else {
+//            return null;
+//        }
+//    }
 
 
 
@@ -216,12 +239,13 @@ public class BST {
         bst.insert("zig zig");
 
 
+
         bst.inOrder(bst.root);
         System.out.println(bst.testing);
-//        todo when it cant find or delete a node it returns null instead of printing that it couldnt
-        System.out.println(bst.find("the"));
+        System.out.println(bst.find("zoo"));
 
-        bst.deleteKey("apple");
+        bst.deleteKey("the");
+//        bst.deleteKey("table");
 
 
         bst.testing.clear();

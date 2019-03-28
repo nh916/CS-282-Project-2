@@ -1,7 +1,4 @@
-/*
-Naivd Hariri
-David
-*/
+
 public class Node implements Comparable<Node>{
     private Element element;
 
@@ -66,7 +63,7 @@ public class Node implements Comparable<Node>{
     public String toString() {
         return "Node:" + "\n" +
                 "\t"+ "element= " + element.getData() + "\n" +
-                "\t" + "leftLink= " + leftLink.getData() + "\n" +
-                "\t" + "rightLink= " + rightLink.getData() + "\n";
+                "\t" + "leftLink= " + (leftLink != null ? leftLink.getData() : "null") + "\n" +
+                "\t" + "rightLink= " + (rightLink != null ? rightLink.getData() : "null") + "\n";
     }
 }
