@@ -13,7 +13,7 @@ public class AVLTree extends BST{
 
 
 
-
+// todo the balance factor is not working. something is up!
     public Node insert(String toInsert){
         Node insertThisNode = new Node(toInsert);
 
@@ -237,11 +237,22 @@ public class AVLTree extends BST{
         tree.insert("zig zig");
         tree.insert("123456");
 
-        tree.inOrder(tree.root);
-        System.out.println(tree.testing);
+//        tree.inOrder(tree.root);
+//        System.out.println(tree.testing);
 
-//        todo cant find anything
+
+// inserts it like regular bst without aveeehling
+        System.out.println(tree.find("the"));
+        System.out.println(tree.find("table"));
         System.out.println(tree.find("apple"));
+        System.out.println(tree.find("zig zig"));
+        System.out.println(tree.find("123456"));
+
+
+//        tree.delete("table");
+//        tree.testing.clear();
+//        tree.inOrder(tree.root);
+//        System.out.println(tree.testing);
 
     }
 

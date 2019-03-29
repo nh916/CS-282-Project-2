@@ -19,8 +19,8 @@ public class BST {
 
 
 
-/*todo not sure if the insert method works*/
-//    private recursive inserts a new data
+
+//    protected for all classes that inherit this recursive inserts a new data
     protected Node insert(Node node, Node target) {
 //        we are at a leaf, (no lef or right)
 
@@ -242,10 +242,10 @@ public class BST {
 
         bst.inOrder(bst.root);
         System.out.println(bst.testing);
-        System.out.println(bst.find("zoo"));
+        System.out.println(bst.find("the"));
 
         bst.deleteKey("the");
-//        bst.deleteKey("table");
+        bst.deleteKey("table");
 
 
         bst.testing.clear();
