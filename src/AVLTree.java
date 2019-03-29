@@ -14,14 +14,14 @@ public class AVLTree extends BST{
 
 
 // todo the balance factor is not working. something is up!
+    @Override
     public Node insert(String toInsert){
-        Node insertThisNode = new Node(toInsert);
-
-       root = super.insert(root, insertThisNode);
-       return balance(insertThisNode);
+       root = super.insert(root, new Node(toInsert));
+       return balance(new Node(toInsert));
     }
 
 
+    @Override
     public Node find(String findThis){
         return super.find(root, new Element(findThis));
     }
@@ -63,12 +63,14 @@ public class AVLTree extends BST{
 
 
     private int height(Node t){
-//        if (t == null){
-//            return 0;
-//        }
-//
-//        return t.height;
-        return t == null ? -1 : t.height;
+        if (t == null){
+            return -1;
+        }
+
+            return t.height;
+
+//        todo transalted this code to the long version
+//        return (t == null) ? -1 : t.height;
     }
 
 

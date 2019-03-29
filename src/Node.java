@@ -10,6 +10,7 @@ public class Node implements Comparable<Node>{
 
     public Node(String target) {
         element = new Element(target);
+//        todo hmm not sure if this part is correct or not
         height = 0;
     }
 
@@ -63,6 +64,7 @@ public class Node implements Comparable<Node>{
     public String toString() {
         return "Node:" + "\n" +
                 "\t"+ "element= " + element.getData() + "\n" +
+//                if left link is not null put in leftLink.getData(): else put in "null" for the data
                 "\t" + "leftLink= " + (leftLink != null ? leftLink.getData() : "null") + "\n" +
                 "\t" + "rightLink= " + (rightLink != null ? rightLink.getData() : "null") + "\n";
     }
