@@ -13,11 +13,15 @@ public class AVLTree extends BST{
 
 
 
-// todo the balance factor is not working. something is up!
+// tried fixing the balance with sending it to the same node. however same result given
     @Override
     public Node insert(String toInsert){
        root = super.insert(root, new Node(toInsert));
-       return balance(new Node(toInsert));
+//       return balance(new Node(toInsert));
+        return balance(find(toInsert));
+//        return balance(find(root.getData()));
+//        return balance(root);
+//        return balance(root = super.insert(root, new Node (toInsert)));
     }
 
 
@@ -77,6 +81,13 @@ public class AVLTree extends BST{
     private static final int ALLOWED_IMBALANCE = 1;
 
 
+
+
+
+
+
+
+
     private Node balance(Node node){
         if( node == null ){
             return node;
@@ -102,6 +113,15 @@ public class AVLTree extends BST{
         }
         return node;
     }
+
+
+
+
+
+
+
+
+
 
 
     private Node rotateWithLeftChild(Node k2){
@@ -249,6 +269,9 @@ public class AVLTree extends BST{
         System.out.println(tree.find("apple"));
         System.out.println(tree.find("zig zig"));
         System.out.println(tree.find("123456"));
+
+
+
 
 
 //        tree.delete("table");
