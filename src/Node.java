@@ -7,6 +7,7 @@ public class Node implements Comparable<Node>{
 
     public int height;
 
+    public int size;
 
     public Node(String target) {
         element = new Element(target);

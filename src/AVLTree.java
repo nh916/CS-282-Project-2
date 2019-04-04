@@ -13,16 +13,7 @@ public class AVLTree extends BST{
 
 
 
-// tried fixing the balance with sending it to the same node. however same result given
-    @Override
-    public Node insert(String toInsert){
-       root = super.insert(root, new Node(toInsert));
-//       return balance(new Node(toInsert));
-        return balance(find(toInsert));
-//        return balance(find(root.getData()));
-//        return balance(root);
-//        return balance(root = super.insert(root, new Node (toInsert)));
-    }
+
 
 
     @Override
@@ -31,8 +22,7 @@ public class AVLTree extends BST{
     }
 
 
-//    todo how to do i return the node?
-//        does this work???
+
     public Node delete(String deleteThis){
         return balance(super.deleteRec(root,new Element(deleteThis)));
     }
@@ -63,8 +53,7 @@ public class AVLTree extends BST{
 
 
 
-
-
+    /*// tried fixing the balance with sending it to the same node. however same result given
 
     private int height(Node t){
         if (t == null){
@@ -79,14 +68,6 @@ public class AVLTree extends BST{
 
 
     private static final int ALLOWED_IMBALANCE = 1;
-
-
-
-
-
-
-
-
 
     private Node balance(Node node){
         if( node == null ){
@@ -150,11 +131,103 @@ public class AVLTree extends BST{
         return rotateWithLeftChild(k3);
     }
 
-    /*todo check this*/
+    *//*todo check this*//*
     private Node doubleWithRightChild(Node k3){
         k3.setRight(rotateWithLeftChild(k3.getRight()));
         return rotateWithRightChild(k3);
     }
+*/
+
+
+    @Override
+    public Node insert(String toInsert){
+        root = super.insert(root, new Node(toInsert));
+//       return balance(new Node(toInsert));
+        return balance(find(toInsert));
+//        return balance(find(root.getData()));
+//        return balance(root);
+//        return balance(root = super.insert(root, new Node (toInsert)));
+    }
+
+    private Node balance(Node x) {
+        if (balanceFactor(x) < -1) {
+            if (balanceFactor(x.getRight()) > 0) {
+                x.setRight(rotateRight(x.getRight()));
+            }
+            x = rotateLeft(x);
+        }
+        else if (balanceFactor(x) > 1) {
+            if (balanceFactor(x.getLeft()) < 0) {
+                x.setLeft(rotateLeft(x.getLeft()));
+            }
+            x = rotateRight(x);
+        }
+        return x;
+    }
+
+    private int balanceFactor(Node x) {
+        return height(x.getLeft()) - height(x.getRight());
+    }
+
+    private int height(Node x) {
+        if (x == null) {
+            return -1;
+        }
+        return x.height;
+    }
+
+
+
+    public int size() {
+        return size(root);
+    }
+
+    private int size(Node x) {
+        if (x == null) {
+            return 0;
+        }
+        return x.size;
+    }
+
+    private Node rotateRight(Node x) {
+        Node y = x.getLeft();
+        x.setLeft(y.getRight());
+        y.setRight(x);
+        y.size = x.size;
+        x.size = 1 + size(x.getLeft()) + size(x.getRight());
+        x.height = 1 + Math.max(height(x.getLeft()), height(x.getRight()));
+        y.height = 1 + Math.max(height(y.getLeft()), height(y.getRight()));
+        return y;
+    }
+
+    private Node rotateLeft(Node x) {
+        Node y = x.getRight();
+        x.setRight(y.getLeft());
+        y.setLeft(x);
+        y.size = x.size;
+        x.size = 1 + size(x.getLeft()) + size(x.getRight());
+        x.height = 1 + Math.max(height(x.getLeft()), height(x.getRight()));
+        y.height = 1 + Math.max(height(y.getLeft()), height(y.getRight()));
+        return y;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //      todo either this must be over ridden or this must go
@@ -259,25 +332,22 @@ public class AVLTree extends BST{
         tree.insert("zig zig");
         tree.insert("123456");
 
-//        tree.inOrder(tree.root);
-//        System.out.println(tree.testing);
-
 
 // inserts it like regular bst without aveeehling
-        System.out.println(tree.find("the"));
-        System.out.println(tree.find("table"));
-        System.out.println(tree.find("apple"));
-        System.out.println(tree.find("zig zig"));
-        System.out.println(tree.find("123456"));
+//        System.out.println(tree.find("the"));
+//        System.out.println(tree.find("table"));
+//        System.out.println(tree.find("apple"));
+//        System.out.println(tree.find("zig zig"));
+//        System.out.println(tree.find("123456"));
+//
+        tree.delete("the");
+
+        tree.testing.clear();
+        tree.inOrder(tree.root);
+        System.out.println(tree.testing);
 
 
 
-
-
-//        tree.delete("table");
-//        tree.testing.clear();
-//        tree.inOrder(tree.root);
-//        System.out.println(tree.testing);
 
     }
 
