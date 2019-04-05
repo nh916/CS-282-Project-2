@@ -143,9 +143,9 @@ public class AVLTree extends BST{
     public Node insert(String toInsert){
         root = super.insert(root, new Node(toInsert));
 //       return balance(new Node(toInsert));
-        return balance(find(toInsert));
+//        return balance(find(toInsert));
 //        return balance(find(root.getData()));
-//        return balance(root);
+        return balance(root);
 //        return balance(root = super.insert(root, new Node (toInsert)));
     }
 
@@ -230,7 +230,7 @@ public class AVLTree extends BST{
 
 
 
-//      todo either this must be over ridden or this must go
+
 //    private Node remove(Node t, String toRemove){
 //        if( t == null ){
 //            // Item not found; do nothing
@@ -329,22 +329,22 @@ public class AVLTree extends BST{
         tree.insert("the");
         tree.insert("table");
         tree.insert("apple");
-        tree.insert("zig zig");
-        tree.insert("123456");
+//        tree.insert("zig zig");
+//        tree.insert("123456");
 
 
 // inserts it like regular bst without aveeehling
-//        System.out.println(tree.find("the"));
-//        System.out.println(tree.find("table"));
-//        System.out.println(tree.find("apple"));
+        System.out.println(tree.find("the"));
+        System.out.println(tree.find("table"));
+        System.out.println(tree.find("apple"));
 //        System.out.println(tree.find("zig zig"));
 //        System.out.println(tree.find("123456"));
-//
-        tree.delete("the");
 
-        tree.testing.clear();
-        tree.inOrder(tree.root);
-        System.out.println(tree.testing);
+//        tree.delete("the");
+
+//        tree.testing.clear();
+//        tree.inOrder(tree.root);
+//        System.out.println(tree.testing);
 
 
 
