@@ -23,9 +23,9 @@ public class AVLTree extends BST{
 
 
 
-    public Node delete(String deleteThis){
+/*    public Node delete(String deleteThis){
         return balance(super.deleteRec(root,new Element(deleteThis)));
-    }
+    }*/
 
 
 //    private Node insert(Node node, Node toInsert){
@@ -139,15 +139,21 @@ public class AVLTree extends BST{
 */
 
 
+
+
+
+
+//    todo princeton code
     @Override
     public Node insert(String toInsert){
-        root = super.insert(root, new Node(toInsert));
+//        root = super.insert(root, new Node(toInsert));
 //       return balance(new Node(toInsert));
 //        return balance(find(toInsert));
 //        return balance(find(root.getData()));
-        return balance(root);
-//        return balance(root = super.insert(root, new Node (toInsert)));
+//        return balance(root);
+        return balance(root = super.insert(root, new Node (toInsert)));
     }
+
 
     private Node balance(Node x) {
         if (balanceFactor(x) < -1) {
@@ -215,6 +221,107 @@ public class AVLTree extends BST{
 
 
 
+//  todo this is the book code
+   /* @Override
+    public Node insert(String toInsert){
+       return (root = insert(new Node(toInsert), root));
+    }
+
+
+
+    @Override
+    protected Node insert( Node target, Node root )
+    {
+        if( root == null ) {
+            return target;
+        }
+        int compareResult = root.compareTo( target);
+
+        if( compareResult < 0 )
+        {
+            root.setLeft(insert( target, root.getLeft() ));
+            if( height( root.getLeft() ) - height( root.getRight() ) == 2 )
+                if( target.compareTo( root.getLeft()) < 0 )
+                    root = rotateWithLeftChild( root );
+                else
+                    root = doubleWithLeftChild( root );
+        }
+        else if( compareResult > 0 )
+        {
+            root.setRight(insert( target, root.getRight() ));
+            if( height( root.getRight() ) - height( root.getLeft() ) == 2 )
+                if( target.compareTo( root.getRight() ) > 0 )
+                    root = rotateWithRightChild( root );
+                else
+                    root = doubleWithRightChild( root );
+        }
+        else
+            ;  // Duplicate; do nothing
+        root.height = Math.max( height( root.getLeft() ), height( root.getRight() ) ) + 1;
+        return root;
+    }
+
+
+
+
+    private Node rotateWithLeftChild( Node k2 )
+    {
+        Node k1 = k2.getLeft();
+        k2.setLeft(k1.getRight());
+        k1.setRight(k2);
+        k2.height = Math.max( height( k2.getLeft() ), height( k2.getRight() ) ) + 1;
+        k1.height = Math.max( height( k1.getLeft() ), k2.height ) + 1;
+        return k1;
+    }
+
+    *//*
+     * Return the height of node t, or -1, if null.
+     *//*
+    private int height( Node t )
+    {
+        return t == null ? -1 : t.height;
+    }
+
+
+
+    *//*
+     * Rotate binary tree node with right child.
+     * For AVL trees, this is a single rotation for case 4.
+     * Update heights, then return new root.
+     *//*
+    private Node rotateWithRightChild( Node k1 )
+    {
+        Node k2 = k1.getRight();
+        k1.setRight(k2.getLeft());
+        k2.setLeft(k1);
+        k1.height = Math.max( height( k1.getLeft() ), height( k1.getRight() ) ) + 1;
+        k2.height = Math.max( height( k2.getRight() ), k1.height ) + 1;
+        return k2;
+    }
+
+    *//*
+     * Double rotate binary tree node: first left child
+     * with its right child; then node k3 with new left child.
+     * For AVL trees, this is a double rotation for case 2.
+     * Update heights, then return new root.
+     *//*
+    private Node doubleWithLeftChild( Node k3 )
+    {
+        k3.setLeft(rotateWithRightChild( k3.getLeft() ));
+        return rotateWithLeftChild( k3 );
+    }
+
+    *//*
+     * Double rotate binary tree node: first right child
+     * with its left child; then node k1 with new right child.
+     * For AVL trees, this is a double rotation for case 3.
+     * Update heights, then return new root.
+     *//*
+    private Node doubleWithRightChild( Node k1 )
+    {
+        k1.setRight(rotateWithLeftChild( k1.getRight() ));
+        return rotateWithRightChild( k1 );
+    }*/
 
 
 
@@ -231,6 +338,12 @@ public class AVLTree extends BST{
 
 
 
+
+
+
+
+
+    /*uneedded*/
 //    private Node remove(Node t, String toRemove){
 //        if( t == null ){
 //            // Item not found; do nothing
@@ -293,7 +406,14 @@ public class AVLTree extends BST{
 
 
 
-//
+
+
+
+
+
+
+
+
 //    /* Print nodes at the given level */
 //    void printGivenLevel (Node root ,int level) {
 //        if (root == null)
