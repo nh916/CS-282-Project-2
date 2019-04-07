@@ -21,7 +21,7 @@ public class BST {
 
 
 //    protected for all classes that inherit this recursive inserts a new data
-    protected Node insert(Node node, Node target) {
+    private Node insert(Node node, Node target) {
 //        we are at a leaf, (no lef or right)
 
         /*I did not insert the Node here! todo be careful and make sure to insert*/

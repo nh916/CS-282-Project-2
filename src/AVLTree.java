@@ -354,37 +354,50 @@ public class AVLTree extends BST{
 
 
 
-    @Override
+
     protected Node insert( Node target, Node root ) {
         if( root == null ) {
             return target;
         }
         int compareResult = target.compareTo(root);
 
-        if( compareResult < 0 )
-        {
+        if( compareResult < 0 ) {
             root.setLeft(insert( target, root.getLeft() ));
-            if( height( root.getLeft() ) - height( root.getRight() ) == 2 ) {
-                if (target.compareTo(root.getLeft()) < 0)
+            if( height( root.getLeft() ) - height( root.getRight() ) == 2) {
+                if (target.compareTo(root.getLeft()) < 0) {
                     root = rotateWithLeftChild(root);
-                else
+                }
+                else {
                     root = doubleWithLeftChild(root);
+                }
             }
         }
         else if( compareResult > 0 ) {
             root.setRight(insert( target, root.getRight() ));
-            if( height( root.getRight() ) - height( root.getLeft() ) == 2 )
-                if( target.compareTo( root.getRight() ) > 0 )
-                    root = rotateWithRightChild( root );
-                else
-                    root = doubleWithRightChild( root );
+            if( height( root.getRight() ) - height( root.getLeft() ) == 2 ) {
+                if (target.compareTo(root.getRight()) > 0) {
+                    root = rotateWithRightChild(root);
+                }
+                else {
+                    root = doubleWithRightChild(root);
+                }
+            }
         }
-        else
-              // Duplicate; do nothing
-        root.height = Math.max( height( root.getLeft() ), height( root.getRight() ) ) + 1;
+        else {
+            // Duplicate; do nothing
+            root.height = Math.max(height(root.getLeft()), height(root.getRight())) + 1;
+        }
         return root;
     }
-
+    private int height( Node t ) {
+//        return t == null ? -1 : t.height;
+        if (t == null){
+            return -1;
+        }
+        else{
+            return t.height;
+        }
+    }
 
 
 
@@ -400,16 +413,7 @@ public class AVLTree extends BST{
 
 //      Return the height of node t, or -1, if null.
 
-    private int height( Node t ) {
-        return t == null ? -1 : t.height;
-/*        if (t == null){
-            return -1;
-        }
-        else{
-            t.height;
-        }*/
 
-    }
 
 
 
