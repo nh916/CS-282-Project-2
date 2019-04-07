@@ -1,11 +1,9 @@
 public class AVLTree extends BST{
 
     Node root;
-    int height;
 
     public AVLTree(){
         super();
-        height = 0;
     }
 
     @Override
@@ -395,18 +393,18 @@ public class AVLTree extends BST{
         if (t == null){
             return -1;
         }
-//        if (t.getLeft() != null){
-//            t.height+=1;
-//            height(t.getLeft());
-//            return t.height;
-//        }
-//        if (t.getRight() != null){
-//            t.height+=1;
-//            height(t.getRight());
-//            return t.height;
-//        }
-//        return 0;
-        return t.height;
+        if (t.getLeft() != null){
+            t.height+=1;
+            height(t.getLeft());
+            return t.height;
+        }
+        if (t.getRight() != null){
+            t.height+=1;
+            height(t.getRight());
+            return t.height;
+        }
+        return 0;
+//        return t.height;
     }
 
 
@@ -430,17 +428,20 @@ public class AVLTree extends BST{
         if (node == null)
             return 0;
         else {
-            /* compute the depth of each subtree */
+//             compute the depth of each subtree
             int lDepth = maxDepth(node.getLeft());
             int rDepth = maxDepth(node.getRight());
 
-            /* use the larger one */
+//             use the larger one
             if (lDepth > rDepth)
                 return (lDepth + 1);
             else
                 return (rDepth + 1);
         }
     }
+
+
+
 
 
 
