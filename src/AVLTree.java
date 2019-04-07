@@ -12,121 +12,150 @@ public class AVLTree extends BST{
         return super.find(root, new Element(findThis));
     }
 
+    int height(Node N) {
+        if (N == null)
+            return 0;
 
-    public Node insert(String x){
-        return root = insert( x, root );
+        return N.height;
     }
 
+    // A utility function to get maximum of two integers 
+    int max(int a, int b) {
+        return (a > b) ? a : b;
+    }
 
-    private Node insert( String x, Node t ) {
-        if (t == null)
-            return new Node(x);
+    // A utility function to getRight() rotate subtree rooted with y 
+    // See the diagram given above. 
+    Node rightRotate(Node y) {
+        Node x = y.getLeft();
+        Node T2 = x.getRight();
 
-        int compareResult = x.compareTo(t.getData());
+        // Perform rotation 
+        x.setRight(y);
+        y.setLeft(T2);
 
-        if (compareResult < 0) {
-            t.setLeft(insert(x, t.getLeft()));
-            if (height(t.getLeft()) - height(t.getRight()) == 2) {
-                if (x.compareTo(t.getLeft().getData()) < 0) {
-                    t = rotateWithLeftChild(t);
-                } else {
-                    t = doubleWithLeftChild(t);
-                }
-            }
-        } else if (compareResult > 0) {
-            t.setRight(insert(x, t.getRight()));
-            if (height(t.getRight()) - height(t.getLeft()) == 2) {
-                if (x.compareTo(t.getRight().getData()) > 0) {
-                    t = rotateWithRightChild(t);
-                } else {
-                    t = doubleWithRightChild(t);
-                }
-            }
-        } else {
-            // Duplicate; do nothing
+        // Update heights 
+        y.height = max(height(y.getLeft()), height(y.getRight())) + 1;
+        x.height = max(height(x.getLeft()), height(x.getRight())) + 1;
+
+        // Return new root 
+        return x;
+    }
+
+    // A utility function to getLeft() rotate subtree rooted with x 
+    // See the diagram given above. 
+    Node leftRotate(Node x) {
+        Node y = x.getRight();
+        Node T2 = y.getLeft();
+
+        // Perform rotation 
+        y.setLeft(x);
+        x.setRight(T2);
+
+        //  Update heights 
+        x.height = max(height(x.getLeft()), height(x.getRight())) + 1;
+        y.height = max(height(y.getLeft()), height(y.getRight())) + 1;
+
+        // Return new root 
+        return y;
+    }
+
+    // Get Balance factor of node N 
+    int getBalance(Node N) {
+        if (N == null)
+            return 0;
+
+        return height(N.getLeft()) - height(N.getRight());
+    }
+
+    public Node insert(String toInsert){
+        return root = insert(root, toInsert);
+    }
+
+    private Node insert(Node node, String key) {
+
+        /* 1.  Perform the normal BST insertion */
+        if (node == null)
+            return (new Node(key));
+
+        if (node.getData().compareTo(key) > 0) {
+            node.setLeft(insert(node.getLeft(), key));
         }
-        return t;
-    }
-
-        private int height( Node t ) {
-//        return t == null ? -1 : t.height;
-
-        if (t == null){
-            return -1;
+        else if (node.getData().compareTo(key) < 0) {
+            node.setRight(insert(node.getRight(), key));
         }
-        else {
-            return t.height;
+        else { // Duplicate keys not allowed
+            return node;
         }
 
+//        2. Update height of this ancestor node
+        node.height = 1 + max(height(node.getLeft()), height(node.getRight()));
+
+        /* 3. Get the balance factor of this ancestor
+              node to check whether this node became
+              unbalanced */
+        int balance = getBalance(node);
+
+        // If this node becomes unbalanced, then there
+        // are 4 cases getLeft() getLeft() Case
+        if (balance > 1 && key.compareTo(node.getLeft().getData()) < 0) {
+            return rightRotate(node);
+        }
+
+        // getRight() getRight() Case
+        if (balance < -1 && key.compareTo(node.getRight().getData()) > 0) {
+            return leftRotate(node);
+        }
+        // getLeft() getRight() Case
+        if (balance > 1 && key.compareTo(node.getRight().getData()) > 0) {
+            node.setLeft(leftRotate(node.getLeft()));
+            return rightRotate(node);
+        }
+
+        // getRight() getLeft() Case
+        if (balance < -1 && key.compareTo(node.getLeft().getData()) < 0) {
+            node.setRight(rightRotate(node.getRight()));
+            return leftRotate(node);
+        }
+
+        /* return the (unchanged) node pointer */
+        return node;
     }
 
-    private Node rotateWithLeftChild( Node k2 ) {
-        Node k1 = k2.getLeft();
-        k2.setLeft(k1.getRight());
-        k1.setRight(k2);
-        k2.height = Math.max( height( k2.getLeft() ), height( k2.getRight() ) ) + 1;
-        k1.height = Math.max( height( k1.getLeft() ), k2.height ) + 1;
-        return k1;
-    }
 
-    private Node rotateWithRightChild( Node k1 ) {
-        Node k2 = k1.getRight();
-        k1.setRight(k2.getLeft());
-        k2.setLeft(k1);
-        k1.height = Math.max( height( k1.getLeft() ), height( k1.getRight() ) ) + 1;
-        k2.height = Math.max( height( k2.getRight() ), k1.height ) + 1;
-        return k2;
-    }
 
-    private Node doubleWithLeftChild( Node k3 ) {
-        k3.setLeft(rotateWithRightChild( k3.getLeft() ));
-        return rotateWithLeftChild( k3 );
-    }
 
-    private Node doubleWithRightChild( Node k1 ) {
-        k1.setLeft(rotateWithLeftChild( k1.getRight() ));
-        return rotateWithRightChild( k1 );
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public static void main(String[] args){
         AVLTree tree = new AVLTree();
         tree.insert("3");
-        tree.insert("2");
         tree.insert("1");
+        tree.insert("2");
 //        tree.insert("20");
 //        tree.insert("10");
 //        tree.insert("11");
