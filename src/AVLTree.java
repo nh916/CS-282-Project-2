@@ -389,15 +389,64 @@ public class AVLTree extends BST{
         }
         return root;
     }
+
     private int height( Node t ) {
 //        return t == null ? -1 : t.height;
         if (t == null){
             return -1;
         }
-        else{
-            return t.height;
+//        if (t.getLeft() != null){
+//            t.height+=1;
+//            height(t.getLeft());
+//            return t.height;
+//        }
+//        if (t.getRight() != null){
+//            t.height+=1;
+//            height(t.getRight());
+//            return t.height;
+//        }
+//        return 0;
+        return t.height;
+    }
+
+
+
+//    my own code trying to go down to a leaf node and then go all the way back up. but realized bst only goes down
+/*    private void leftSubTree(Node node){
+ *//*       Node leftLeafNode;
+        while (node.getLeft() != null){
+            leftLeafNode = node.getLeft();
+            node.height+= 1;
+            balanceFactor(node.getLeft());
+        }*//*
+
+        if (node.getLeft() != null){
+            leftSubTree(node.getLeft());
+        }
+    }*/
+
+
+    private int maxDepth(Node node) {
+        if (node == null)
+            return 0;
+        else {
+            /* compute the depth of each subtree */
+            int lDepth = maxDepth(node.getLeft());
+            int rDepth = maxDepth(node.getRight());
+
+            /* use the larger one */
+            if (lDepth > rDepth)
+                return (lDepth + 1);
+            else
+                return (rDepth + 1);
         }
     }
+
+
+
+
+
+
 
 
 
@@ -576,9 +625,28 @@ public class AVLTree extends BST{
     public static void main(String[] args){
         AVLTree tree = new AVLTree();
 
-        tree.insert("the");
+/*        tree.insert("the");
         tree.insert("table");
-        tree.insert("apple");
+        tree.insert("apple");*/
+
+        tree.insert("20");
+        tree.insert("30");
+        tree.insert("3220");
+        tree.insert("2");
+        tree.insert("5");
+
+
+
+
+/*        tree.insert("50");
+        tree.insert("25");
+        tree.insert("30");
+        tree.insert("10");
+        tree.insert("8");
+        tree.insert("5");
+        tree.insert("80");
+        tree.insert("2");*/
+
 
 
 
@@ -587,10 +655,30 @@ public class AVLTree extends BST{
 //        tree.insert("123456");
 
 
-// inserts it like regular bst without aveeehling
-        System.out.println(tree.find("the"));
-        System.out.println(tree.find("table"));
-        System.out.println(tree.find("apple"));
+        System.out.println(tree.find("20"));
+        System.out.println(tree.find("30"));
+        System.out.println(tree.find("3220"));
+        System.out.println(tree.find("2"));
+        System.out.println(tree.find("5"));
+
+
+
+// too many rotations and this combo is currently not working. gives me back a fucked up tree
+/*
+        System.out.println(tree.find("50"));
+        System.out.println(tree.find("25"));
+        System.out.println(tree.find("30"));
+        System.out.println(tree.find("10"));
+        System.out.println(tree.find("8"));
+        System.out.println(tree.find("5"));
+        System.out.println(tree.find("80"));
+        System.out.println(tree.find("2"));
+*/
+
+
+
+
+
 //        System.out.println(tree.find("zig zig"));
 //        System.out.println(tree.find("123456"));
 
