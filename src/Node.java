@@ -7,11 +7,12 @@ public class Node implements Comparable<Node>{
 
     public int height;
 
-    public int size;
+//    public int size;
+
 
     public Node(String target) {
         element = new Element(target);
-//        todo hmm not sure if this part is correct or not
+//        size = 0;
         height = 0;
     }
 
@@ -57,8 +58,8 @@ public class Node implements Comparable<Node>{
     }
 
 // this portion is just for the avl nodes
-    public void AVLHeight(){
-
+    private int height( Node t ){
+        return t == null ? -1 : t.height;
     }
 
     @Override

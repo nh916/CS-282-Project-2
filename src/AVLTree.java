@@ -125,7 +125,9 @@ public class AVLTree extends BST{
         return rotateWithLeftChild(k3);
     }
 
-    *//*todo check this*//*
+    */
+    /*todo check this*/
+    /*
     private Node doubleWithRightChild(Node k3){
         k3.setRight(rotateWithLeftChild(k3.getRight()));
         return rotateWithRightChild(k3);
@@ -138,19 +140,113 @@ public class AVLTree extends BST{
 
 
 //    todo princeton code
-    @Override
+    /*@Override
     public Node insert(String toInsert){
         root = super.insert(root, new Node(toInsert));
 //       return balance(new Node(toInsert));
 
-//        root.size = root.size + 1 + size(root.getLeft()) + size(root.getRight());
-//        root.height = root.height + 1 + Math.max(height(root.getLeft()), height(root.getRight()));
+        root.size = 1 + size(root.getLeft()) + size(root.getRight());
+        root.height = 1 + Math.max(height(root.getLeft()), height(root.getRight()));
         return balance(find(toInsert));
+
+*//*        // Update balance factor and height values.
+        update(new Node(toInsert));
+
+        // Re-balance tree.
+        return balance(root);*//*
 
 //        return balance(find(root.getData()));
 //        return balance(root);
 //        return balance(root = super.insert(root, new Node (toInsert)));
+    }*/
+
+
+    /*private void update(Node node) {
+
+        int leftNodeHeight  = (node.getLeft()  == null) ? -1 : node.getLeft().height;
+        int rightNodeHeight = (node.getRight() == null) ? -1 : node.getRight().height;
+
+        // Update this node's height.
+        node.height = 1 + Math.max(leftNodeHeight, rightNodeHeight);
+
+        // Update balance factor.
+        node.bf = rightNodeHeight - leftNodeHeight;
+
     }
+
+
+
+    // Re-balance a node if its balance factor is +2 or -2.
+    private Node balance(Node node) {
+
+        // Left heavy subtree.
+        if (node.bf == -2) {
+
+            // Left-Left case.
+            if (node.getLeft().bf <= 0) {
+                return leftLeftCase(node);
+
+                // Left-Right case.
+            } else {
+                return leftRightCase(node);
+            }
+
+            // Right heavy subtree needs balancing.
+        } else if (node.bf == +2) {
+
+            // Right-Right case.
+            if (node.getRight().bf >= 0) {
+                return rightRightCase(node);
+
+                // Right-Left case.
+            } else {
+                return rightLeftCase(node);
+            }
+
+        }
+        // Node either has a balance factor of 0, +1 or -1 which is fine.
+        return node;
+    }
+
+
+        private Node leftLeftCase(Node node) {
+            return rightRotation(node);
+        }
+
+        private Node leftRightCase(Node node) {
+            node.setLeft(leftRotation(node.getLeft()));
+            return leftLeftCase(node);
+        }
+
+        private Node rightRightCase(Node node) {
+            return leftRotation(node);
+        }
+
+        private Node rightLeftCase(Node node) {
+            node.setRight(rightRotation(node.getRight()));
+            return rightRightCase(node);
+        }
+
+        private Node leftRotation(Node node) {
+            Node newParent = node.getRight();
+            node.setRight(newParent.getLeft());
+            newParent.setLeft(node);
+            update(node);
+            update(newParent);
+            return newParent;
+        }
+
+        private Node rightRotation(Node node) {
+            Node newParent = node.getLeft();
+            node.setLeft(newParent.getRight());
+            newParent.setRight(node);
+            update(node);
+            update(newParent);
+            return newParent;
+        }*/
+
+
+
 
 
     /*todo this is the put method from princeton*/
@@ -189,7 +285,7 @@ public class AVLTree extends BST{
 
 
 
-    private Node balance(Node x) {
+    /*private Node balance(Node x) {
         if (balanceFactor(x) < -1) {
             if (balanceFactor(x.getRight()) > 0) {
                 x.setRight(rotateRight(x.getRight()));
@@ -244,7 +340,7 @@ public class AVLTree extends BST{
         x.height = 1 + Math.max(height(x.getLeft()), height(x.getRight()));
         y.height = 1 + Math.max(height(y.getLeft()), height(y.getRight()));
         return y;
-    }
+    }*/
 
 
 
@@ -252,7 +348,7 @@ public class AVLTree extends BST{
 
 //  todo this is the book code
 
-   /* public Node insert(String toInsert) {
+    public Node insert(String toInsert) {
        return (root = insert(new Node(toInsert), root));
     }
 
@@ -263,16 +359,17 @@ public class AVLTree extends BST{
         if( root == null ) {
             return target;
         }
-        int compareResult = root.compareTo( target);
+        int compareResult = target.compareTo(root);
 
         if( compareResult < 0 )
         {
             root.setLeft(insert( target, root.getLeft() ));
-            if( height( root.getLeft() ) - height( root.getRight() ) == 2 )
-                if( target.compareTo( root.getLeft()) < 0 )
-                    root = rotateWithLeftChild( root );
+            if( height( root.getLeft() ) - height( root.getRight() ) == 2 ) {
+                if (target.compareTo(root.getLeft()) < 0)
+                    root = rotateWithLeftChild(root);
                 else
-                    root = doubleWithLeftChild( root );
+                    root = doubleWithLeftChild(root);
+            }
         }
         else if( compareResult > 0 ) {
             root.setRight(insert( target, root.getRight() ));
@@ -305,14 +402,21 @@ public class AVLTree extends BST{
 
     private int height( Node t ) {
         return t == null ? -1 : t.height;
+/*        if (t == null){
+            return -1;
+        }
+        else{
+            t.height;
+        }*/
+
     }
 
 
 
 
-*//*      Rotate binary tree node with right child.
-      For AVL trees, this is a single rotation for case 4.
-      Update heights, then return new root.*//*
+//      Rotate binary tree node with right child.
+//      For AVL trees, this is a single rotation for case 4.
+//      Update heights, then return new root.
 
     private Node rotateWithRightChild( Node k1 ) {
         Node k2 = k1.getRight();
@@ -324,10 +428,10 @@ public class AVLTree extends BST{
     }
 
 
-*//*      Double rotate binary tree node: first left child
-      with its right child; then node k3 with new left child.
-      For AVL trees, this is a double rotation for case 2.
-      Update heights, then return new root.*//*
+//      Double rotate binary tree node: first left child
+//      with its right child; then node k3 with new left child.
+//      For AVL trees, this is a double rotation for case 2.
+//      Update heights, then return new root.
 
     private Node doubleWithLeftChild( Node k3 ) {
         k3.setLeft(rotateWithRightChild( k3.getLeft() ));
@@ -335,15 +439,15 @@ public class AVLTree extends BST{
     }
 
 
-*//*      Double rotate binary tree node: first right child
-      with its left child; then node k1 with new right child.
-      For AVL trees, this is a double rotation for case 3.
-      Update heights, then return new root.*//*
+//      Double rotate binary tree node: first right child
+//      with its left child; then node k1 with new right child.
+//      For AVL trees, this is a double rotation for case 3.
+//      Update heights, then return new root.
 
     private Node doubleWithRightChild( Node k1 ) {
         k1.setRight(rotateWithLeftChild( k1.getRight() ));
         return rotateWithRightChild( k1 );
-    }*/
+    }
 
 
 
@@ -365,7 +469,7 @@ public class AVLTree extends BST{
 
 
 
-    /*unneeded*/
+//    unneeded
 //    private Node remove(Node t, String toRemove){
 //        if( t == null ){
 //            // Item not found; do nothing
