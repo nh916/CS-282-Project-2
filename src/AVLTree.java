@@ -61,7 +61,7 @@ public class AVLTree extends BST{
     }
 
     // Get Balance factor of node N 
-    public int getBalance(Node N) {
+    private int getBalance(Node N) {
         if (N == null) {
             return 0;
         }
@@ -110,31 +110,20 @@ public class AVLTree extends BST{
             return leftRotate(node);
         }
 
-
-        try {
-            // getLeft() getRight() Case
-            if (balance > 1 && key.compareTo(node.getRight()) > 0 ) {
-                node.setLeft(leftRotate(node.getLeft()));
-                return rightRotate(node);
-            }
-        }
-        catch (NullPointerException e){
+        // getLeft() getRight() Case
+        if (balance > 1 && key.compareTo(node.getRight()) > 0 ) {
             node.setLeft(leftRotate(node.getLeft()));
             return rightRotate(node);
         }
 
 
-        try {
-            // getRight() getLeft() Case
-            if (balance < -1 && key.compareTo(node.getLeft()) < 0) {
-                node.setRight(rightRotate(node.getRight()));
-                return leftRotate(node);
-            }
-        }
-        catch (NullPointerException e){
+
+        // getRight() getLeft() Case
+        if (balance < -1 && key.compareTo(node.getLeft()) < 0) {
             node.setRight(rightRotate(node.getRight()));
             return leftRotate(node);
         }
+
 
 
 
@@ -151,56 +140,56 @@ public class AVLTree extends BST{
     public static void main(String[] args){
         AVLTree tree = new AVLTree();
 
-        String cases = "RL";
+        String cases = "LR";
 
 
-//        if (cases.equals("LL")  || cases.equals("all")){
-//            tree.insert("3");
-//            tree.insert("2");
-//            tree.insert("1");
-//        }
-//
-//        else if (cases.equals("RR")  || cases.equals("all")){
-//            tree.insert("1");
-//            tree.insert("2");
-//            tree.insert("3");
-//        }
-//
-//        else if (cases.equals("LR")  || cases.equals("all")){
-//            tree.insert("3");
-//            tree.insert("1");
-//            tree.insert("2");
-//        }
-//        else if (cases.equals("RL")  || cases.equals("all")){
-//            tree.insert("1");
-//            tree.insert("3");
-//            tree.insert("2");
-//        }
-//        else {
-//            System.out.println("hit the else case!");
-//        }
+        if (cases.equals("LL")  || cases.equals("all")){
+            tree.insert("3");
+            tree.insert("2");
+            tree.insert("1");
+        }
+
+        else if (cases.equals("RR")  || cases.equals("all")){
+            tree.insert("1");
+            tree.insert("2");
+            tree.insert("3");
+        }
+
+        else if (cases.equals("LR")  || cases.equals("all")){
+            tree.insert("3");
+            tree.insert("1");
+            tree.insert("2");
+        }
+        else if (cases.equals("RL")  || cases.equals("all")){
+            tree.insert("1");
+            tree.insert("3");
+            tree.insert("2");
+        }
+        else {
+            System.out.println("hit the else case!");
+        }
 
 
 //        tree.insert("1");
 //        tree.insert("3");
 //        tree.insert("2");
 
-        tree.insert("3");
-        tree.insert("1");
-        tree.insert("2");
+//        tree.insert("3");
+//        tree.insert("1");
+//        tree.insert("2");
 
 
-        tree.insert("20");
-        tree.insert("10");
-        tree.insert("11");
+//        tree.insert("20");
+//        tree.insert("10");
+//        tree.insert("11");
 
         System.out.println(tree.find("1"));
         System.out.println(tree.find("3"));
         System.out.println(tree.find("2"));
 
-        System.out.println(tree.find("20"));
-        System.out.println(tree.find("10"));
-        System.out.println(tree.find("11"));
+//        System.out.println(tree.find("20"));
+//        System.out.println(tree.find("10"));
+//        System.out.println(tree.find("11"));
     }
     
     

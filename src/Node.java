@@ -20,11 +20,10 @@ public class Node implements Comparable<Node>{
     @Override
     public int compareTo(Node other) {
 //        if (other == null){
-//            return 1;
+//            return -1;
 //        }
-//        else {
-            return element.compareTo(other.getData());
-//        }
+        return element.compareTo(other.getData());
+
     }
 
 
