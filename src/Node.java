@@ -7,12 +7,11 @@ public class Node implements Comparable<Node>{
 
     public int height;
 
-//    public int size;
+
 
 
     public Node(String target) {
         element = new Element(target);
-//        size = 0;
         height = 1;
     }
 
@@ -20,7 +19,12 @@ public class Node implements Comparable<Node>{
 
     @Override
     public int compareTo(Node other) {
-        return element.compareTo(other.getData());
+//        if (other == null){
+//            return 1;
+//        }
+//        else {
+            return element.compareTo(other.getData());
+//        }
     }
 
 
@@ -66,7 +70,9 @@ public class Node implements Comparable<Node>{
     public String toString() {
         return "Node:" + "\n" +
                 "\t"+ "element= " + element.getData() + "\n" +
+
 //                if left link is not null put in leftLink.getData(): else put in "null" for the data
+
                 "\t" + "leftLink= " + (leftLink != null ? leftLink.getData() : "null") + "\n" +
                 "\t" + "rightLink= " + (rightLink != null ? rightLink.getData() : "null") + "\n";
     }

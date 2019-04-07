@@ -11,7 +11,7 @@ public class BST {
     public Node insert(String target){
 //        calls insert on the root and the new node to insert
 //        root = insert(root, new Node(target));
-        /*todo check if this is correct or not*/
+
         root = insert(root, new Node(target));
         return null;
     }
@@ -179,7 +179,7 @@ public class BST {
 
 
 
-// todo gives null
+
 //    protected Node find(Node node, Element name){
 //        if(node != null){
 //            if(node.getData().equals(name)){
