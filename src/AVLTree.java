@@ -111,15 +111,16 @@ public class AVLTree extends BST{
         }
 
         // getLeft() getRight() Case
-        if (balance > 1 && key.compareTo(node.getRight()) > 0 ) {
+//        getRight became left
+        if (balance > 1 && key.compareTo(node.getLeft()) > 0 ) {
             node.setLeft(leftRotate(node.getLeft()));
             return rightRotate(node);
         }
 
 
-
         // getRight() getLeft() Case
-        if (balance < -1 && key.compareTo(node.getLeft()) < 0) {
+//        getleft became right
+        if (balance < -1 && key.compareTo(node.getRight()) < 0) {
             node.setRight(rightRotate(node.getRight()));
             return leftRotate(node);
         }
@@ -140,13 +141,21 @@ public class AVLTree extends BST{
     public static void main(String[] args){
         AVLTree tree = new AVLTree();
 
-        String cases = "LR";
+        String cases = "LL";
 
 
         if (cases.equals("LL")  || cases.equals("all")){
             tree.insert("3");
             tree.insert("2");
             tree.insert("1");
+
+
+//            tree.insert("-1");
+//            tree.insert("-2");
+//            tree.insert("-3");
+//            tree.insert("-4");
+
+
         }
 
         else if (cases.equals("RR")  || cases.equals("all")){
@@ -186,6 +195,12 @@ public class AVLTree extends BST{
         System.out.println(tree.find("1"));
         System.out.println(tree.find("3"));
         System.out.println(tree.find("2"));
+
+//        System.out.println(tree.find("-1"));
+//        System.out.println(tree.find("-2"));
+//        System.out.println(tree.find("-3"));
+//        System.out.println(tree.find("-4"));
+
 
 //        System.out.println(tree.find("20"));
 //        System.out.println(tree.find("10"));

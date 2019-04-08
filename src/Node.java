@@ -19,9 +19,9 @@ public class Node implements Comparable<Node>{
 
     @Override
     public int compareTo(Node other) {
-//        if (other == null){
-//            return -1;
-//        }
+        if (other == null){
+            return 0;
+        }
         return element.compareTo(other.getData());
 
     }
