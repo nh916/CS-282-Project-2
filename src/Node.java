@@ -12,16 +12,16 @@ public class Node implements Comparable<Node>{
 
     public Node(String target) {
         element = new Element(target);
-        height = 1;
+        height = 0;
     }
 
 
 
     @Override
     public int compareTo(Node other) {
-        if (other == null){
-            return 0;
-        }
+//        if (other == null){
+//            return 0;
+//        }
         return element.compareTo(other.getData());
 
     }
