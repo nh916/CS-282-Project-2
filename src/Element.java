@@ -21,8 +21,12 @@ public class Element implements Comparable<String> {
         this.word = newData;
     }
 
-    public String getData(){
+    public String getWord(){
         return word;
+    }
+
+    public String getFile(){
+        return file;
     }
 
     @Override

@@ -118,7 +118,7 @@ public class BST {
 
                 node.setElement(minValue(node.getRight()));
                 // Delete the inorder successor
-                node.setRight(deleteRec(node.getRight(), new Element(node)));
+                node.setRight(deleteRec(node.getRight(), node));
             }
         }
 
@@ -226,6 +226,19 @@ public class BST {
     }
 
 
+    public static void main(String[] args){
+        BST bstTree = new BST();
+
+        bstTree.insert("file1", "hello");
+        bstTree.insert("file1", "table");
+        bstTree.insert("file 2", "are");
+        bstTree.insert("file3", "sup sup");
+
+        System.out.println(bstTree.find("file1", "hello"));
+        System.out.println(bstTree.find("file1", "table"));
+        System.out.println(bstTree.find("file 2", "are"));
+        System.out.println(bstTree.find("file3", "sup sup"));
+    }
 
 
 }

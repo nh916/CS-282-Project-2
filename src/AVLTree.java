@@ -151,8 +151,6 @@ public class AVLTree extends BST{
 
     public static void main(String[] args){
         AVLTree tree = new AVLTree();
-
-
     }
     
     

@@ -32,8 +32,8 @@ public class Node implements Comparable<Node>{
         return element;
     }
 
-    public String getData(){
-        return element.getData();
+    public String getWord(){
+        return element.getWord();
     }
 
     public Node getLeft () {
@@ -68,11 +68,12 @@ public class Node implements Comparable<Node>{
     @Override
     public String toString() {
         return "Node:" + "\n" +
-                "\t"+ "element= " + element.getData() + "\n" +
+                "\t"+ "element= " + element.getWord() + "\n" +
 
 //                if left link is not null put in leftLink.getData(): else put in "null" for the data
+// lets come back and add the file to this node toString as well
 
-                "\t" + "leftLink= " + (leftLink != null ? leftLink.getData() : "null") + "\n" +
-                "\t" + "rightLink= " + (rightLink != null ? rightLink.getData() : "null") + "\n";
+                "\t" + "leftLink= " + (leftLink != null ? leftLink.getWord() : "null") + "\n" +
+                "\t" + "rightLink= " + (rightLink != null ? rightLink.getWord() : "null") + "\n";
     }
 }
