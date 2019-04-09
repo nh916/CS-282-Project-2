@@ -199,7 +199,25 @@ public class BST {
 //    }
 
 
+//    recursively find min
+    protected Node findMin(Node node) {
+        if(node == null){
+            return null;
+        }
+        else if(node.getLeft() == null)
+            return node;
+        return findMin(node.getLeft());
+    }
 
+
+// iteratively find max
+    protected Node findMax(Node node) {
+        if( node != null )
+            while( node.getRight() != null ){
+                node = node.getRight();
+            }
+        return node;
+    }
 
     protected ArrayList<String> testing = new ArrayList<String>();
 
