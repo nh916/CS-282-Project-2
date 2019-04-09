@@ -8,11 +8,11 @@ public class BST {
     }
 
     //    public insert a new String data
-    public Node insert(String target){
+    public Node insert(String fileWordIsFrom, String word){
 //        calls insert on the root and the new node to insert
 //        root = insert(root, new Node(target));
 
-        root = insert(root, new Node(target));
+        root = insert(root, new Node(fileWordIsFrom, word));
         return null;
     }
 
@@ -79,13 +79,13 @@ public class BST {
 
 
     //    This method mainly calls deleteRec()
-    public void deleteKey(String key) {
-        root = deleteRec(root, new Element(key));
+    public void delete(String fileWordIsFrom, String word) {
+        root = deleteRec(root, new Node(fileWordIsFrom, word));
     }
 
 
     //     A recursive function to insert a new key in BST
-    protected Node deleteRec(Node node, Element key){
+    protected Node deleteRec(Node node, Node key){
 //         Base Case: If the tree is empty
         if (node == null) {
 //            return node;
@@ -93,11 +93,11 @@ public class BST {
         }
 
 //         Otherwise, recur down the tree
-        if (key.compareTo(node.getData()) < 0) {
+        if (key.compareTo(node) < 0) {
             node.setLeft(deleteRec(node.getLeft(), key));
         }
 
-        else if (key.compareTo(node.getData()) > 0) {
+        else if (key.compareTo(node) > 0) {
             node.setRight(deleteRec(node.getRight(), key));
         }
 
@@ -118,7 +118,7 @@ public class BST {
 
                 node.setElement(minValue(node.getRight()));
                 // Delete the inorder successor
-                node.setRight(deleteRec(node.getRight(), new Element(node.getData())));
+                node.setRight(deleteRec(node.getRight(), new Element(node)));
             }
         }
 
@@ -145,21 +145,21 @@ public class BST {
     }
 
 
-    public Node find(String toFind){
-        return find(root, new Element(toFind));
+    public Node find(String fileWordIsFrom, String wordToFind){
+        return find(root, new Node(fileWordIsFrom, wordToFind));
     }
 
 
 //      all the finds are the same so we should probably put this in somewhere and just reference it over and over
-    protected Node find(Node node, Element toFind){
-        if (node == null || node.getData().equals(toFind.getData())){
+    protected Node find(Node node, Node toFind){
+        if (node == null || node.equals(toFind)){
 
 //            just trying to be through lol :) lol
 //        if (node == null ||node.getData() == toFind.getData() ||node.getData().equals(toFind.getData()) || node.getData().compareTo(toFind.getData()) == 0){
 
                 return node;
         }
-        if (node.getData().compareTo(toFind.getData()) > 0){
+        if (node.compareTo(toFind) > 0){
             return find(node.getLeft(), toFind);
         }
 
