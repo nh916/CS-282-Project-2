@@ -101,6 +101,49 @@ public class AVLTree extends BST{
     }
 
 
+    public void delete(String toDelete){
+        delete(root, new Element(toDelete));
+    }
+
+    private void delete(Node root, Element toDelete){
+        super.deleteRec(root, toDelete);
+        balance(root);
+    }
+
+
+
+    private static final int ALLOWED_IMBALANCE = 1;
+    // Assume t is either balanced or within one of being balanced
+    private Node balance( Node t ){
+        if( t == null ){
+            return t;
+        }
+        if( height( t.getLeft() ) - height( t.getRight() ) > ALLOWED_IMBALANCE ){
+            if( height( t.getLeft().getLeft() ) >= height( t.getLeft().getRight() ) ){
+                t = rotateWithLeftChild( t );
+            }
+            else {
+                t = doubleWithLeftChild( t );
+            }
+        }
+        else {
+            if( height( t.getRight() ) - height( t.getLeft() ) > ALLOWED_IMBALANCE ){
+                if( height( t.getRight().getRight() ) >= height( t.getRight().getLeft() ) ){
+                    t = rotateWithRightChild( t );
+                }
+                else {
+                    t = doubleWithRightChild( t );
+                }
+            }
+        }
+        t.height = Math.max( height( t.getLeft() ), height( t.getRight() ) ) + 1;
+        return t;
+    }
+
+
+
+
+
 
 
 
@@ -109,7 +152,7 @@ public class AVLTree extends BST{
     public static void main(String[] args){
         AVLTree tree = new AVLTree();
 
-        String cases = "RL";
+        String cases = "LL";
 
         if (cases.equals("LL")){
             tree.insert("C");
@@ -152,20 +195,32 @@ public class AVLTree extends BST{
         }
 
 
-
-
-
         tree.insert("Y");
         tree.insert("D");
         tree.insert("T");
         tree.insert("H");
 
-
         System.out.println(tree.find("A"));
         System.out.println(tree.find("B"));
         System.out.println(tree.find("C"));
 
+        System.out.println(tree.find("Y"));
+        System.out.println(tree.find("D"));
+        System.out.println(tree.find("T"));
+        System.out.println(tree.find("H"));
 
+
+
+
+        tree.delete("D");
+
+
+        System.out.println("deleted");
+
+
+        System.out.println(tree.find("A"));
+        System.out.println(tree.find("B"));
+        System.out.println(tree.find("C"));
 
         System.out.println(tree.find("Y"));
         System.out.println(tree.find("D"));
