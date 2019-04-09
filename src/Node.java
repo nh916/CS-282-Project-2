@@ -5,13 +5,13 @@ public class Node implements Comparable<Node>{
     private Node leftLink;
     private Node rightLink;
 
-    public int height;
+    int height;
 
 
 
 
-    public Node(String target) {
-        element = new Element(target);
+    public Node(String file, String word) {
+        element = new Element(file, word);
         height = 0;
     }
 
@@ -60,7 +60,7 @@ public class Node implements Comparable<Node>{
         rightLink = node;
     }
 
-// this portion is just for the avl nodes
+    // this portion is just for the avl nodes
     private int height( Node t ){
         return t == null ? -1 : t.height;
     }

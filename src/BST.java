@@ -154,17 +154,10 @@ public class BST {
     protected Node find(Node node, Element toFind){
         if (node == null || node.getData().equals(toFind.getData())){
 
-//        if (node == null || node.getData().compareTo(toFind.getData()) == 0){
-
-//        base case either the node is null or the node is equal to the node given
-
+//            just trying to be through lol :) lol
 //        if (node == null ||node.getData() == toFind.getData() ||node.getData().equals(toFind.getData()) || node.getData().compareTo(toFind.getData()) == 0){
 
-//            just checking one more time before returning that this is the exact node looking for
-//            if (node.getData().equals(toFind.getData())){
                 return node;
-//            }
-
         }
         if (node.getData().compareTo(toFind.getData()) > 0){
             return find(node.getLeft(), toFind);
@@ -231,49 +224,6 @@ public class BST {
         inOrder(node.getRight());
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    check delete and find
-
-    public static void main(String[] args){
-        BST bst = new BST();
-        bst.insert("the");
-        bst.insert("table");
-        bst.insert("apple");
-        bst.insert("zig zig");
-
-
-
-        bst.inOrder(bst.root);
-        System.out.println(bst.testing);
-        System.out.println(bst.find("the"));
-
-        bst.deleteKey("the");
-        bst.deleteKey("table");
-
-
-        bst.testing.clear();
-
-        bst.inOrder(bst.root);
-        System.out.println(bst.testing);
-
-    }
-
-
 
 
 
