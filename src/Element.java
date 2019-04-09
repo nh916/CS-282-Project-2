@@ -1,18 +1,16 @@
 public class Element implements Comparable<String> {
 
-    private String word;
-    private String file;
+    private String data;
 
-    public Element (String file, String word){
-        this.file = file;
-        this.word = word;
+    public Element (String data){
+        this.data = data;
     }
 
 
 
     @Override
     public int compareTo(String element){
-        return word.compareTo(element);
+        return data.compareTo(element);
 
     }
 
@@ -20,16 +18,16 @@ public class Element implements Comparable<String> {
 
 
     public void setData(String newData){
-        this.word = newData;
+        this.data = newData;
     }
 
     public String getData(){
-        return word;
+        return data;
     }
 
     @Override
     public String toString() {
-        return word + "from " + file;
+        return "" + data;
     }
 
 }

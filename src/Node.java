@@ -5,13 +5,13 @@ public class Node implements Comparable<Node>{
     private Node leftLink;
     private Node rightLink;
 
-    int height;
+    public int height;
 
 
 
 
-    public Node(String file, String word) {
-        element = new Element(file, word);
+    public Node(String target) {
+        element = new Element(target);
         height = 0;
     }
 
