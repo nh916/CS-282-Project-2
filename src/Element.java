@@ -2,10 +2,13 @@
 //
 //    private String word;
 //    private String file;
+//    boolean filesWordIsIn [];
 //
 //    public Element (String file, String word){
 //        this.file = file;
 //        this.word = word;
+//
+//        filesWordIsIn = new boolean[4];
 //    }
 //
 //
@@ -35,6 +38,11 @@
 //    }
 //
 //}
+
+
+
+
+
 
 
 

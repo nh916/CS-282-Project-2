@@ -1,4 +1,3 @@
-//
 //public class Node implements Comparable<Node>{
 //    private Element element;
 //
@@ -34,6 +33,10 @@
 //
 //    public String getData(){
 //        return element.getData();
+//    }
+//
+//    public String getFile(){
+//        return element.getFile();
 //    }
 //
 //    public Node getLeft () {
@@ -77,6 +80,10 @@
 //                "\t" + "rightLink= " + (rightLink != null ? rightLink.getData() : "null") + "\n";
 //    }
 //}
+
+
+
+
 
 
 
@@ -151,10 +158,3 @@ public class Node implements Comparable<Node>{
                 "\t" + "rightLink= " + (rightLink != null ? rightLink.getData() : "null") + "\n";
     }
 }
-
-
-
-
-
-
-
