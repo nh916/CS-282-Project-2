@@ -11,8 +11,6 @@ public class Driver {
     private boolean wantsAVL;
     private boolean wantsSplay;
 
-    private String choice;
-
 
     public Driver(){
         avlTree =  new AVLTree();
@@ -90,7 +88,7 @@ public class Driver {
 //    this might possibly call for a switch statement of menus
     private void options(){
         System.out.println("what would you like to do?");
-        choice = input.nextLine();
+        String choice = input.nextLine();
 
 
         while (!choice.equals("quit")){
@@ -203,9 +201,6 @@ public class Driver {
 
     public static void main(String[] args){
         Driver driver = new Driver();
-        BST binarySearchTree = new BST();
-        AVLTree avlTree = new AVLTree();
-        SplayTree splayTree = new SplayTree();
 //
 //        Read read = new Read("file1.txt", "file2.txt", "file3.txt", "file4.txt");
 
