@@ -26,39 +26,12 @@ public class Read {
     }
 
 
-    public void readAndInsertToTrees(){
+    private void readThenInsert(String file){
         Scanner scan = null;
         String wordFromFile;
 
-        try {
-
-//            todo duplicate code?
-            scan = new Scanner(new FileInputStream(file1));
-            while (scan.hasNext()) {
-                wordFromFile = (scan.nextLine());
-                bst.insert( wordFromFile);
-                avlTree.insert(wordFromFile);
-
-                splayTree.insertSplay(wordFromFile);
-            }
-
-            scan = new Scanner(new FileInputStream(file2));
-            while (scan.hasNext()) {
-                wordFromFile = (scan.nextLine());
-                bst.insert( wordFromFile);
-                avlTree.insert( wordFromFile);
-                splayTree.insertSplay(wordFromFile);
-            }
-
-            scan = new Scanner(new FileInputStream(file3));
-            while (scan.hasNext()) {
-                wordFromFile = (scan.nextLine());
-                bst.insert( wordFromFile);
-                avlTree.insert( wordFromFile);
-                splayTree.insertSplay(wordFromFile);
-            }
-
-            scan = new Scanner(new FileInputStream(file4));
+        try{
+            scan = new Scanner(new FileInputStream(file));
             while (scan.hasNext()) {
                 wordFromFile = (scan.nextLine());
                 bst.insert(wordFromFile);
@@ -68,26 +41,30 @@ public class Read {
         }
 
         catch (FileNotFoundException e) {
-//            e.printStackTrace();
             System.out.println("file not found");
         }
         catch (NullPointerException e) {
             System.out.println("file error");
         }
         finally {
-            try {
+            if (scan != null) {
                 scan.close();
             }
-            catch (NullPointerException e) {
-                System.out.println("file was never opened or closed");
-            }
         }
+    }
+
+
+    private void readAndInsertToTreesWithFile(){
+        readThenInsert(file1);
+        readThenInsert(file2);
+        readThenInsert(file3);
+        readThenInsert(file4);
     }
 
 //    testing
     public static void main(String[] args){
         Read read = new Read();
-        read.readAndInsertToTrees();
+        read.readAndInsertToTreesWithFile();
     }
 
 }
