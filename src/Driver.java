@@ -2,123 +2,79 @@ import java.util.Scanner;
 
 public class Driver {
 
-    AVLTree avlTree;
-    SplayTree splayTree;
-    BST bst;
-    Scanner in;
-    String typeOfTree;
+    private AVLTree avlTree;
+    private SplayTree splayTree;
+    private BST bst;
+    private Scanner input;
+
+    private boolean wantsBST;
+    private boolean wantsAVL;
+    private boolean wantsSplay;
+
+    private String choice;
+
 
     public Driver(){
         avlTree =  new AVLTree();
         splayTree = new SplayTree();
         bst = new BST();
-        in = new Scanner(System.in);
+        input = new Scanner(System.in);
+
+        wantsBST = false;
+        wantsAVL = false;
+        wantsSplay = false;
     }
 
 
-    private void insert(){
-        Scanner input = new Scanner(System.in);
 
-        System.out.println("Word?");
-        String insertThisWord = input.nextLine();
+    private void select(String typeOfTree) {
+        switch (typeOfTree) {
 
-        switch (typeOfTree){
-            case ("AVL"):{
-                avlTree.insert(insertThisWord);
+            case ("BST"): {
+                wantsBST = true;
+                wantsAVL = false;
+                wantsSplay = false;
+                break;
             }
-            case ("Splay"):{
-                splayTree.insert(insertThisWord);
+            case ("AVL"): {
+                wantsBST = false;
+                wantsAVL = true;
+                wantsSplay = false;
+                break;
             }
-            case ("BST"):{
-                bst.insert(insertThisWord);
+            case ("Splay"): {
+                wantsBST = false;
+                wantsAVL = false;
+                wantsSplay = true;
+                break;
             }
-            default:{
-                System.out.println("That tree does not exist");
+            default: {
+                defaultCase();
+                break;
             }
-
         }
+    }
+
+
+
+    private void defaultCase(){
+        System.out.println("Not a valid choice. Please try again.");
+    }
+
+
+    private void BST(){
+
+    }
+
+    private void avl(){
+
+    }
+
+    private void splay(){
 
     }
 
 
-    private void delete(){
-        Scanner input = new Scanner(System.in);
-
-        System.out.println("Word?");
-        String deleteThisWord = input.nextLine();
-
-        switch (typeOfTree){
-            case ("AVL"):{
-                try {
-                    avlTree.delete(deleteThisWord);
-                }
-                catch (Exception e){
-                    System.out.println("err");
-                }
-            }
-            case ("Splay"):{
-                try {
-                    splayTree.delete(deleteThisWord);
-                }
-                catch (Exception e ){
-                    System.out.println("err");
-                }
-            }
-            case ("BST"):{
-                try {
-                    bst.deleteKey(deleteThisWord);
-                }
-                catch (Exception e){
-                    System.out.println("err");
-                }
-            }
-            default:{
-                System.out.println("That tree does not exist");
-            }
-
-        }
-
-    }
-
-
-    private void find() {
-        Scanner input = new Scanner(System.in);
-
-        System.out.println("Word?");
-        String findThisWord = input.nextLine();
-
-        switch (typeOfTree){
-            case ("AVL"):{
-                try {
-                    avlTree.find(findThisWord);
-                }
-                catch (Exception e){
-                    System.out.println("err");
-                }
-            }
-            case ("Splay"):{
-                try {
-                    splayTree.find(findThisWord);
-                }
-                catch (Exception e ){
-                    System.out.println("err");
-                }
-            }
-            case ("BST"):{
-                try {
-                    bst.find(findThisWord);
-                }
-                catch (Exception e){
-                    System.out.println("err");
-                }
-            }
-            default:{
-                System.out.println("That tree does not exist");
-            }
-
-        }
-
-    }
 
 
     private void help(){
@@ -133,9 +89,9 @@ public class Driver {
 
 //    this might possibly call for a switch statement of menus
     public void options(){
-        Scanner input = new Scanner(System.in);
         System.out.println("what would you like to do?");
-        String choice = input.nextLine();
+        choice = input.nextLine();
+
 
         while (!choice.equals("quit")){
             switch (choice){
@@ -145,35 +101,91 @@ public class Driver {
                     break;
                 }
 
-//            todo need more info on select?
+
                 case ("select"):{
                     System.out.println("type of tree");
-                    String typeOfTree = in.nextLine();
+                    String typeOfTree = input.nextLine();
+                    select(typeOfTree);
+                    break;
                 }
 
                 case ("insert"):{
-                    insert();
+                    System.out.println("word?");
+                    String wordToInsert;
+                    wordToInsert = input.nextLine();
+
+                    if (wantsBST){
+                        bst.insert(wordToInsert);
+                    }
+                    else if (wantsAVL){
+                        avlTree.insert(wordToInsert);
+                    }
+                    else if (wantsSplay){
+                        splayTree.insertSplay(wordToInsert);
+                    }
+                    else {
+                        defaultCase();
+                    }
+
                 }
 
                 case ("delete"):{
-                    delete();
+                    System.out.println("word?");
+                    String wordToDelete;
+                    wordToDelete = input.nextLine();
+
+                    if (wantsBST){
+                        bst.deleteKey(wordToDelete);
+                    }
+                    else if (wantsAVL){
+                        avlTree.delete(wordToDelete);
+                    }
+                    else if (wantsSplay){
+                        splayTree.delete(wordToDelete);
+                    }
+                    else {
+                        defaultCase();
+                    }
                 }
 
                 case ("find"): {
-                    find();
+                    System.out.println("word?");
+                    String wordToFind;
+                    wordToFind = input.nextLine();
+
+                    try {
+                        if (wantsBST){
+                            bst.find(wordToFind);
+                        }
+                        else if (wantsAVL){
+                            avlTree.find(wordToFind);
+                        }
+                        else if (wantsSplay){
+                            splayTree.findSplay(wordToFind);
+                        }
+                        else {
+                            defaultCase();
+                        }
+                    }
+
+//                which exception would it be
+                    catch (NullPointerException e){
+                        System.out.println("what you were looking for created a null pointer");
+                    }
+                    catch (Exception e ){
+                        System.out.println("Exception");
+                    }
+
                 }
 
-//                case ("quit"):{
-//                    System.exit(0);
-////                flag = false;
-//                }
-
                 default:{
-                    System.out.println("Not a valid choice. Please try again.");
+                    defaultCase();
                 }
             }
 
         }
+
+
 
 
 

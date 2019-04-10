@@ -94,7 +94,7 @@ public class Node implements Comparable<Node>{
     private Node leftLink;
     private Node rightLink;
 
-    public int height;
+    int height;
 
 
     public Node(String target) {
