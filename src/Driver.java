@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Driver {
+public class Driver extends Read{
 
     private AVLTree avlTree;
     private SplayTree splayTree;
@@ -60,17 +60,17 @@ public class Driver {
     }
 
 
-    private void BST(){
-
-    }
-
-    private void avl(){
-
-    }
-
-    private void splay(){
-
-    }
+//    private void BST(){
+//
+//    }
+//
+//    private void avl(){
+//
+//    }
+//
+//    private void splay(){
+//
+//    }
 
 
 
@@ -194,9 +194,8 @@ public class Driver {
 
     public static void main(String[] args){
         Driver driver = new Driver();
-//
-//        Read read = new Read("file1.txt", "file2.txt", "file3.txt", "file4.txt");
 
+        driver.readAndInsertToTreesWithFile();
         driver.options();
     }
 }

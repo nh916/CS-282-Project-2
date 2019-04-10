@@ -8,7 +8,6 @@ public class Read {
     private AVLTree avlTree;
     private SplayTree splayTree;
 
-
     private String file1;
     private String file2;
     private String file3;
@@ -26,7 +25,7 @@ public class Read {
     }
 
 
-    private void readThenInsert(String file){
+    protected void readThenInsert(String file){
         Scanner scan = null;
         String wordFromFile;
 
@@ -54,7 +53,7 @@ public class Read {
     }
 
 
-    private void readAndInsertToTreesWithFile(){
+    public void readAndInsertToTreesWithFile(){
         readThenInsert(file1);
         readThenInsert(file2);
         readThenInsert(file3);

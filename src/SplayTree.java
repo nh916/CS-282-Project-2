@@ -116,6 +116,7 @@ public class SplayTree extends BST{
         temp.setLeft(n);
         return temp;
     }
+//    null pointer exception right here!!!!!!!!!!!!!
     private Node rotateRight(Node n){
         Node temp =  n.getLeft();
         n.setLeft(temp.getRight());
