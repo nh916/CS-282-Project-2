@@ -25,7 +25,10 @@ public class Driver extends Read{
 
 
 
-    private void select(String typeOfTree) {
+    private void select() {
+        System.out.println("type of tree");
+        String typeOfTree = input.nextLine();
+
         switch (typeOfTree) {
 
             case ("BST"): {
@@ -86,11 +89,13 @@ public class Driver extends Read{
 
 
     private void options(){
-        System.out.println("what would you like to do?");
-        String choice = input.nextLine();
-
+        String choice = "";
 
         while (!choice.equals("quit")){
+
+            System.out.println("what would you like to do?");
+            choice = input.nextLine();
+
             switch (choice){
 
                 case ("help"):{
@@ -100,9 +105,7 @@ public class Driver extends Read{
 
 
                 case ("select"):{
-                    System.out.println("type of tree");
-                    String typeOfTree = input.nextLine();
-                    select(typeOfTree);
+                    select();
                     break;
                 }
 
@@ -113,15 +116,24 @@ public class Driver extends Read{
 
                     if (wantsBST){
                         bst.insert(wordToInsert);
+                        break;
                     }
                     else if (wantsAVL){
                         avlTree.insert(wordToInsert);
+                        break;
                     }
                     else if (wantsSplay){
                         splayTree.insertSplay(wordToInsert);
+                        break;
+                    }
+                    else if (!wantsBST && !wantsAVL && !wantsSplay){
+                        System.out.println("please select tree!!!!");
+                        select();
+                        break;
                     }
                     else {
                         defaultCase();
+                        break;
                     }
 
                 }
@@ -134,22 +146,32 @@ public class Driver extends Read{
                     try {
                         if (wantsBST){
                             bst.deleteKey(wordToDelete);
+                            break;
                         }
                         else if (wantsAVL){
                             avlTree.delete(wordToDelete);
+                            break;
                         }
                         else if (wantsSplay){
                             splayTree.delete(wordToDelete);
+                            break;
+                        }
+                        else if (!wantsBST && !wantsAVL && !wantsSplay){
+                            System.out.println("please select tree!!!!");
+                            select();
                         }
                         else {
                             defaultCase();
+                            break;
                         }
                     }
                     catch (NullPointerException e){
                         System.out.println("Null pointer!!");
+                        break;
                     }
                     catch (Exception e){
                         System.out.println("you have produced an exception congratulations");
+                        break;
                     }
 
                 }
@@ -161,31 +183,42 @@ public class Driver extends Read{
 
                     try {
                         if (wantsBST){
-                            bst.find(wordToFind);
+                            System.out.println(bst.find(wordToFind));
+                            break;
                         }
                         else if (wantsAVL){
-                            avlTree.find(wordToFind);
+                            System.out.println(avlTree.find(wordToFind));
+                            break;
                         }
                         else if (wantsSplay){
-                            splayTree.findSplay(wordToFind);
+                            System.out.println(splayTree.findSplay(wordToFind));
+                            break;
+                        }
+                        else if (!wantsBST && !wantsAVL && !wantsSplay){
+                            System.out.println("please select tree!!!!");
+                            select();
                         }
                         else {
                             defaultCase();
+                            break;
                         }
                     }
 
 //                which exception would it be
                     catch (NullPointerException e){
                         System.out.println("what you were looking for created a null pointer");
+                        break;
                     }
                     catch (Exception e ){
                         System.out.println("Exception");
+                        break;
                     }
 
                 }
 
                 default:{
                     defaultCase();
+                    break;
                 }
             }
         }

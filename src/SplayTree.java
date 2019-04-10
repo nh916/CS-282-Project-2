@@ -55,10 +55,6 @@ public class SplayTree extends BST{
         int cmp = value.compareTo(root.getData());
         if(cmp == 0) return root.getData();
         else return returnStatement;
-
-
-
-
     }
 
 
@@ -122,7 +118,6 @@ public class SplayTree extends BST{
         n.setLeft(temp.getRight());
         temp.setLeft(n);
         return temp;
-
     }
 
     public static void main(String[] args){
@@ -132,14 +127,6 @@ public class SplayTree extends BST{
         splay.insertSplay("test");
         splay.insertSplay("co");
         splay.insertSplay("ji");
-
-
-
-
-
-
-
-
     }
 
 }
