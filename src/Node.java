@@ -145,8 +145,10 @@ public class Node implements Comparable<Node>{
     }
 
     // this portion is just for the avl nodes
-    public void AVLHeight(){
 
+
+    public int getHeight() {
+        return height;
     }
 
     @Override
