@@ -216,6 +216,10 @@ public class Driver extends Read{
 
                 }
 
+                case ("quit"): {
+                    break;
+                }
+
                 default:{
                     defaultCase();
                     break;
