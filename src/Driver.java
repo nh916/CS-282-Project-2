@@ -261,7 +261,7 @@ public class Driver extends Read{
 
     public static void main(String[] args){
         Driver driver = new Driver();
-
+// not inserting into the tree into its own trees
         driver.readAndInsertToTreesWithFile();
         driver.options();
     }

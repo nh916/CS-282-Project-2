@@ -24,7 +24,7 @@ public class Read {
         splayTree = new SplayTree();
     }
 
-
+//inserting in this tree and not the other
     protected void readThenInsert(String file){
         Scanner scan = null;
         String wordFromFile;
@@ -35,7 +35,7 @@ public class Read {
                 wordFromFile = (scan.nextLine());
                 bst.insert(wordFromFile);
                 avlTree.insert(wordFromFile);
-                splayTree.insertSplay(wordFromFile);
+//                splayTree.insertSplay(wordFromFile);
             }
         }
 
