@@ -183,16 +183,46 @@ public class Driver extends Read{
 
                     try {
                         if (wantsBST){
-                            System.out.println(bst.find(wordToFind));
-                            break;
+                            if (bst.find(wordToFind) == null){
+                                System.out.println("word not found");
+                                break;
+                            }
+                            else if (bst.find(wordToFind).equals(wordToFind)){
+                                System.out.println(bst.find(wordToFind));
+                                break;
+                            }
+                            else {
+                                System.out.println("something went wrong in BST");
+                            }
                         }
                         else if (wantsAVL){
-                            System.out.println(avlTree.find(wordToFind));
-                            break;
+                            if (avlTree.find(wordToFind) == null){
+                                System.out.println("word not found");
+                                break;
+                            }
+                            else if (avlTree.find(wordToFind).equals(wordToFind)) {
+                                System.out.println(avlTree.find(wordToFind));
+                                break;
+                            }
+                            else {
+                                System.out.println("something went wrong in find AVL");
+                                break;
+                            }
                         }
                         else if (wantsSplay){
-                            System.out.println(splayTree.findSplay(wordToFind));
-                            break;
+                            if (splayTree.findSplay(wordToFind) == null){
+                                System.out.println("word not found");
+                                break;
+                            }
+                            else if (splayTree.findSplay(wordToFind).equals(wordToFind)){
+                                System.out.println(splayTree.findSplay(wordToFind));
+                                break;
+                            }
+                            else {
+                                System.out.println("something went wrong in find SPLAY");
+                                break;
+                            }
+
                         }
                         else if (!wantsBST && !wantsAVL && !wantsSplay){
                             System.out.println("please select tree!!!!");
