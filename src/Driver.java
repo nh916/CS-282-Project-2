@@ -88,7 +88,7 @@ public class Driver {
 
 
 //    this might possibly call for a switch statement of menus
-    public void options(){
+    private void options(){
         System.out.println("what would you like to do?");
         choice = input.nextLine();
 
@@ -134,18 +134,27 @@ public class Driver {
                     String wordToDelete;
                     wordToDelete = input.nextLine();
 
-                    if (wantsBST){
-                        bst.deleteKey(wordToDelete);
+                    try {
+                        if (wantsBST){
+                            bst.deleteKey(wordToDelete);
+                        }
+                        else if (wantsAVL){
+                            avlTree.delete(wordToDelete);
+                        }
+                        else if (wantsSplay){
+                            splayTree.delete(wordToDelete);
+                        }
+                        else {
+                            defaultCase();
+                        }
                     }
-                    else if (wantsAVL){
-                        avlTree.delete(wordToDelete);
+                    catch (NullPointerException e){
+                        System.out.println("Null pointer!!");
                     }
-                    else if (wantsSplay){
-                        splayTree.delete(wordToDelete);
+                    catch (Exception e){
+                        System.out.println("you have produced an exception congratulations");
                     }
-                    else {
-                        defaultCase();
-                    }
+
                 }
 
                 case ("find"): {
