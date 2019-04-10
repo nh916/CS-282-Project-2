@@ -85,7 +85,6 @@ public class Driver {
     }
 
 
-//    this might possibly call for a switch statement of menus
     private void options(){
         System.out.println("what would you like to do?");
         String choice = input.nextLine();
@@ -191,11 +190,6 @@ public class Driver {
             }
 
         }
-
-
-
-
-
     }
 
 
