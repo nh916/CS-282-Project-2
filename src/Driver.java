@@ -2,9 +2,10 @@ import java.util.Scanner;
 
 public class Driver extends Read{
 
-    private AVLTree avlTree;
-    private SplayTree splayTree;
-    private BST bst;
+//    private AVLTree avlTree;
+//    private SplayTree splayTree;
+//    private BST bst;
+
     private Scanner input;
 
     private boolean wantsBST;
@@ -13,9 +14,10 @@ public class Driver extends Read{
 
 
     public Driver(){
-        avlTree =  new AVLTree();
-        splayTree = new SplayTree();
-        bst = new BST();
+//        avlTree =  new AVLTree();
+//        splayTree = new SplayTree();
+//        bst = new BST();
+
         input = new Scanner(System.in);
 
         wantsBST = false;

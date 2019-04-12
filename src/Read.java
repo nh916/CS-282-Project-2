@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class Read {
 
-    private BST bst;
-    private AVLTree avlTree;
-    private SplayTree splayTree;
+    public BST bst;
+    public AVLTree avlTree;
+    public SplayTree splayTree;
 
     private String file1;
     private String file2;
@@ -35,7 +35,7 @@ public class Read {
                 wordFromFile = (scan.nextLine());
                 bst.insert(wordFromFile);
                 avlTree.insert(wordFromFile);
-//                splayTree.insertSplay(wordFromFile);
+                splayTree.insertSplay(wordFromFile);
             }
         }
 
@@ -43,7 +43,7 @@ public class Read {
             System.out.println("file not found");
         }
         catch (NullPointerException e) {
-            System.out.println("file error");
+            System.out.println("null pointer in read");
         }
         finally {
             if (scan != null) {
