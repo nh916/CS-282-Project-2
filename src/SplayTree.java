@@ -1,4 +1,6 @@
-public class SplayTree extends AVLTree{
+import java.util.Objects;
+
+public class SplayTree{
     private Node root;
 
     private Node nullNode;
@@ -24,10 +26,11 @@ public class SplayTree extends AVLTree{
     public Node insert(Node x) {
         if(newNode == null){
             newNode = new Node(null);
+            newNode.setElement(x.getData());
         }
-        newNode.setElement(x.getData());
 
-        if(root == nullNode) {
+
+        if (root == nullNode) {
             newNode.setLeft(nullNode);
             newNode.setRight(nullNode);
             root = newNode;
@@ -44,7 +47,7 @@ public class SplayTree extends AVLTree{
                 root = newNode;
             }
             else
-            if( compareResult > 0 ) {
+            if(compareResult > 0) {
                 newNode.setRight(root.getRight());
                 newNode.setLeft(root);
                 root.setRight(nullNode);
@@ -71,14 +74,14 @@ public class SplayTree extends AVLTree{
 
         leftTreeMax = rightTreeMin = header;
 
-        nullNode.setElement(x.getData()); ;   // Guarantee a match
+        nullNode.setElement(x.getData());  // Guarantee a match
 
         for( ; ; ) {
             int compareResult = x.compareTo(t);
 
             if( compareResult < 0 ) {
                 if( x.compareTo(t.getLeft()) < 0 )
-                    t = super.rotateWithLeftChild( t );
+                    t = rotateWithLeftChild( t );
                 if( t.getLeft() == nullNode )
                     break;
                 // Link Right
@@ -88,7 +91,7 @@ public class SplayTree extends AVLTree{
             }
             else if( compareResult > 0 ) {
                 if( x.compareTo(t.getRight()) > 0 )
-                    t = super.rotateWithRightChild( t );
+                    t = rotateWithRightChild( t );
                 if( t.getRight() == nullNode )
                     break;
                 // Link Left
@@ -108,6 +111,23 @@ public class SplayTree extends AVLTree{
     }
 
 
+    private  Node rotateWithLeftChild( Node k2 ) {
+        Node k1 = k2.getLeft();
+        k2.setLeft(k1.getRight());
+        k1.setRight(k2);
+        return k1;
+    }
+
+    /**
+     * Rotate binary tree node with right child.
+     * For AVL trees, this is a single rotation for case 4.
+     */
+    private  Node rotateWithRightChild( Node k1 ) {
+        Node k2 = k1.getRight();
+        k1.setRight(k2.getLeft());
+        k2.setLeft(k1);
+        return k2;
+    }
 
 
 
