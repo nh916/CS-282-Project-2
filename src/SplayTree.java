@@ -1,132 +1,136 @@
-public class SplayTree extends BST{
-    public Node root;
+public class SplayTree extends AVLTree{
+    private Node root;
+
+    private Node nullNode;
 
     public SplayTree() {
-        root = null;
+        root = new Node(null);
+//        root.setLeft(null);
+//        root.setRight(null);
+
+        nullNode = new Node(null);
     }
 
-    public void insertSplay(String value){
-        if(root == null){
-            root = new Node(value);
-            return;
-        }
+//    different than book's code for now
 
+    private Node newNode = new Node(null);  // Used between different inserts
 
-        root =  splay(root, value);
-        int cmp =  value.compareTo(root.getData());
-        if(cmp < 0){
-            Node temp = new Node(value);
-            temp.setLeft(root.getLeft());
-            temp.setRight(root);
-            root.setLeft(null);
-            root = temp;
-        }
-        else{
-            Node temp = new Node(value);
-            temp.setRight(temp.getRight());
-            temp.setLeft(root.getRight());
-            root.setRight(null);
-            root = temp;
-
-        }
-
-
+    public Node insert(String toInsert){
+        return insert(new Node(toInsert));
     }
-    public void delete(String delValue){
-        if(root == null) return; //empty tree
 
-        root = splay(root, delValue); // brings deleted value up to root
 
-        int cmp = delValue.compareTo(root.getData());
-        if(cmp == 0){
-            if(root.getLeft() == null) root = root.getRight();
-            else{
-                Node newRoot = root.getRight();
-                root = root.getLeft();
-                splay(root,delValue);
-                root.setRight(newRoot);
+//    change the method signature || arguments
+    public Node insert(Node x) {
+        if(newNode == null){
+            newNode = new Node(null);
+        }
+        newNode.setElement(x);
+
+        if(root == nullNode) {
+            newNode.setLeft(nullNode);
+            newNode.setRight(nullNode);
+            root = newNode;
+        }
+        else {
+            root = splay(x, root);
+
+            int compareResult = x.compareTo( root.getData() );
+
+            if( compareResult < 0 ) {
+                newNode.setLeft(root.getLeft());
+                newNode.setRight(root);
+                root.setLeft(nullNode);
+                root = newNode;
             }
+            else
+            if( compareResult > 0 ) {
+                newNode.setRight(root.getRight());
+                newNode.setLeft(root);
+                root.setRight(nullNode);
+                root = newNode;
+            }
+//            else{
+////                deviation from books
+//                return nullNode;   // No duplicates
+//            }
         }
-    }
-
-    public String findSplay(String value){
-        root = splay(root,value);
-        String returnStatement = " The value does not exist within the tree";
-        int cmp = value.compareTo(root.getData());
-        if(cmp == 0) return root.getData();
-        else return returnStatement;
+        newNode = null;   // So next insert will call new
+        return nullNode;
     }
 
 
-    private Node splay(Node n, String value){
-        if(n == null) return null;
 
-        int cmp1 = value.compareTo(n.getData());
-        if(cmp1 < 0) {
-            //value not in tree, so done
-            if (n.getLeft() == null) return n;
+    private Node header = new Node( null ); // For splay
 
-            int cmp2 = value.compareTo(n.getLeft().getData());
-            if (cmp2 < 0) {
-                n.getLeft().setLeft(splay(n.getLeft().getLeft(),value));
-                n = rotateRight(n.getRight());
+    private Node splay( String x, Node t ) {
+        Node leftTreeMax, rightTreeMin;
+
+        header.setLeft(nullNode);
+        header.setRight(nullNode);
+
+        leftTreeMax = rightTreeMin = header;
+
+        nullNode.setElement(x); ;   // Guarantee a match
+
+        for( ; ; ) {
+            int compareResult = x.compareTo( t.getData() );
+
+            if( compareResult < 0 ) {
+                if( x.compareTo( t.getLeft().getData() ) < 0 )
+                    t = super.rotateWithLeftChild( t );
+                if( t.getLeft() == nullNode )
+                    break;
+                // Link Right
+                rightTreeMin.setLeft(t);
+                rightTreeMin = t;
+                t = t.getLeft();
             }
-            else if (cmp2 > 0) {
-                n.getLeft().setRight(splay(n.getLeft().getRight(),value));
-                if (n.getLeft().getRight() != null)
-                    n.setLeft(rotateLeft(n.getLeft()));
-
+            else if( compareResult > 0 ) {
+                if( x.compareTo( t.getRight().getData() ) > 0 )
+                    t = super.rotateWithRightChild( t );
+                if( t.getRight() == nullNode )
+                    break;
+                // Link Left
+                leftTreeMax.setRight(t);
+                leftTreeMax = t;
+                t = t.getRight();
             }
-            if(n.getLeft() == null) return n;
-            else return rotateRight(n);
+            else
+                break;
         }
-        else if(cmp1 > 0){
-            if(n.getRight() == null) return n;
 
-            int cmp2 = value.compareTo(n.getRight().getData());
-            if(cmp2 < 0){
-                n.getRight().setLeft(splay(n.getRight().getLeft(),value));
-
-                if(n.getRight().getLeft() != null) n.setRight(rotateRight(n.getRight()));
-
-            }
-            else if(cmp2 > 0){
-                n.getRight().setRight(splay(n.getRight().getRight(),value));
-                n = rotateLeft(n);
-
-
-            }
-
-            if(n.getRight() == null) return n;
-            else return rotateLeft(n);
-
-        }
-        else return n;
-
+        leftTreeMax.setRight(t.getLeft());
+        rightTreeMin.setLeft(t.getRight());
+        t.setLeft(header.getRight());
+        t.setRight(header.getLeft());
+        return t;
     }
 
 
-    private Node rotateLeft(Node n){
-        Node temp = n.getRight();
-        n.setRight(temp.getLeft());
-        temp.setLeft(n);
-        return temp;
-    }
-//    null pointer exception right here!!!!!!!!!!!!!
-    private Node rotateRight(Node n){
-        Node temp =  n.getLeft();
-        n.setLeft(temp.getRight());
-        temp.setLeft(n);
-        return temp;
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public static void main(String[] args){
         SplayTree splay = new SplayTree();
-        splay.insertSplay("tree");
-        splay.insertSplay("apple");
-        splay.insertSplay("test");
-        splay.insertSplay("co");
-        splay.insertSplay("ji");
+        splay.insert("C");
+        splay.insert("B");
+        splay.insert("A");
+//        splay.insert("co");
+//        splay.insert("ji");
     }
 
 }

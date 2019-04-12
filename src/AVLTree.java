@@ -307,7 +307,7 @@ public class AVLTree extends BST{
 
     }
 
-    private Node rotateWithLeftChild( Node k2 ) {
+    protected Node rotateWithLeftChild( Node k2 ) {
         Node k1 = k2.getLeft();
         if (k2.getLeft() == null){
             return k2;
@@ -320,7 +320,7 @@ public class AVLTree extends BST{
 
     }
 
-    private Node rotateWithRightChild( Node k1 ) {
+    protected Node rotateWithRightChild( Node k1 ) {
         Node k2 = k1.getRight();
         if (k1.getRight() == null){
             return k1;
@@ -333,12 +333,12 @@ public class AVLTree extends BST{
 
     }
 
-    private Node doubleWithLeftChild( Node k3 ) {
+    protected Node doubleWithLeftChild( Node k3 ) {
         k3.setLeft(rotateWithRightChild( k3.getLeft() ));
         return rotateWithLeftChild( k3 );
     }
 
-    private Node doubleWithRightChild( Node k1 ) {
+    protected Node doubleWithRightChild( Node k1 ) {
         k1.setRight(rotateWithLeftChild( k1.getRight() ));
         return rotateWithRightChild( k1 );
     }
