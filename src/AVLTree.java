@@ -309,9 +309,9 @@ public class AVLTree extends BST{
 
     protected Node rotateWithLeftChild( Node k2 ) {
         Node k1 = k2.getLeft();
-        if (k2.getLeft() == null){
-            return k2;
-        }
+//        if (k2.getLeft() == null){
+//            return k2;
+//        }
         k2.setLeft(k1.getRight());
         k1.setRight(k2);
         k2.height = Math.max(height(k2.getLeft()), height(k2.getRight())) + 1;
@@ -322,9 +322,9 @@ public class AVLTree extends BST{
 
     protected Node rotateWithRightChild( Node k1 ) {
         Node k2 = k1.getRight();
-        if (k1.getRight() == null){
-            return k1;
-        }
+//        if (k1.getRight() == null){
+//            return k1;
+//        }
         k1.setRight(k2.getLeft());
         k2.setLeft(k1);
         k1.height = Math.max(height(k1.getLeft()), height(k1.getRight())) + 1;
@@ -387,7 +387,7 @@ public class AVLTree extends BST{
 
 
 
-
+/* todo check this again without the if node== null*/
 
 
 
@@ -395,7 +395,7 @@ public class AVLTree extends BST{
     public static void main(String[] args){
         AVLTree tree = new AVLTree();
 
-        String cases = "LL";
+        String cases = "RL";
 
         if (cases.equals("LL")){
             tree.insert("C");

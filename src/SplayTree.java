@@ -16,7 +16,7 @@ public class SplayTree extends AVLTree{
     private Node newNode = new Node(null);  // Used between different inserts
 
     public Node insert(String toInsert){
-        return insert(new Node(toInsert));
+        return root = insert(new Node(toInsert));
     }
 
 
@@ -25,7 +25,7 @@ public class SplayTree extends AVLTree{
         if(newNode == null){
             newNode = new Node(null);
         }
-        newNode.setElement(x);
+        newNode.setElement(x.getData());
 
         if(root == nullNode) {
             newNode.setLeft(nullNode);
@@ -35,7 +35,7 @@ public class SplayTree extends AVLTree{
         else {
             root = splay(x, root);
 
-            int compareResult = x.compareTo( root.getData() );
+            int compareResult = x.compareTo(root);
 
             if( compareResult < 0 ) {
                 newNode.setLeft(root.getLeft());
@@ -63,7 +63,7 @@ public class SplayTree extends AVLTree{
 
     private Node header = new Node( null ); // For splay
 
-    private Node splay( String x, Node t ) {
+    private Node splay( Node x, Node t ) {
         Node leftTreeMax, rightTreeMin;
 
         header.setLeft(nullNode);
@@ -71,13 +71,13 @@ public class SplayTree extends AVLTree{
 
         leftTreeMax = rightTreeMin = header;
 
-        nullNode.setElement(x); ;   // Guarantee a match
+        nullNode.setElement(x.getData()); ;   // Guarantee a match
 
         for( ; ; ) {
-            int compareResult = x.compareTo( t.getData() );
+            int compareResult = x.compareTo(t);
 
             if( compareResult < 0 ) {
-                if( x.compareTo( t.getLeft().getData() ) < 0 )
+                if( x.compareTo(t.getLeft()) < 0 )
                     t = super.rotateWithLeftChild( t );
                 if( t.getLeft() == nullNode )
                     break;
@@ -87,7 +87,7 @@ public class SplayTree extends AVLTree{
                 t = t.getLeft();
             }
             else if( compareResult > 0 ) {
-                if( x.compareTo( t.getRight().getData() ) > 0 )
+                if( x.compareTo(t.getRight()) > 0 )
                     t = super.rotateWithRightChild( t );
                 if( t.getRight() == nullNode )
                     break;
