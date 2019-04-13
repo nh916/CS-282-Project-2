@@ -102,14 +102,17 @@ public class SplayTree extends BST{
                     t = rotateWithLeftChild( t );
                 }
 
-                if( t.getLeft() == nullNode ){
+//                i think he just means it should be null otherwise infinite loop
+
+                if( t.getLeft() == nullNode || t.getLeft() == null){
                     break;
                 }
 
                 // Link Right
-                rightTreeMin.setLeft(t);
                 rightTreeMin = t;
+                rightTreeMin.setLeft(t);
                 t = t.getLeft();
+
             }
             else if( compareResult > 0 )
             {
@@ -118,18 +121,36 @@ public class SplayTree extends BST{
                 if( t.getRight() == nullNode )
                     break;
                 // Link Left
-                leftTreeMax.setRight(t);
                 leftTreeMax = t;
+                leftTreeMax.setRight(t);
                 t = t.getRight();
             }
             else
                 break;
         }
 
-        leftTreeMax.setRight(t.getLeft());
-        rightTreeMin.setLeft(t.getRight());
-        t.setLeft(header.getRight());
-        t.setRight(header.getLeft());
+        if (leftTreeMax != null){
+            leftTreeMax.setRight(t.getLeft());
+        }
+        else {
+
+        }
+
+        if (rightTreeMin != null){
+            rightTreeMin.setLeft(t.getRight());
+        }
+        else {
+
+        }
+
+        if (header != null){
+            t.setLeft(header.getRight());
+            t.setRight(header.getLeft());
+        }
+        else {
+
+        }
+
         return t;
     }
 

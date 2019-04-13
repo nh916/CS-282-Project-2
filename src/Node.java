@@ -108,9 +108,9 @@ public class Node implements Comparable<Node>{
     public int compareTo(Node other) {
 //        this is changed only for splay, else it wont be here!
 //        keep checking it with other trees to be sure this doesnt cause erras!!!
-//        if (other == null){
-//            return 0;
-//        }
+        if (other == null){
+            return 0;
+        }
         return element.compareTo(other.getData());
     }
 
@@ -137,11 +137,6 @@ public class Node implements Comparable<Node>{
     public void setElement (String target){
         element.setData(target);
     }
-
-    public void setData(String newWord){
-        element.setData(newWord);
-    }
-
 
     public void setLeft (Node node) {
         leftLink = node;
