@@ -20,83 +20,71 @@ public class SplayTree{
 
 
 
-
-//    change the method signature || arguments
     private Node insert(Node x) {
-        if(newNode == null){
-//            newNode = new Node(null);
-            newNode = null;
-//            newNode.setElement(x.getData());
-            newNode = x;
-        }
+        if( newNode == null )
+//            newNode = new Node( null );
+        newNode = x;
 
-
-        if (root == null) {
-//            newNode.setLeft(nullNode);
-//            newNode.setRight(nullNode);
-
-//            must be made into a node
+        if( root == nullNode ) {
+//            newNode.left = newNode.right = nullNode;
             root = newNode;
         }
-        else {
-            root = splay(x,root);
+        else
+        {
+            root = splay( x, root );
 
-            int compareResult = x.compareTo(root);
+            int compareResult = x.compareTo( root );
 
-            if(compareResult < 0) {
+            if( compareResult < 0 )
+            {
                 newNode.setLeft(root.getLeft());
                 newNode.setRight(root);
                 root.setLeft(nullNode);
                 root = newNode;
             }
             else
-            if(compareResult > 0) {
+            if( compareResult > 0 )
+            {
                 newNode.setRight(root.getRight());
                 newNode.setLeft(root);
                 root.setRight(nullNode);
                 root = newNode;
             }
-//            else{
-////                deviation from books
-//                return nullNode;   // No duplicates
-//            }
+//            else
+//                return;   // No duplicates
         }
         newNode = null;   // So next insert will call new
-        return nullNode;
+        //            not sure if this should return null or some other node. thank you next!
+        return null;
     }
 
 
 
+
 //    private Node header = new Node( null ); // For splay
-    private Node header = null;
+    private Node header;
 
     private Node splay( Node x, Node t ) {
         Node leftTreeMax, rightTreeMin;
 
-//        header.setLeft(makeLeaf);
-//        header.setRight(nullNode.getRight());
+//        header.left = header.right = nullNode;
+        header.setLeft(nullNode);
+        header.setRight(nullNode);
 
-        if (header != null){
-            header.setLeft(null);
-            header.setRight(null);
-        }
 
 
         leftTreeMax = rightTreeMin = header;
 
-//        nullNode.setElement(x.getData());  // Guarantee a match
-        nullNode = new Node(x.getData()); // Guarantee a match
-//        nullNode = new Node(x.getData());
-//        nullNode = x.getRight();
+        nullNode.setElement(x.getData());   // Guarantee a match
 
-        for( ; ; ) {
-            int compareResult = x.compareTo(t);
+        for( ; ; )
+        {
+            int compareResult = x.compareTo( t );
 
-            if( compareResult < 0 ) {
-
-                if(x.compareTo(t.getLeft()) < 0) {
-                    t = rotateWithLeftChild(t);
-                }
+            if( compareResult < 0 )
+            {
+                if( x.getData().compareTo( t.getLeft().getData() ) < 0 )
+                    t = rotateWithLeftChild( t );
                 if( t.getLeft() == nullNode )
                     break;
                 // Link Right
@@ -104,8 +92,9 @@ public class SplayTree{
                 rightTreeMin = t;
                 t = t.getLeft();
             }
-            else if( compareResult > 0 ) {
-                if( x.compareTo(t.getRight()) > 0 )
+            else if( compareResult > 0 )
+            {
+                if( x.getData().compareTo( t.getRight().getData() ) > 0 )
                     t = rotateWithRightChild( t );
                 if( t.getRight() == nullNode )
                     break;
@@ -124,10 +113,6 @@ public class SplayTree{
         t.setRight(header.getLeft());
         return t;
     }
-
-
-
-
 
 
 
