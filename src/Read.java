@@ -58,12 +58,39 @@ public class Read {
         readThenInsert(file2);
         readThenInsert(file3);
         readThenInsert(file4);
+//        doInOrder();
     }
+
+
+
+
+//    public void doInOrder(){
+//        System.out.println("BST INORDER");
+//        bst.inOrder(bst.root);
+//        System.out.println(bst.testing);
+//        bst.testing.clear();
+//
+//        System.out.println("AVL INORDER");
+//        avlTree.inOrder(avlTree.root);
+//        System.out.println(avlTree.testing);
+//        avlTree.testing.clear();
+//
+//        System.out.println("SPLAY");
+//        splayTree.inOrder(splayTree.root);
+//        System.out.println(splayTree.testing);
+//        splayTree.testing.clear();
+//    }
+
+
+
+
 
 //    testing
     public static void main(String[] args){
         Read read = new Read();
         read.readAndInsertToTreesWithFile();
+
+
     }
 
 }

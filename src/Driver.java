@@ -212,12 +212,12 @@ public class Driver extends Read{
                             }
                         }
                         else if (wantsSplay){
-                            if (splayTree.findSplay(wordToFind) == null){
+                            if (splayTree.find(wordToFind) == null){
                                 System.out.println("word not found");
                                 break;
                             }
-                            else if (splayTree.findSplay(wordToFind).equals(wordToFind)){
-                                System.out.println(splayTree.findSplay(wordToFind));
+                            else if (splayTree.find(wordToFind).equals(wordToFind)){
+                                System.out.println(splayTree.find(wordToFind));
                                 break;
                             }
                             else {

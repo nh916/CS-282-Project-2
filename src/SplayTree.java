@@ -79,15 +79,16 @@ public class SplayTree extends AVLTree{
 
 
     private Node findSplay(Node value){
+
         root = splay(root,value);
 //        String returnStatement = " The value does not exist within the tree";
         int cmp = value.compareTo(root);
         if(cmp == 0){
             return root;
         }
-        else {
+//        else {
             return null;
-        }
+//        }
 
     }
 
@@ -218,37 +219,43 @@ public class SplayTree extends AVLTree{
 
     public static void main(String[] args){
         SplayTree tree2 = new SplayTree();
-        String cases = "LL";
+//        String cases = "LL";
+//
+//        switch (cases) {
+//            case "LL":
+//                tree2.insertSplay("C");
+//                tree2.insertSplay("B");
+//                tree2.insertSplay("A");
+//                break;
+//            case "RR":
+//                tree2.insertSplay("A");
+//                tree2.insertSplay("B");
+//                tree2.insertSplay("C");
+//
+//                break;
+//            case "LR":
+//                tree2.insertSplay("C");
+//                tree2.insertSplay("A");
+//                tree2.insertSplay("B");
+//
+//                break;
+//            case "RL":
+//                tree2.insertSplay("A");
+//                tree2.insertSplay("C");
+//                tree2.insertSplay("B");
+//                break;
+//            default:
+//                System.out.println("hit the else case!");
+//                break;
+//        }
+//
+//        tree2.jump();
 
-        switch (cases) {
-            case "LL":
-                tree2.insertSplay("C");
-                tree2.insertSplay("B");
-                tree2.insertSplay("A");
-                break;
-            case "RR":
-                tree2.insertSplay("A");
-                tree2.insertSplay("B");
-                tree2.insertSplay("C");
+        tree2.insert("a");
+        tree2.insert("b");
+        tree2.insert("c");
 
-                break;
-            case "LR":
-                tree2.insertSplay("C");
-                tree2.insertSplay("A");
-                tree2.insertSplay("B");
 
-                break;
-            case "RL":
-                tree2.insertSplay("A");
-                tree2.insertSplay("C");
-                tree2.insertSplay("B");
-                break;
-            default:
-                System.out.println("hit the else case!");
-                break;
-        }
-
-        tree2.jump();
     }
 
 

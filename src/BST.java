@@ -1,6 +1,6 @@
 import java.util.ArrayList;
-
 public class BST {
+
     private Node root;
 
     public BST(){
