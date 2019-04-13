@@ -103,7 +103,6 @@ public class SplayTree extends BST{
                 }
 
 //                i think he just means it should be null otherwise infinite loop
-
                 if( t.getLeft() == nullNode || t.getLeft() == null){
                     break;
                 }
@@ -129,28 +128,10 @@ public class SplayTree extends BST{
                 break;
         }
 
-        if (leftTreeMax != null){
-            leftTreeMax.setRight(t.getLeft());
-        }
-        else {
-
-        }
-
-        if (rightTreeMin != null){
-            rightTreeMin.setLeft(t.getRight());
-        }
-        else {
-
-        }
-
-        if (header != null){
-            t.setLeft(header.getRight());
-            t.setRight(header.getLeft());
-        }
-        else {
-
-        }
-
+        leftTreeMax.setRight(t.getLeft());
+        rightTreeMin.setLeft(t.getRight());
+        t.setLeft(header.getRight());
+        t.setRight(header.getLeft());
         return t;
     }
 
