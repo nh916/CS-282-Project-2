@@ -1,124 +1,107 @@
 public class SplayTree extends BST{
-    private Node root;
+//    private Node root;
 
+    private Node root;
     private Node nullNode;
 
-    public SplayTree() {
+    public SplayTree(){
 
     }
 
     private Node newNode = null;  // Used between different inserts
 
-    public void insertSplay(String toInsert){
-        insert(new Node(toInsert));
-    }
-
-
-
-
-    private void insert(Node x) {
+    /**
+     * Insert into the tree.
+     * @param x the item to insert.
+     */
+    public void insertSplay( Node x )
+    {
         if( newNode == null ) {
-//            newNode = new Node( null );
+//            newNode = new BinaryNode<AnyType>( null );
+            newNode = null;
         }
+//        newNode.element = x;
         newNode = x;
 
-        if( root == nullNode ) {
-//        if( root == null ) {
-//            newNode.left = newNode.right = nullNode;
+        if( root == nullNode )
+        {
+            newNode.setLeft(nullNode);
+            newNode.setRight(nullNode);
             root = newNode;
         }
-        else {
+        else
+        {
             root = splay( x, root );
 
             int compareResult = x.compareTo( root );
 
-            if( compareResult < 0 ) {
+            if( compareResult < 0 )
+            {
                 newNode.setLeft(root.getLeft());
                 newNode.setRight(root);
                 root.setLeft(nullNode);
                 root = newNode;
             }
             else
-            if( compareResult > 0 ) {
+            if( compareResult > 0 )
+            {
                 newNode.setRight(root.getRight());
                 newNode.setLeft(root);
                 root.setRight(nullNode);
                 root = newNode;
             }
-//            else
-//                return;   // No duplicates
+            else
+                return;   // No duplicates
         }
         newNode = null;   // So next insert will call new
-        //            not sure if this should return null or some other node. thank you next!
-//        return x;
     }
 
+//    private BinaryNode<AnyType> header = new BinaryNode<AnyType>( null ); // For splay
+
+    private Node header = null;
 
 
+    /**
+     * Internal method to perform a top-down splay.
+     * The last accessed node becomes the new root.
+     * @param x the target item to splay around.
+     * @param t the root of the subtree to splay.
+     * @return the subtree after the splay.
+     */
+    private Node splay( Node x, Node t )
+    {
+        Node leftTreeMax, rightTreeMin;
 
-//    private Node header = new Node( null ); // For splay
-    private Node header;
-
-    private Node splay( Node x, Node t ) {
-        if (header != null) {
-            if (header.getLeft() != null){
-                header.setLeft(null);
-            }
-            if (header.getRight() != null) {
-                header.setRight(null);
-            }
-        }
-
-        Node leftTreeMax;
-        Node rightTreeMin;
-
-//        header.left = header.right = nullNode;
-//        header.setLeft(nullNode);
-//        header.setRight(nullNode);
-
+        header.setLeft(nullNode);
+        header.setRight(nullNode);
         leftTreeMax = rightTreeMin = header;
 
-//        NullPointer because object element it null but data is trying to be set which is
-//        nullNode.setElement(x.getData());   // Guarantee a match
+//        nullNode.element = x;   // Guarantee a match
 
-        nullNode = new Node(x.getData());
-
+        nullNode = x;
         for( ; ; )
         {
             int compareResult = x.compareTo( t );
 
             if( compareResult < 0 )
             {
-//
-                if (t.getLeft() != null) {
-                    if (x.getData().compareTo(t.getLeft().getData()) < 0) {
-                        t = rotateWithLeftChild(t);
-                    }
-                }
-
-                if( t.getLeft() == nullNode || t.getLeft() == null ) {
+                if( x.compareTo( t.getLeft() ) < 0 )
+                    t = rotateWithLeftChild( t );
+                if( t.getLeft() == nullNode )
                     break;
-                }
-
                 // Link Right
-//
-                if (rightTreeMin != null){
-                    rightTreeMin.setLeft(t);
-                }
-
+                rightTreeMin.setLeft(t);
                 rightTreeMin = t;
                 t = t.getLeft();
             }
             else if( compareResult > 0 )
             {
-                if( x.getData().compareTo( t.getRight().getData() ) > 0 )
+                if( x.compareTo( t.getRight() ) > 0 )
                     t = rotateWithRightChild( t );
                 if( t.getRight() == nullNode )
                     break;
                 // Link Left
-                if (leftTreeMax != null){
-                    leftTreeMax.setRight(t);
-                }
+                leftTreeMax.setRight(t);
                 leftTreeMax = t;
                 t = t.getRight();
             }
@@ -126,33 +109,22 @@ public class SplayTree extends BST{
                 break;
         }
 
-        if (leftTreeMax != null){
-            leftTreeMax.setRight(t.getLeft());
-        }
-
-        if (rightTreeMin != null){
-            rightTreeMin.setLeft(t.getRight());
-        }
-
-        if (header != null){
-            t.setLeft(header.getRight());
-            t.setRight(header.getLeft());
-        }
-
-//        return t;
+        leftTreeMax.setRight(t.getLeft());
+        rightTreeMin.setLeft(t.getRight());
+        t.setLeft(header.getRight());
+        t.setRight(header.getLeft());
         return t;
     }
 
 
 
-
-
-
-    private  Node rotateWithLeftChild( Node k2 ) {
+    /**
+     * Rotate binary tree node with left child.
+     * For AVL trees, this is a single rotation for case 1.
+     */
+    private static <AnyType> Node rotateWithLeftChild( Node k2 )
+    {
         Node k1 = k2.getLeft();
-        if (k1 == null){
-            return k1;
-        }
         k2.setLeft(k1.getRight());
         k1.setRight(k2);
         return k1;
@@ -162,20 +134,17 @@ public class SplayTree extends BST{
      * Rotate binary tree node with right child.
      * For AVL trees, this is a single rotation for case 4.
      */
-    private  Node rotateWithRightChild( Node k1 ) {
+    private static <AnyType> Node rotateWithRightChild( Node k1 )
+    {
         Node k2 = k1.getRight();
-        if (k2 == null){
-            return k2;
-        }
         k1.setRight(k2.getLeft());
         k2.setLeft(k1);
         return k2;
     }
 
 
-    public Node find(String toFind){
-        return super.find(toFind);
-    }
+
+
 
 
 
