@@ -7,25 +7,25 @@ public class SplayTree extends AVLTree{
 
     }
 
-    Node newNode = null;
+//    Node newNode = null;
 
 
     public void insertSplay(String value){
-        insertSplay(value);
+        insertSplay(new Node(value));
     }
 
-    private void insertSplay(String value){
+    private void insertSplay(Node value){
         if(root == null){
-            root = new Node(value);
+            root = value;
             return;
         }
 
         root =  splay(root, value);
 
-        int cmp =  value.compareTo(root.getData());
+        int cmp =  value.compareTo(root);
 
         if(cmp < 0){
-            Node temp = new Node(value);
+            Node temp = value;
             temp.setLeft(root.getLeft());
             temp.setRight(root);
             root.setLeft(null);
@@ -34,7 +34,7 @@ public class SplayTree extends AVLTree{
 
 //        loses right link here
         else if(cmp>0){
-            Node temp = new Node(value);
+            Node temp = value;
 //            temp.setRight(temp.getRight());
             temp.setRight(root.getRight());
             temp.setLeft(root);
@@ -42,14 +42,20 @@ public class SplayTree extends AVLTree{
             root = temp;
 
         }
-        else root.setElement(value);
+        else root.setElement(value.getData());
     }
-    public void delete(String delValue){
+
+    public void delete(String toDelete){
+        delete(new Node(toDelete));
+    }
+
+
+    private void delete(Node delValue) {
         Node newTree;
 
         // If x is found, it will be at the root
         root = splay(root,delValue);
-        if( root.getData().compareTo( delValue ) != 0 )
+        if( root.compareTo( delValue ) != 0 )
             return;   // Item not found; do nothing
 
         if( root.getLeft() == null )
@@ -65,10 +71,17 @@ public class SplayTree extends AVLTree{
         root = newTree;
     }
 
-    public Node findSplay(String value){
+
+
+    public Node find(String toFind){
+        return findSplay(new Node(toFind));
+    }
+
+
+    private Node findSplay(Node value){
         root = splay(root,value);
 //        String returnStatement = " The value does not exist within the tree";
-        int cmp = value.compareTo(root.getData());
+        int cmp = value.compareTo(root);
         if(cmp == 0){
             return root;
         }
@@ -79,7 +92,7 @@ public class SplayTree extends AVLTree{
     }
 
     //    private Node header = new Node( null ); // For splay
-    private Node splay(Node n, String value){
+    private Node splay(Node n, Node value){
         /*Node leftTreeMax, rightTreeMin;
 
         header.setLeft(nullNode);
@@ -123,13 +136,13 @@ public class SplayTree extends AVLTree{
 
         if(n == null) return null;
 
-        int cmp1 = value.compareTo(n.getData());
+        int cmp1 = value.compareTo(n);
 
         if(cmp1 < 0) {
             //value not in tree, so done
             if (n.getLeft() == null) return n;
 
-            int cmp2 = value.compareTo(n.getLeft().getData());
+            int cmp2 = value.compareTo(n.getLeft());
 
             if (cmp2 < 0) {
                 n.getLeft().setLeft(splay(n.getLeft().getLeft(),value));
@@ -147,7 +160,7 @@ public class SplayTree extends AVLTree{
         else if(cmp1 > 0){
             if(n.getRight() == null) return n;
 
-            int cmp2 = value.compareTo(n.getRight().getData());
+            int cmp2 = value.compareTo(n.getRight());
             if(cmp2 < 0){
                 n.getRight().setLeft(splay(n.getRight().getLeft(),value));
 
@@ -188,21 +201,15 @@ public class SplayTree extends AVLTree{
 
     }
 
-    private void inOrderSplay(Node n){
-        if(n == null) return;
-        inOrderSplay(n.getLeft());
-        System.out.print(n.getData() + " ");
-        inOrderSplay(n.getRight());
-    }
+//    private void inOrderSplay(Node n){
+//        if(n == null) return;
+//        inOrderSplay(n.getLeft());
+//        System.out.print(n.getData() + " ");
+//        inOrderSplay(n.getRight());
+//    }
 
 
-
-
-    public Node find(String toFind){
-        return super.find(toFind);
-    }
-
-
+//    for testing
     public void jump(){
         return;
     }
@@ -211,42 +218,52 @@ public class SplayTree extends AVLTree{
 
     public static void main(String[] args){
         SplayTree tree2 = new SplayTree();
-        String cases = "LL";
-
-        if (cases.equals("LL")){
-            tree2.insertSplay("C");
-            tree2.insertSplay("B");
-            tree2.insertSplay("A");
-        }
-
-        else if (cases.equals("RR")){
-            tree2.insertSplay("A");
-            tree2.insertSplay("B");
-            tree2.insertSplay("C");
+        String[] test = {"dry","vagina","penis","fuck","school","i","wanna","die"};
+        for(String e:test){
+            tree2.insertSplay(e);
 
         }
+        System.out.println(tree2.root);
+        System.out.println(tree2.testing);
 
-        else if (cases.equals("LR")){
-            tree2.insertSplay("C");
-            tree2.insertSplay("A");
-            tree2.insertSplay("B");
 
-        }
-        else if (cases.equals("RL")){
-            tree2.insertSplay("A");
-            tree2.insertSplay("C");
-            tree2.insertSplay("B");
-        }
-        else {
-            System.out.println("hit the else case!");
-        }
 
-        tree2.jump();
 
-//        System.out.println(tree2.find("A"));
-//        System.out.println(tree2.find("B"));
-//        System.out.println(tree2.find("C"));
+//        //String cases = "LL";
+//
+//        switch (cases) {
+//            case "LL":
+//                tree2.insertSplay("C");
+//                tree2.insertSplay("B");
+//                tree2.insertSplay("A");
+//                break;
+//            case "RR":
+//                tree2.insertSplay("A");
+//                tree2.insertSplay("B");
+//                tree2.insertSplay("C");
+//
+//                break;
+//            case "LR":
+//                tree2.insertSplay("C");
+//                tree2.insertSplay("A");
+//                tree2.insertSplay("B");
+//
+//                break;
+//            case "RL":
+//                tree2.insertSplay("A");
+//                tree2.insertSplay("C");
+//                tree2.insertSplay("B");
+//                break;
+//            default:
+//                System.out.println("hit the else case!");
+//                break;
+//        }
+//
+//        tree2.jump();
+//    }
 
-    }
 
+
+
+}
 }
