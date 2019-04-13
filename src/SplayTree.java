@@ -9,14 +9,14 @@ public class SplayTree extends BST{
 
     private Node newNode = null;  // Used between different inserts
 
-    public Node insert(String toInsert){
-        return root = insert(new Node(toInsert));
+    public void insertSplay(String toInsert){
+        insert(new Node(toInsert));
     }
 
 
 
 
-    private Node insert(Node x) {
+    private void insert(Node x) {
         if( newNode == null ) {
 //            newNode = new Node( null );
         }
@@ -50,7 +50,7 @@ public class SplayTree extends BST{
         }
         newNode = null;   // So next insert will call new
         //            not sure if this should return null or some other node. thank you next!
-        return x;
+//        return x;
     }
 
 
@@ -96,14 +96,16 @@ public class SplayTree extends BST{
                     }
                 }
 
-                if( t.getLeft() == nullNode || t.getLeft() == null )
+                if( t.getLeft() == nullNode || t.getLeft() == null ) {
                     break;
+                }
 
                 // Link Right
 //
+                if (rightTreeMin != null){
+                    rightTreeMin.setLeft(t);
+                }
 
-
-                rightTreeMin.setLeft(t);
                 rightTreeMin = t;
                 t = t.getLeft();
             }
@@ -114,7 +116,9 @@ public class SplayTree extends BST{
                 if( t.getRight() == nullNode )
                     break;
                 // Link Left
-                leftTreeMax.setRight(t);
+                if (leftTreeMax != null){
+                    leftTreeMax.setRight(t);
+                }
                 leftTreeMax = t;
                 t = t.getRight();
             }
@@ -122,10 +126,20 @@ public class SplayTree extends BST{
                 break;
         }
 
-        leftTreeMax.setRight(t.getLeft());
-        rightTreeMin.setLeft(t.getRight());
-        t.setLeft(header.getRight());
-        t.setRight(header.getLeft());
+        if (leftTreeMax != null){
+            leftTreeMax.setRight(t.getLeft());
+        }
+
+        if (rightTreeMin != null){
+            rightTreeMin.setLeft(t.getRight());
+        }
+
+        if (header != null){
+            t.setLeft(header.getRight());
+            t.setRight(header.getLeft());
+        }
+
+//        return t;
         return t;
     }
 
