@@ -1,42 +1,50 @@
-import java.util.Objects;
-
 public class SplayTree{
     private Node root;
 
     private Node nullNode;
 
     public SplayTree() {
-        root = new Node(null);
 //        root.setLeft(null);
 //        root.setRight(null);
 
-        nullNode = new Node(null);
     }
 
 //    different than book's code for now
 
-    private Node newNode = new Node(null);  // Used between different inserts
+    private Node newNode;  // Used between different inserts
 
     public Node insert(String toInsert){
-        return root = insert(new Node(toInsert));
+        return insert(new Node(toInsert));
     }
 
 
+
+
+
+
+
+
+
+
 //    change the method signature || arguments
-    public Node insert(Node x) {
+    private Node insert(Node x) {
         if(newNode == null){
-            newNode = new Node(null);
-            newNode.setElement(x.getData());
+//            newNode = new Node(null);
+            newNode = null;
+//            newNode.setElement(x.getData());
+            newNode = x;
         }
 
 
-        if (root == nullNode) {
-            newNode.setLeft(nullNode);
-            newNode.setRight(nullNode);
+        if (root == null) {
+//            newNode.setLeft(nullNode);
+//            newNode.setRight(nullNode);
+
+//            must be made into a node
             root = newNode;
         }
         else {
-            root = splay(x, root);
+            root = splay(x,root);
 
             int compareResult = x.compareTo(root);
 
@@ -64,17 +72,28 @@ public class SplayTree{
 
 
 
-    private Node header = new Node( null ); // For splay
+//    private Node header = new Node( null ); // For splay
+    private Node header = null;
+
+    private Node makeLeaf;
 
     private Node splay( Node x, Node t ) {
         Node leftTreeMax, rightTreeMin;
 
-        header.setLeft(nullNode);
-        header.setRight(nullNode);
+//        header.setLeft(makeLeaf);
+//        header.setRight(nullNode.getRight());
+
+        if (header != null){
+            header.setLeft(null);
+            header.setRight(null);
+        }
+
 
         leftTreeMax = rightTreeMin = header;
 
         nullNode.setElement(x.getData());  // Guarantee a match
+//        nullNode = new Node(x.getData());
+//        nullNode = x.getRight();
 
         for( ; ; ) {
             int compareResult = x.compareTo(t);
@@ -109,6 +128,14 @@ public class SplayTree{
         t.setRight(header.getLeft());
         return t;
     }
+
+
+
+
+
+
+
+
 
 
     private  Node rotateWithLeftChild( Node k2 ) {

@@ -99,7 +99,6 @@ public class Node implements Comparable<Node>{
 
     public Node(String target) {
         element = new Element(target);
-//        todo hmm not sure if this part is correct or not
         height = 0;
     }
 
