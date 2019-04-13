@@ -106,6 +106,11 @@ public class Node implements Comparable<Node>{
 
     @Override
     public int compareTo(Node other) {
+//        this is changed only for splay, else it wont be here!
+//        keep checking it with other trees to be sure this doesnt cause erras!!!
+        if (other == null){
+            return 0;
+        }
         return element.compareTo(other.getData());
     }
 
@@ -141,6 +146,9 @@ public class Node implements Comparable<Node>{
 
     public void setRight (Node node) {
         rightLink = node;
+        if (node == null){
+            rightLink = null;
+        }
     }
 
     // this portion is just for the avl nodes

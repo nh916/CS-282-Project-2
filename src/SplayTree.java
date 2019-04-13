@@ -70,8 +70,6 @@ public class SplayTree{
 //    private Node header = new Node( null ); // For splay
     private Node header = null;
 
-    private Node makeLeaf;
-
     private Node splay( Node x, Node t ) {
         Node leftTreeMax, rightTreeMin;
 
