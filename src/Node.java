@@ -138,6 +138,10 @@ public class Node implements Comparable<Node>{
         element.setData(target);
     }
 
+    public void setData(String newWord){
+        element.setData(newWord);
+    }
+
 
     public void setLeft (Node node) {
         leftLink = node;
