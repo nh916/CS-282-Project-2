@@ -8,12 +8,12 @@ public class BST {
     }
 
     //    public insert a new String data
-    public Node insert(String target){
+    public Node insert(boolean file1, boolean file2, boolean file3, boolean file4, String data){
 //        calls insert on the root and the new node to insert
 //        root = insert(root, new Node(target));
-        /*todo check if this is correct or not*/
-        root = insert(root, new Node(target));
-        return null;
+
+        return root = insert(root, new Node(file1, file2, file3, file4, data));
+
     }
 
 
@@ -24,7 +24,6 @@ public class BST {
     protected Node insert(Node node, Node target) {
 //        we are at a leaf, (no lef or right)
 
-        /*I did not insert the Node here! todo be careful and make sure to insert*/
         if (node == null) {
             return target;
         }
@@ -79,8 +78,8 @@ public class BST {
 
 
     //    This method mainly calls deleteRec()
-    public void deleteKey(String key) {
-        root = deleteRec(root, new Element(key));
+    public void deleteKey(boolean file1, boolean file2, boolean file3, boolean file4, String key) {
+        root = deleteRec(root, new Element(file1, file2, file3, file4, key));
     }
 
 
@@ -118,7 +117,7 @@ public class BST {
 
                 node.setElement(minValue(node.getRight()));
                 // Delete the inorder successor
-                node.setRight(deleteRec(node.getRight(), new Element(node.getData())));
+                node.setRight(deleteRec(node.getRight(), new Element(node.getFile1(), node.getFile2(), node.getFile3(), node.getFile4(), node.getData())));
             }
         }
 
@@ -145,13 +144,15 @@ public class BST {
     }
 
 
+//    todo all booleans are false just to make a node and pass it in
     public Node find(String toFind){
-        return find(root, new Element(toFind));
+        return find(root, new Node(false, false, false, false, toFind));
     }
 
 
     //      all the finds are the same so we should probably put this in somewhere and just reference it over and over
-    protected Node find(Node node, Element toFind){
+//    this used to take the root and an element now it takes a root and a Node
+    protected Node find(Node node, Node toFind){
         if (node == null || node.getData().equals(toFind.getData())){
 
 //        if (node == null || node.getData().compareTo(toFind.getData()) == 0){
@@ -162,7 +163,9 @@ public class BST {
 
 //            just checking one more time before returning that this is the exact node looking for
 //            if (node.getData().equals(toFind.getData())){
+
             return node;
+
 //            }
 
         }
@@ -233,25 +236,8 @@ public class BST {
 
     public static void main(String[] args){
         BST bst = new BST();
-        bst.insert("the");
-        bst.insert("table");
-        bst.insert("apple");
-        bst.insert("zig zig");
-
-
-
-        bst.inOrder(bst.root);
-        System.out.println(bst.testing);
-        System.out.println(bst.find("the"));
-
-        bst.deleteKey("the");
-        bst.deleteKey("table");
-
-
-        bst.testing.clear();
-
-        bst.inOrder(bst.root);
-        System.out.println(bst.testing);
+        bst.insert(true, false, false, false, "A");
+        System.out.println(bst.find("A"));
 
     }
 

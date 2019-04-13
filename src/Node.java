@@ -7,8 +7,10 @@ public class Node implements Comparable<Node>{
     int height;
 
 
-    public Node(String target) {
-        element = new Element(target);
+
+
+    public Node(boolean file1, boolean file2, boolean file3, boolean file4, String data) {
+        element = new Element(file1, file2, file3, file4, data);
         height = 0;
     }
 
@@ -67,12 +69,31 @@ public class Node implements Comparable<Node>{
         return height;
     }
 
+    public boolean getFile1(){
+        return element.file1;
+    }
+
+    public boolean getFile2(){
+        return element.file2;
+    }
+
+    public boolean getFile3(){
+        return element.file3;
+    }
+
+    public boolean getFile4(){
+        return element.file4;
+    }
+
+
     @Override
     public String toString() {
-        return "Node:" + "\n" +
-                "\t"+ "element= " + element.getData() + "\n" +
-//                if left link is not null put in leftLink.getData(): else put in "null" for the data
-                "\t" + "leftLink= " + (leftLink != null ? leftLink.getData() : "null") + "\n" +
-                "\t" + "rightLink= " + (rightLink != null ? rightLink.getData() : "null") + "\n";
+//        return "Node:" + "\n" +
+//                "\t"+ "element= " + element.getData() + "\n" +
+////                if left link is not null put in leftLink.getData(): else put in "null" for the data
+//                "\t" + "leftLink= " + (leftLink != null ? leftLink.getData() : "null") + "\n" +
+//                "\t" + "rightLink= " + (rightLink != null ? rightLink.getData() : "null") + "\n";
+//    }
+        return element.toString();
     }
 }
