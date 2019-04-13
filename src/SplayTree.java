@@ -8,7 +8,15 @@ public class SplayTree extends BST{
 
     }
 
+
+    public void insertSplay(String toInsert){
+        insertSplay(new Node(toInsert));
+    }
+
+
     private Node newNode = null;  // Used between different inserts
+
+
 
     /**
      * Insert into the tree.
@@ -72,8 +80,13 @@ public class SplayTree extends BST{
     {
         Node leftTreeMax, rightTreeMin;
 
-        header.setLeft(nullNode);
-        header.setRight(nullNode);
+        if (header != null){
+            header.setLeft(nullNode);
+            header.setRight(nullNode);
+        }
+
+
+
         leftTreeMax = rightTreeMin = header;
 
 //        nullNode.element = x;   // Guarantee a match
@@ -85,10 +98,14 @@ public class SplayTree extends BST{
 
             if( compareResult < 0 )
             {
-                if( x.compareTo( t.getLeft() ) < 0 )
+                if( x.compareTo( t.getLeft() ) < 0 ){
                     t = rotateWithLeftChild( t );
-                if( t.getLeft() == nullNode )
+                }
+
+                if( t.getLeft() == nullNode ){
                     break;
+                }
+
                 // Link Right
                 rightTreeMin.setLeft(t);
                 rightTreeMin = t;
@@ -143,15 +160,10 @@ public class SplayTree extends BST{
     }
 
 
-
-
-
-
-
-
-
-
-
+    @Override
+    public Node find(String toFind) {
+        return super.find(toFind);
+    }
 
 
 
@@ -159,9 +171,9 @@ public class SplayTree extends BST{
 
     public static void main(String[] args){
         SplayTree splay = new SplayTree();
-        splay.insert("C");
-        splay.insert("B");
-        splay.insert("A");
+        splay.insertSplay("C");
+        splay.insertSplay("B");
+        splay.insertSplay("B");
 
         System.out.println(splay.find("C"));
         System.out.println(splay.find("B"));
