@@ -218,52 +218,40 @@ public class SplayTree extends AVLTree{
 
     public static void main(String[] args){
         SplayTree tree2 = new SplayTree();
-        String[] test = {"dry","vagina","penis","fuck","school","i","wanna","die"};
-        for(String e:test){
-            tree2.insertSplay(e);
+        String cases = "LL";
 
+        switch (cases) {
+            case "LL":
+                tree2.insertSplay("C");
+                tree2.insertSplay("B");
+                tree2.insertSplay("A");
+                break;
+            case "RR":
+                tree2.insertSplay("A");
+                tree2.insertSplay("B");
+                tree2.insertSplay("C");
+
+                break;
+            case "LR":
+                tree2.insertSplay("C");
+                tree2.insertSplay("A");
+                tree2.insertSplay("B");
+
+                break;
+            case "RL":
+                tree2.insertSplay("A");
+                tree2.insertSplay("C");
+                tree2.insertSplay("B");
+                break;
+            default:
+                System.out.println("hit the else case!");
+                break;
         }
-        System.out.println(tree2.root);
-        System.out.println(tree2.testing);
+
+        tree2.jump();
+    }
 
 
 
 
-//        //String cases = "LL";
-//
-//        switch (cases) {
-//            case "LL":
-//                tree2.insertSplay("C");
-//                tree2.insertSplay("B");
-//                tree2.insertSplay("A");
-//                break;
-//            case "RR":
-//                tree2.insertSplay("A");
-//                tree2.insertSplay("B");
-//                tree2.insertSplay("C");
-//
-//                break;
-//            case "LR":
-//                tree2.insertSplay("C");
-//                tree2.insertSplay("A");
-//                tree2.insertSplay("B");
-//
-//                break;
-//            case "RL":
-//                tree2.insertSplay("A");
-//                tree2.insertSplay("C");
-//                tree2.insertSplay("B");
-//                break;
-//            default:
-//                System.out.println("hit the else case!");
-//                break;
-//        }
-//
-//        tree2.jump();
-//    }
-
-
-
-
-}
 }
