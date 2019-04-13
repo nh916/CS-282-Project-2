@@ -79,12 +79,12 @@ public class BST {
 
     //    This method mainly calls deleteRec()
     public void deleteKey(boolean file1, boolean file2, boolean file3, boolean file4, String key) {
-        root = deleteRec(root, new Element(file1, file2, file3, file4, key));
+        root = deleteRec(root, new Node(file1, file2, file3, file4, key));
     }
 
 
     //     A recursive function to insert a new key in BST
-    protected Node deleteRec(Node node, Element key){
+    protected Node deleteRec(Node node, Node key){
 //         Base Case: If the tree is empty
         if (node == null) {
 //            return node;
@@ -92,11 +92,11 @@ public class BST {
         }
 
 //         Otherwise, recur down the tree
-        if (key.compareTo(node.getData()) < 0) {
+        if (key.getData().compareTo(node.getData()) < 0) {
             node.setLeft(deleteRec(node.getLeft(), key));
         }
 
-        else if (key.compareTo(node.getData()) > 0) {
+        else if (key.getData().compareTo(node.getData()) > 0) {
             node.setRight(deleteRec(node.getRight(), key));
         }
 
@@ -117,7 +117,7 @@ public class BST {
 
                 node.setElement(minValue(node.getRight()));
                 // Delete the inorder successor
-                node.setRight(deleteRec(node.getRight(), new Element(node.getFile1(), node.getFile2(), node.getFile3(), node.getFile4(), node.getData())));
+                node.setRight(deleteRec(node.getRight(), new Node(node.getFile1(), node.getFile2(), node.getFile3(), node.getFile4(), node.getData())));
             }
         }
 
@@ -232,12 +232,17 @@ public class BST {
 
 
 
-//    check delete and find
-
+// todo fix delete
     public static void main(String[] args){
         BST bst = new BST();
         bst.insert(true, false, false, false, "A");
+        bst.insert(false, true, false, false, "B");
+        bst.insert(false, true, true, false, "C");
+
         System.out.println(bst.find("A"));
+        System.out.println(bst.find("B"));
+
+        System.out.println(bst.find("C"));
 
     }
 

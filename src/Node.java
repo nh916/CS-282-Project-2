@@ -88,12 +88,12 @@ public class Node implements Comparable<Node>{
 
     @Override
     public String toString() {
-//        return "Node:" + "\n" +
-//                "\t"+ "element= " + element.getData() + "\n" +
-////                if left link is not null put in leftLink.getData(): else put in "null" for the data
-//                "\t" + "leftLink= " + (leftLink != null ? leftLink.getData() : "null") + "\n" +
-//                "\t" + "rightLink= " + (rightLink != null ? rightLink.getData() : "null") + "\n";
-//    }
-        return element.toString();
+        return "Node:" + "\n" +
+                "\t"+ "element= " + element.getData() + "\n" +
+//                if left link is not null put in leftLink.getData(): else put in "null" for the data
+                "\t" + "leftLink= " + (leftLink != null ? leftLink.getData() : "null") + "\n" +
+                "\t" + "rightLink= " + (rightLink != null ? rightLink.getData() : "null") + "\n";
+
+        //        return element.toString();
     }
 }
