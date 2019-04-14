@@ -17,9 +17,6 @@ public class BST {
     }
 
 
-
-
-
     //    protected for all classes that inherit this recursive inserts a new data
     protected Node insert(Node node, Node target) {
 //        we are at a leaf, (no lef or right)
@@ -38,6 +35,9 @@ public class BST {
         }
         else {
 //            duplicate data
+            if (target.compareTo(node) == 0 || target.equals(node)){
+//                todo check to see which one you can then turn on
+            }
         }
         return node;
     }
@@ -218,20 +218,6 @@ public class BST {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // todo fix delete
     public static void main(String[] args){
         BST bst = new BST();
@@ -245,10 +231,4 @@ public class BST {
         System.out.println(bst.find("C"));
 
     }
-
-
-
-
-
-
 }

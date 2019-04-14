@@ -6,9 +6,6 @@ public class Node implements Comparable<Node>{
 
     int height;
 
-
-
-
     public Node(boolean file1, boolean file2, boolean file3, boolean file4, String data) {
         element = new Element(file1, file2, file3, file4, data);
         height = 0;
@@ -59,17 +56,12 @@ public class Node implements Comparable<Node>{
 
     public void setRight (Node node) {
         rightLink = node;
-        if (node == null){
-            rightLink = null;
-        }
+
+//        if (node == null){
+//            rightLink = null;
+//        }
     }
 
-    // this portion is just for the avl nodes
-
-
-    public int getHeight() {
-        return height;
-    }
 
     public boolean getFile1(){
         return element.file1;

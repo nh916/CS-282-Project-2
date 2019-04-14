@@ -46,6 +46,9 @@ public class AVLTree extends BST{
             }
         } else {
             // Duplicate; do nothing
+            if (x.compareTo(t) == 0 || x.equals(t)){
+//todo fix for duplicates
+            }
 
         }
 //        just here because the code put it here

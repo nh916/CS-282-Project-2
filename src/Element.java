@@ -1,4 +1,3 @@
-
 public class Element implements Comparable<String> {
 
     private String data;
