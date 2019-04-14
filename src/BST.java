@@ -144,9 +144,9 @@ public class BST {
     }
 
 
-//    todo all booleans are false just to make a node and pass it in
+
     public Node find(String toFind){
-        return find(root, new Node(false, false, false, false, toFind));
+        return find(root, new Node(toFind));
     }
 
 

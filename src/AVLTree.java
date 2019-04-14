@@ -9,7 +9,7 @@ public class AVLTree extends BST{
 
     @Override
     public Node find(String findThis){
-        return super.find(findThis);
+        return super.find(root, new Node(findThis));
     }
 
     public Node insert(boolean file1, boolean file2, boolean file3, boolean file4, String data){
@@ -101,14 +101,14 @@ public class AVLTree extends BST{
     }
 
 
-//    public void delete(String toDelete){
-//        delete(root, new Element(toDelete));
-//    }
-//
-//    private void delete(Node root, Element toDelete){
-//        super.deleteRec(root, toDelete);
-//        balance(root);
-//    }
+    public void delete(String toDelete){
+        delete(root, new Node(toDelete));
+    }
+
+    private void delete(Node root, Node toDelete){
+        super.deleteRec(root, toDelete);
+        balance(root);
+    }
 
 
 
@@ -232,9 +232,10 @@ public class AVLTree extends BST{
 //        System.out.println(tree.find("T"));
 //        System.out.println(tree.find("H"));
 
-
-
-
+tree.delete("A");
+        System.out.println(tree.find("A"));
+        System.out.println(tree.find("B"));
+        System.out.println(tree.find("C"));
 
     }
 
