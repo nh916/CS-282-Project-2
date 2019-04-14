@@ -21,8 +21,7 @@ public class Node implements Comparable<Node>{
 
     @Override
     public int compareTo(Node other) {
-//        this is changed only for splay, else it wont be here!
-//        keep checking it with other trees to be sure this doesnt cause erras!!!
+//        todo might be able to release it from here!
         if (other == null){
             return 0;
         }

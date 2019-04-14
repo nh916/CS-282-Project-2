@@ -22,6 +22,7 @@ public class AVLTree extends BST{
             return x;
         }
 
+//        todo can take out getData if i wanted...
         int compareResult = x.getData().compareTo(t.getData());
 
         if (compareResult < 0) {
@@ -142,12 +143,6 @@ public class AVLTree extends BST{
 
 
 
-    public void jump(){
-        return;
-    }
-
-
-
 
 
 
@@ -206,8 +201,6 @@ public class AVLTree extends BST{
         System.out.println(tree.find("A"));
         System.out.println(tree.find("B"));
         System.out.println(tree.find("C"));
-
-        tree.jump();
 //
 //        System.out.println(tree.find("Y"));
 //        System.out.println(tree.find("D"));
