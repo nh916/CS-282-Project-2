@@ -16,7 +16,6 @@ public class AVLTree extends BST{
         return root = insertAVL(new Node(file1, file2, file3, file4, data), root);
     }
 
-
     private Node insertAVL(Node x, Node t) {
         if (t == null) {
             return x;
@@ -142,9 +141,6 @@ public class AVLTree extends BST{
         t.height = Math.max( height( t.getLeft() ), height( t.getRight() ) ) + 1;
         return t;
     }
-
-
-
 
 
 

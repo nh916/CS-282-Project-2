@@ -121,7 +121,10 @@ public class BST {
 
         // if key is same as root's key, then This is the node
         // to be deleted
+        /*todo if the we are at the node check one more time before we start going at it*/
         else {
+
+
             // node with only one child or no child
             if (node.getLeft() == null) {
                 return node.getRight();
@@ -221,6 +224,9 @@ public class BST {
 //    }
 
 
+    protected void checkValueAndFlaseOrIfAllFalseThenDelete(){
+
+    }
 
 
     protected ArrayList<String> testing = new ArrayList<String>();
