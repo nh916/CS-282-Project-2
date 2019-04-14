@@ -47,9 +47,8 @@ public class AVLTree extends BST{
         } else {
             // Duplicate; do nothing
             if (x.compareTo(t) == 0 || x.equals(t)){
-//todo fix for duplicates
+                super.accountForDuplicates(t, x);
             }
-
         }
 //        just here because the code put it here
         t.height = Math.max( height( t.getLeft() ), height( t.getRight())) + 1;
@@ -152,86 +151,87 @@ public class AVLTree extends BST{
 
     public static void main(String[] args){
         AVLTree tree = new AVLTree();
-
-        String cases = "LR";
-
-        if (cases.equals("LL")){
-            tree.insert(false, false, false, false, "C");
-            tree.insert(false, false, false, false, "B");
-            tree.insert(false, false, false, false, "A");
-
-
-//            tree.insert("0");
-//            tree.insert("-1");
-//            tree.insert("-2");
-//            tree.insert("-3");
-
-
-        }
-
-        else if (cases.equals("RR")){
-            tree.insert(false, false, false, false,"A");
-            tree.insert(false, false, false, false,"B");
-            tree.insert(false, false, false, false,"C");
-
-//            tree.insert("4");
-//            tree.insert("5");
-//            tree.insert("6");
-        }
-
-        else if (cases.equals("LR")){
-            tree.insert(false, false, false, false,"C");
-            tree.insert(false, false, false, false,"A");
-            tree.insert(false, false, false, false,"B");
-//            tree.insert("5");
-//            tree.insert("4");
-        }
-        else if (cases.equals("RL")){
-            tree.insert(false, false, false, false,"A");
-            tree.insert(false, false, false, false,"C");
-            tree.insert(false, false, false, false,"B");
-        }
-        else {
-            System.out.println("hit the else case!");
-        }
-
-
-//        tree.insert("Y");
-//        tree.insert("D");
-//        tree.insert("T");
-//        tree.insert("H");
 //
-        System.out.println(tree.find("A"));
-        System.out.println(tree.find("B"));
-        System.out.println(tree.find("C"));
+//        String cases = "LR";
 //
-//        System.out.println(tree.find("Y"));
-//        System.out.println(tree.find("D"));
-//        System.out.println(tree.find("T"));
-//        System.out.println(tree.find("H"));
+//        if (cases.equals("LL")){
+//            tree.insert(false, false, false, false, "C");
+//            tree.insert(false, false, false, false, "B");
+//            tree.insert(false, false, false, false, "A");
 //
 //
+////            tree.insert("0");
+////            tree.insert("-1");
+////            tree.insert("-2");
+////            tree.insert("-3");
 //
 //
-//        tree.delete("D");
+//        }
+//
+//        else if (cases.equals("RR")){
+//            tree.insert(false, false, false, false,"A");
+//            tree.insert(false, false, false, false,"B");
+//            tree.insert(false, false, false, false,"C");
+//
+////            tree.insert("4");
+////            tree.insert("5");
+////            tree.insert("6");
+//        }
+//
+//        else if (cases.equals("LR")){
+//            tree.insert(false, false, false, false,"C");
+//            tree.insert(false, false, false, false,"A");
+//            tree.insert(false, false, false, false,"B");
+////            tree.insert("5");
+////            tree.insert("4");
+//        }
+//        else if (cases.equals("RL")){
+//            tree.insert(false, false, false, false,"A");
+//            tree.insert(false, false, false, false,"C");
+//            tree.insert(false, false, false, false,"B");
+//        }
+//        else {
+//            System.out.println("hit the else case!");
+//        }
 //
 //
-//        System.out.println("deleted");
-//
-//
+////        tree.insert("Y");
+////        tree.insert("D");
+////        tree.insert("T");
+////        tree.insert("H");
+////
 //        System.out.println(tree.find("A"));
 //        System.out.println(tree.find("B"));
 //        System.out.println(tree.find("C"));
-//
-//        System.out.println(tree.find("Y"));
-//        System.out.println(tree.find("D"));
-//        System.out.println(tree.find("T"));
-//        System.out.println(tree.find("H"));
+////
+////        System.out.println(tree.find("Y"));
+////        System.out.println(tree.find("D"));
+////        System.out.println(tree.find("T"));
+////        System.out.println(tree.find("H"));
+////
+////
+////
+////
+////        tree.delete("D");
+////
+////
+////        System.out.println("deleted");
+////
+////
+////        System.out.println(tree.find("A"));
+////        System.out.println(tree.find("B"));
+////        System.out.println(tree.find("C"));
+////
+////        System.out.println(tree.find("Y"));
+////        System.out.println(tree.find("D"));
+////        System.out.println(tree.find("T"));
+////        System.out.println(tree.find("H"));
 
-tree.delete("A");
-        System.out.println(tree.find("A"));
+
+        tree.insert(true, false, false, false, "A");
+
         System.out.println(tree.find("B"));
-        System.out.println(tree.find("C"));
+
 
     }
 

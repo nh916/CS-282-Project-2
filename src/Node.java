@@ -92,7 +92,7 @@ public class Node implements Comparable<Node>{
     }
 
     public void setFile4(boolean file4){
-        element.file3 = file4;
+        element.file4 = file4;
     }
 
 

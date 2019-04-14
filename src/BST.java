@@ -36,29 +36,31 @@ public class BST {
         else {
 //            duplicate data
             if (target.compareTo(node) == 0 || target.equals(node)){
-                if (target.getFile1() != node.getFile1()){
-                    node.setFile1(target.getFile1());
-                }
-                if (target.getFile2() != node.getFile2()){
-                    node.setFile2(target.getFile2());
-                }
-
-                if (target.getFile3() != node.getFile3()){
-                    node.setFile3(target.getFile3());
-                }
-
-                if (target.getFile4() != node.getFile4()){
-                    node.setFile4(node.getFile4());
-                }
-
-
-
-
+                accountForDuplicates(node, target);
             }
         }
         return node;
     }
 
+
+
+    public void accountForDuplicates(Node node, Node target){
+
+        if (target.getFile1() != node.getFile1() && target.getFile1() && !node.getFile1()){
+            node.setFile1(target.getFile1());
+        }
+        if (target.getFile2() != node.getFile2() && target.getFile2() && !node.getFile2()){
+            node.setFile2(target.getFile2());
+        }
+
+        if (target.getFile3() != node.getFile3() && target.getFile3() && !node.getFile3()){
+            node.setFile3(target.getFile3());
+        }
+
+        if (target.getFile4() != node.getFile4() && target.getFile4() && !node.getFile4()){
+            node.setFile4(target.getFile4());
+        }
+    }
 
 
     //    uses inOrder traversal that checks to see if the tree is verified
@@ -239,13 +241,20 @@ public class BST {
     public static void main(String[] args){
         BST bst = new BST();
         bst.insert(true, false, false, false, "A");
-        bst.insert(false, true, false, false, "B");
-        bst.insert(false, true, true, false, "C");
-        bst.insert(true, true, false, false, "A");
+//        bst.insert(false, true, false, false, "B");
+//        bst.insert(false, true, true, false, "C");
+
 
         System.out.println(bst.find("A"));
-        System.out.println(bst.find("B"));
-        System.out.println(bst.find("C"));
+//        System.out.println(bst.find("B"));
+//        System.out.println(bst.find("C"));
+
+
+        bst.insert(false, false, false, true, "A");
+
+        System.out.println(bst.find("A"));
+//        System.out.println(bst.find("B"));
+//        System.out.println(bst.find("C"));
 
     }
 }
