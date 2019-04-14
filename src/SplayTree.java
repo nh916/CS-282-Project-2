@@ -87,13 +87,11 @@ public class SplayTree extends AVLTree{
         if(cmp == 0){
             return root;
         }
-//        else {
             return null;
-//        }
+
 
     }
 
-    //    private Node header = new Node( null ); // For splay
     private Node splay(Node n, Node value){
         /*Node leftTreeMax, rightTreeMin;
 
@@ -136,13 +134,17 @@ public class SplayTree extends AVLTree{
         n.setRight(header.getLeft());
         return n;*/
 
-        if(n == null) return null;
+        if(n == null){
+            return null;
+        }
 
         int cmp1 = value.compareTo(n);
 
         if(cmp1 < 0) {
             //value not in tree, so done
-            if (n.getLeft() == null) return n;
+            if (n.getLeft() == null){
+                return n;
+            }
 
             int cmp2 = value.compareTo(n.getLeft());
 
@@ -156,11 +158,17 @@ public class SplayTree extends AVLTree{
                     n.setLeft(rotateLeft(n.getLeft()));
 
             }
-            if(n.getLeft() == null) return n;
-            else return rotateRight(n);
+            if(n.getLeft() == null){
+                return n;
+            }
+            else{
+                return rotateRight(n);
+            }
         }
         else if(cmp1 > 0){
-            if(n.getRight() == null) return n;
+            if(n.getRight() == null){
+                return n;
+            }
 
             int cmp2 = value.compareTo(n.getRight());
             if(cmp2 < 0){
@@ -178,11 +186,17 @@ public class SplayTree extends AVLTree{
 
             }
 
-            if(n.getRight() == null) return n;
-            else return rotateLeft(n);
+            if(n.getRight() == null){
+                return n;
+            }
+            else{
+                return rotateLeft(n);
+            }
 
         }
-        else return n;
+        else{
+            return n;
+        }
 
 
     }
@@ -210,11 +224,6 @@ public class SplayTree extends AVLTree{
 //        inOrderSplay(n.getRight());
 //    }
 
-
-//    for testing
-    public void jump(){
-        return;
-    }
 
 
 
