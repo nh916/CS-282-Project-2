@@ -8,15 +8,11 @@ public class AVLTree extends BST{
     }
 
     @Override
-//    todo these values exist only because i want to fill it up with something so i can make it into a node
     public Node find(String findThis){
-        return super.find(root, new Node(false, false,false, false, findThis));
+        return super.find(root, new Node(false, false, false, false, findThis));
     }
 
-
-
-
-    public Node insert(boolean file1, boolean file2, boolean file3, boolean file4, String x){
+    public Node insertAVL(boolean file1, boolean file2, boolean file3, boolean file4, String x){
         return root = insert(new Node(file1, file2, file3, file4, x), root);
     }
 
@@ -26,12 +22,12 @@ public class AVLTree extends BST{
             return x;
         }
 
-        int compareResult = x.compareTo(t);
+        int compareResult = x.getData().compareTo(t.getData());
 
         if (compareResult < 0) {
             t.setLeft(insert(x, t.getLeft()));
             if (height(t.getLeft()) - height(t.getRight()) == 2) {
-                if (x.compareTo(t.getLeft()) < 0) {
+                if (x.getData().compareTo(t.getLeft().getData()) < 0) {
                     t = rotateWithLeftChild(t);
                 }
                 else {
@@ -41,7 +37,7 @@ public class AVLTree extends BST{
         } else if (compareResult > 0) {
             t.setRight(insert(x, t.getRight()));
             if (height(t.getRight()) - height(t.getLeft()) == 2) {
-                if (x.compareTo(t.getRight()) > 0) {
+                if (x.getData().compareTo(t.getRight().getData()) > 0) {
                     t = rotateWithRightChild(t);
                 } else {
                     t = doubleWithRightChild(t);
@@ -104,7 +100,8 @@ public class AVLTree extends BST{
         return rotateWithRightChild( k1 );
     }
 
-// todo here are the falses just to make a node but not supposed to have a value at all
+
+//    todo filled it up with false
     public void delete(String toDelete){
         delete(root, new Node(false, false, false, false, toDelete));
     }
@@ -148,7 +145,7 @@ public class AVLTree extends BST{
 
 
 
-/* todo check this again without the if node== null*/
+    /* todo check this again without the if node== null*/
 
 
 
@@ -230,7 +227,6 @@ public class AVLTree extends BST{
 //        System.out.println(tree.find("D"));
 //        System.out.println(tree.find("T"));
 //        System.out.println(tree.find("H"));
-
 
 
 
