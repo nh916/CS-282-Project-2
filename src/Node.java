@@ -79,6 +79,25 @@ public class Node implements Comparable<Node>{
         return element.file4;
     }
 
+    public void setFile1(boolean file1){
+        element.file1 = file1;
+    }
+
+    public void setFile2(boolean file2){
+        element.file2 = file2;
+    }
+
+    public void setFile3(boolean file3){
+        element.file3 = file3;
+    }
+
+    public void setFile4(boolean file4){
+        element.file3 = file4;
+    }
+
+
+
+
 
     @Override
     public String toString() {
@@ -86,8 +105,8 @@ public class Node implements Comparable<Node>{
                 "\t"+ "element= " + element.getData() + "\n" +
 //                if left link is not null put in leftLink.getData(): else put in "null" for the data
                 "\t" + "leftLink= " + (leftLink != null ? leftLink.getData() : "null") + "\n" +
-                "\t" + "rightLink= " + (rightLink != null ? rightLink.getData() : "null") + "\n";
-
+                "\t" + "rightLink= " + (rightLink != null ? rightLink.getData() : "null") + "\n" +
+                "\t" + "files= " + element.toString();
         //        return element.toString();
     }
 }
