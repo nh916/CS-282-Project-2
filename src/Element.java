@@ -19,6 +19,10 @@ public class Element implements Comparable<String> {
 
     }
 
+    public Element(String data){
+        this.data = data;
+    }
+
 
     @Override
     public int compareTo(String element){

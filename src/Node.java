@@ -14,6 +14,9 @@ public class Node implements Comparable<Node>{
         height = 0;
     }
 
+    public Node(String data){
+        element = new Element(data);
+    }
 
 
     @Override
