@@ -91,9 +91,11 @@ public class Driver extends Read {
 
 
     private void options(){
-        String choice = "";
-        boolean flag;
-        while (!choice.equals("quit")){
+        String choice;
+
+        boolean flag = true;
+
+        while (flag){
 
             System.out.println("what would you like to do?");
             choice = input.nextLine();
@@ -121,7 +123,7 @@ public class Driver extends Read {
 //                    String files[] = new String[4];
                     System.out.println("Which file?");
                     filesToInsertInto = input.nextLine();
-                    String files[] = filesToInsertInto.split(",");
+                    String[] files = filesToInsertInto.split(",");
 
                     for (int i = 0; i < files.length; i++) {
                         switch (files[i]) {
@@ -176,10 +178,16 @@ public class Driver extends Read {
                     boolean file2 = true;
                     boolean file3 = true;
                     boolean file4 = true;
-
                     String filesToDeleteFrom;
+
+                    System.out.println("word?");
+                    String wordToDelete;
+                    wordToDelete = input.nextLine();
+
+                    System.out.println("Which file?");
                     filesToDeleteFrom = input.nextLine();
-                    String files[] = filesToDeleteFrom.split(",");
+
+                    String[] files = filesToDeleteFrom.split(",");
 
                     for (int i = 0; i < files.length; i++) {
                         switch (files[i]) {
@@ -200,20 +208,18 @@ public class Driver extends Read {
                                 break;
                         }
                     }
-                    System.out.println("word?");
-                    String wordToDelete;
-                    wordToDelete = input.nextLine();
+
 
                     try {
                         if (wantsBST){
-//                            bst.deleteKey(wordToDelete);
+                            bst.deleteKey(file1, file2, file3, file4, wordToDelete);
                             break;
                         }
                         else if (wantsAVL){
                             avlTree.delete(file1, file2, file3, file4, wordToDelete);
                             break;
                         }
-                        else if (wantsSplay){
+                        else if (wantsSplay){ //todo currently not fixed for splay
                             splayTree.delete(wordToDelete);
                             break;
                         }
@@ -307,6 +313,7 @@ public class Driver extends Read {
                 }
 
                 case ("quit"): {
+                    flag = false;
                     break;
                 }
 
