@@ -63,6 +63,7 @@ public class BST {
     }
 
 
+
     //    uses inOrder traversal that checks to see if the tree is verified
     public boolean verifyInorder(){
         return verifyInorder(root);
@@ -122,25 +123,57 @@ public class BST {
         // if key is same as root's key, then This is the node
         // to be deleted
         /*todo if the we are at the node check one more time before we start going at it*/
+//        todo way too much damn duplication here
         else {
-
-
-            // node with only one child or no child
-            if (node.getLeft() == null) {
-                return node.getRight();
+//            node is the node that it got to and key is what it is looking for
+            if (key.getFile1() != node.getFile1() && node.getFile1() && !key.getFile1()){
+//                sets the node that it just found to false
+                node.setFile1(key.getFile1());
             }
-            else if (node.getRight() == null) {
-                return node.getLeft();
+            if (key.getFile2() != node.getFile2() && node.getFile2() && !key.getFile2()){
+//                sets the node that it just found to false
+                node.setFile2(key.getFile2());
+            }
+            if (key.getFile3() != node.getFile3() && node.getFile3() && !key.getFile3()){
+//                sets the node that it just found to false
+                node.setFile3(key.getFile3());
+            }
+            if (key.getFile4() != node.getFile4() && node.getFile4() && !key.getFile4()){
+//                sets the node that it just found to false
+                node.setFile4(key.getFile4());
             }
 
-            // node with two children: Get the inorder successor (smallest
-            // in the right subtree)
-            else {
 
-                node.setElement(minValue(node.getRight()));
-                // Delete the inorder successor
-                node.setRight(deleteRec(node.getRight(), new Node(node.getFile1(), node.getFile2(), node.getFile3(), node.getFile4(), node.getData())));
+
+//            the node is completely false in all files
+            if (!key.getFile1() && !key.getFile2() && !key.getFile3() && !key.getFile4()) {
+
+                // node with only one child or no child
+//                does not have left child
+                if (node.getLeft() == null) {
+                    return node.getRight();
+                }
+//                doesn't have right child
+                else if (node.getRight() == null) {
+                    return node.getLeft();
+                }
+//                todo put this in to take care of leaves. hopefully doesn't break anything
+//                else if (node.getLeft() == null && node.getRight() == null){
+//                    return node = null;
+//                }
+
+                // node with two children: Get the inorder successor (smallest
+                // in the right subtree)
+                else {
+
+                    node.setElement(minValue(node.getRight()));
+                    // Delete the inorder successor
+                    node.setRight(deleteRec(node.getRight(), new Node(node.getFile1(), node.getFile2(), node.getFile3(), node.getFile4(), node.getData())));
+                }
             }
+
+
+
         }
 
         return node;
@@ -237,7 +270,39 @@ public class BST {
 //    }
 
 
-    protected ArrayList<String> testing = new ArrayList<String>();
+    //    todo these methods are not used but are just nice to have
+    public Node findMin(Node useThisRoot){
+        return findMinRec(useThisRoot);
+    }
+
+    private Node findMinRec(Node t) {
+        if( t == null ) {
+            return null;
+        }
+        else if(t.getLeft() == null) {
+            return t;
+        }
+        return findMinRec(t.getLeft());
+    }
+
+
+    public Node findMax(Node useThisRoot){
+        return findMaxIter(useThisRoot);
+    }
+
+
+    private Node findMaxIter(Node t) {
+        if( t != null ) {
+            while (t.getRight() != null) {
+                t = t.getRight();
+            }
+        }
+        return t;
+    }
+
+
+
+    public ArrayList<String> testing = new ArrayList<String>();
 
     protected void inOrder(Node node){
         if (node == null){
@@ -267,8 +332,9 @@ public class BST {
         bst.insert(false, false, false, true, "A");
 
         System.out.println(bst.find("A"));
-//        System.out.println(bst.find("B"));
-//        System.out.println(bst.find("C"));
+
+        bst.deleteKey(false, false, false, false, "A");
+        System.out.println(bst.find("A"));
 
     }
 }

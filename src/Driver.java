@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Driver extends Read{
+public class Driver extends Read {
 
     private AVLTree avlTree;
     private SplayTree splayTree;
@@ -210,7 +210,7 @@ public class Driver extends Read{
                             break;
                         }
                         else if (wantsAVL){
-                            avlTree.delete(wordToDelete);
+                            avlTree.delete(file1, file2, file3, file4, wordToDelete);
                             break;
                         }
                         else if (wantsSplay){

@@ -7,10 +7,7 @@ public class AVLTree extends BST{
         root = null;
     }
 
-    @Override
-    public Node find(String findThis){
-        return super.find(root, new Node(findThis));
-    }
+
 
     public Node insert(boolean file1, boolean file2, boolean file3, boolean file4, String data){
         return root = insertAVL(new Node(file1, file2, file3, file4, data), root);
@@ -21,7 +18,6 @@ public class AVLTree extends BST{
             return x;
         }
 
-//        todo can take out getData if i wanted...
         int compareResult = x.getData().compareTo(t.getData());
 
         if (compareResult < 0) {
@@ -102,18 +98,6 @@ public class AVLTree extends BST{
         return rotateWithRightChild( k1 );
     }
 
-
-    public void delete(String toDelete){
-        delete(root, new Node(toDelete));
-    }
-
-    private void delete(Node root, Node toDelete){
-        super.deleteRec(root, toDelete);
-        balance(root);
-    }
-
-
-
     private static final int ALLOWED_IMBALANCE = 1;
     // Assume t is either balanced or within one of being balanced
     private Node balance( Node t ){
@@ -141,6 +125,25 @@ public class AVLTree extends BST{
         t.height = Math.max( height( t.getLeft() ), height( t.getRight() ) ) + 1;
         return t;
     }
+
+    @Override
+    public Node find(String findThis){
+        return super.find(this.root, new Node(findThis));
+    }
+
+
+    public void delete(boolean file1, boolean file2, boolean file3, boolean file4, String toDelete){
+         delete(root, new Node(file1, file2, file3, file4, toDelete));
+    }
+
+//    todo should i just hard code node to root since it'll always be root???
+    private void delete(Node node, Node toDelete){
+        this.root = super.deleteRec(node, toDelete);
+        balance(this.root);
+    }
+
+
+
 
 
 
@@ -225,10 +228,13 @@ public class AVLTree extends BST{
 
 
         tree.insert(true, false, false, false, "A");
-        tree.insert(true, true, true, true, "A");
+        tree.insert(true, true, true, true, "B");
 
         System.out.println(tree.find("A"));
 
+        tree.delete(false, false, false, false, "A");
+        System.out.println(tree.find("A"));
+        System.out.println(tree.find("B"));
 
     }
 
