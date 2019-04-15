@@ -43,7 +43,7 @@ public class BST {
     }
 
 
-
+// todo duplication
     public void accountForDuplicates(Node node, Node target){
 
         if (target.getFile1() != node.getFile1() && target.getFile1() && !node.getFile1()){
@@ -316,7 +316,7 @@ public class BST {
     }
 
 
-// todo fix delete
+
     public static void main(String[] args){
         BST bst = new BST();
         bst.insert(true, false, false, false, "A");

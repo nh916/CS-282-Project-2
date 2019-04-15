@@ -144,10 +144,6 @@ public class AVLTree extends BST{
 
 
 
-
-
-
-
     public static void main(String[] args){
         AVLTree tree = new AVLTree();
 //
@@ -229,12 +225,16 @@ public class AVLTree extends BST{
 
         tree.insert(true, false, false, false, "A");
         tree.insert(true, true, true, true, "B");
+        tree.insert(false, false, false, false, "C");
 
         System.out.println(tree.find("A"));
+        System.out.println(tree.find("B"));
+        System.out.println(tree.find("C"));
 
         tree.delete(false, false, false, false, "A");
         System.out.println(tree.find("A"));
         System.out.println(tree.find("B"));
+        System.out.println(tree.find("C"));
 
     }
 
