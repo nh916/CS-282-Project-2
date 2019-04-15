@@ -28,7 +28,7 @@ public class Driver extends Read {
 
 
     private void select() {
-        System.out.println("type of tree");
+        System.out.println("type of tree (BST, AVL, Splay)");
         String typeOfTree = input.nextLine();
 
         switch (typeOfTree) {
@@ -82,13 +82,16 @@ public class Driver extends Read {
 
     private void help(){
         System.out.println("your options are: ");
-        System.out.println("select (select the type of tree)");
+        System.out.println("select (select the type of tree) \"BST\", \"AVL\", \"Splay\" ");
         System.out.println("find");
         System.out.println("insert");
         System.out.println("delete");
         System.out.println("quit");
     }
 
+    private void incorrectInput(){
+        options();
+    }
 
     private void options(){
         String choice;
@@ -141,7 +144,9 @@ public class Driver extends Read {
                                 break;
                             default: //todo take this out
 //                                System.out.println("hit the else case in the if statement for files");
-                                defaultCase();
+//                                defaultCase();
+                                System.out.println("incorrect input");
+                                incorrectInput();
                                 break;
                         }
                     }
@@ -175,10 +180,10 @@ public class Driver extends Read {
                 }
 
                 case ("delete"):{
-                    boolean file1 = true;
-                    boolean file2 = true;
-                    boolean file3 = true;
-                    boolean file4 = true;
+                    boolean file1 = false;
+                    boolean file2 = false;
+                    boolean file3 = false;
+                    boolean file4 = false;
                     String filesToDeleteFrom;
 
                     System.out.println("word?");
@@ -205,7 +210,9 @@ public class Driver extends Read {
                                 file4 = false;
                                 break;
                             default:
-                                defaultCase();
+//                                defaultCase();
+                                System.out.println("incorrect input");
+                                incorrectInput();
                                 break;
                         }
                     }
@@ -259,13 +266,14 @@ public class Driver extends Read {
                                 System.out.println("word not found");
                                 break;
                             }
-                            else if (bst.find(wordToFind).equals(wordToFind)){
+                            else if (bst.find(wordToFind).getData().equals(wordToFind)){
                                 System.out.println(bst.find(wordToFind));
                                 break;
                             }
                             else {
-//                                System.out.println("something went wrong in BST");
-                                defaultCase();
+                                System.out.println("something went wrong in BST");
+//                                defaultCase();
+
                             }
                         }
 //                        todo fix duplication
@@ -274,7 +282,7 @@ public class Driver extends Read {
                                 System.out.println("word not found");
                                 break;
                             }
-                            else if (avlTree.find(wordToFind).equals(wordToFind)) {
+                            else if (avlTree.find(wordToFind).getData().equals(wordToFind)) {
                                 System.out.println(avlTree.find(wordToFind));
                                 break;
                             }
@@ -289,7 +297,7 @@ public class Driver extends Read {
                                 System.out.println("word not found");
                                 break;
                             }
-                            else if (splayTree.find(wordToFind).equals(wordToFind)){
+                            else if (splayTree.find(wordToFind).getData().equals(wordToFind)){
                                 System.out.println(splayTree.find(wordToFind));
                                 break;
                             }

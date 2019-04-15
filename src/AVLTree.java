@@ -14,39 +14,41 @@ public class AVLTree extends BST{
     }
 
     private Node insertAVL(Node x, Node t) {
-        if (t == null) {
-            return x;
-        }
+        if (x.getFile1() || x.getFile2() || x.getFile3() || x.getFile4()) {
 
-        int compareResult = x.getData().compareTo(t.getData());
+            if (t == null) {
+                return x;
+            }
 
-        if (compareResult < 0) {
-            t.setLeft(insertAVL(x, t.getLeft()));
-            if (height(t.getLeft()) - height(t.getRight()) == 2) {
-                if (x.getData().compareTo(t.getLeft().getData()) < 0) {
-                    t = rotateWithLeftChild(t);
+            int compareResult = x.getData().compareTo(t.getData());
+
+            if (compareResult < 0) {
+                t.setLeft(insertAVL(x, t.getLeft()));
+                if (height(t.getLeft()) - height(t.getRight()) == 2) {
+                    if (x.getData().compareTo(t.getLeft().getData()) < 0) {
+                        t = rotateWithLeftChild(t);
+                    } else {
+                        t = doubleWithLeftChild(t);
+                    }
                 }
-                else {
-                    t = doubleWithLeftChild(t);
+            } else if (compareResult > 0) {
+                t.setRight(insertAVL(x, t.getRight()));
+                if (height(t.getRight()) - height(t.getLeft()) == 2) {
+                    if (x.getData().compareTo(t.getRight().getData()) > 0) {
+                        t = rotateWithRightChild(t);
+                    } else {
+                        t = doubleWithRightChild(t);
+                    }
+                }
+            } else {
+                // Duplicate; do nothing
+                if (x.compareTo(t) == 0 || x.equals(t)) {
+                    super.accountForDuplicates(t, x);
                 }
             }
-        } else if (compareResult > 0) {
-            t.setRight(insertAVL(x, t.getRight()));
-            if (height(t.getRight()) - height(t.getLeft()) == 2) {
-                if (x.getData().compareTo(t.getRight().getData()) > 0) {
-                    t = rotateWithRightChild(t);
-                } else {
-                    t = doubleWithRightChild(t);
-                }
-            }
-        } else {
-            // Duplicate; do nothing
-            if (x.compareTo(t) == 0 || x.equals(t)){
-                super.accountForDuplicates(t, x);
-            }
-        }
 //        just here because the code put it here
-        t.height = Math.max( height( t.getLeft() ), height( t.getRight())) + 1;
+            t.height = Math.max(height(t.getLeft()), height(t.getRight())) + 1;
+        }
         return t;
     }
 
@@ -222,19 +224,6 @@ public class AVLTree extends BST{
 ////        System.out.println(tree.find("T"));
 ////        System.out.println(tree.find("H"));
 
-
-        tree.insert(true, false, false, false, "A");
-        tree.insert(true, true, true, true, "B");
-        tree.insert(false, false, false, false, "C");
-
-        System.out.println(tree.find("A"));
-        System.out.println(tree.find("B"));
-        System.out.println(tree.find("C"));
-
-        tree.delete(false, false, false, false, "A");
-        System.out.println(tree.find("A"));
-        System.out.println(tree.find("B"));
-        System.out.println(tree.find("C"));
 
     }
 

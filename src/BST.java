@@ -19,27 +19,29 @@ public class BST {
 
     //    protected for all classes that inherit this recursive inserts a new data
     protected Node insert(Node node, Node target) {
-//        we are at a leaf, (no lef or right)
 
-        if (node == null) {
-            return target;
-        }
-        if (node.compareTo(target) > 0) {
-            // node.key > nNode.key
+        if (target.getFile1() || target.getFile2() || target.getFile3() || target.getFile4()) {
+//        we are at a leaf, (no lef or right)
+            if (node == null) {
+                return target;
+            }
+            if (node.compareTo(target) > 0) {
+                // node.key > nNode.key
 //            inserting to the left
-            node.setLeft(insert(node.getLeft(), target));
-        }
+                node.setLeft(insert(node.getLeft(), target));
+            }
 //            inserting to the right
-        else if (node.compareTo(target) < 0){
-            node.setRight(insert(node.getRight(), target));
-        }
-        else {
+            else if (node.compareTo(target) < 0) {
+                node.setRight(insert(node.getRight(), target));
+            } else {
 //            duplicate data
-            if (target.compareTo(node) == 0 || target.equals(node)){
-                accountForDuplicates(node, target);
+                if (target.compareTo(node) == 0 || target.equals(node)) {
+                    accountForDuplicates(node, target);
+                }
             }
         }
         return node;
+
     }
 
 
@@ -319,21 +321,18 @@ public class BST {
 
     public static void main(String[] args){
         BST bst = new BST();
-        bst.insert(true, false, false, false, "A");
+//        bst.insert(false, false, false, false, "A");
 //        bst.insert(false, true, false, false, "B");
 //        bst.insert(false, true, true, false, "C");
 
 
-        System.out.println(bst.find("A"));
+//        System.out.println(bst.find("A"));
 //        System.out.println(bst.find("B"));
 //        System.out.println(bst.find("C"));
 
 
-        bst.insert(false, false, false, true, "A");
+        bst.insert(false, false, false, false, "A");
 
-        System.out.println(bst.find("A"));
-
-        bst.deleteKey(false, false, false, false, "A");
         System.out.println(bst.find("A"));
 
     }
