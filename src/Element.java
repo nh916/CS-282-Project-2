@@ -76,7 +76,7 @@ public class Element implements Comparable<String> {
 
     @Override
     public String toString() {
-        return "" + data + " is in " + (file1 ? "file 1 " : "") + (file2 ? "file 2 " : "") + (file3 ? "file 3 " : "") + (file4 ? "file 4 " : "");
+        return "" + data + " is in " + (file1 ? "file 1" : "") + (file2 ? ", file 2" : "") + (file3 ? ", file 3 " : "") + (file4 ? ", file 4" : "");
     }
 
 

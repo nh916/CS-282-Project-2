@@ -224,9 +224,17 @@ public class BST {
 //    }
 
 
-    protected void checkValueAndFlaseOrIfAllFalseThenDelete(){
-
-    }
+//    protected void checkValueAndFlaseOrIfAllFalseThenDelete(Node node, String toCheckThenDelete){
+//        Node toCheck = find(toCheckThenDelete);
+//        if (toCheck.getFile1() != ){
+//
+//        }
+//
+//
+//        if (!toCheck.getFile1() && !toCheck.getFile2() && !toCheck.getFile3() && !toCheck.getFile4()){
+//            deleteRec(node, toCheck);
+//        }
+//    }
 
 
     protected ArrayList<String> testing = new ArrayList<String>();

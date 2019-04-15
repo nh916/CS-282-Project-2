@@ -106,7 +106,7 @@ public class Node implements Comparable<Node>{
 //                if left link is not null put in leftLink.getData(): else put in "null" for the data
                 "\t" + "leftLink= " + (leftLink != null ? leftLink.getData() : "null") + "\n" +
                 "\t" + "rightLink= " + (rightLink != null ? rightLink.getData() : "null") + "\n" +
-                "\t" + "files= " + element.toString();
+                "\t" + element.toString();
         //        return element.toString();
     }
 }

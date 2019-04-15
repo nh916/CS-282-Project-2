@@ -225,8 +225,9 @@ public class AVLTree extends BST{
 
 
         tree.insert(true, false, false, false, "A");
+        tree.insert(true, true, true, true, "A");
 
-        System.out.println(tree.find("B"));
+        System.out.println(tree.find("A"));
 
 
     }
