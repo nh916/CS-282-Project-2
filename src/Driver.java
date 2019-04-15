@@ -139,8 +139,9 @@ public class Driver extends Read {
                             case "4":
                                 file4 = true;
                                 break;
-                            default:
-                                System.out.println("hit the else case in the if statement for files");
+                            default: //todo take this out
+//                                System.out.println("hit the else case in the if statement for files");
+                                defaultCase();
                                 break;
                         }
                     }
@@ -204,7 +205,7 @@ public class Driver extends Read {
                                 file4 = false;
                                 break;
                             default:
-                                System.out.println("hit the else case in the if statement for files");
+                                defaultCase();
                                 break;
                         }
                     }
@@ -224,7 +225,7 @@ public class Driver extends Read {
                             break;
                         }
                         else if (!wantsBST && !wantsAVL && !wantsSplay){
-                            System.out.println("please select tree!!!!");
+                            System.out.println("please select a tree");
                             select();
                         }
                         else {
@@ -233,11 +234,15 @@ public class Driver extends Read {
                         }
                     }
                     catch (NullPointerException e){
-                        System.out.println("Null pointer!!");
+//                        todo fix
+//                        System.out.println("Null pointer!!");
+                        System.out.println("could not delete");
                         break;
                     }
                     catch (Exception e){
-                        System.out.println("you have produced an exception congratulations");
+//                        todo fix
+//                        System.out.println("you have produced an exception congratulations");
+                        defaultCase();
                         break;
                     }
 
@@ -259,9 +264,11 @@ public class Driver extends Read {
                                 break;
                             }
                             else {
-                                System.out.println("something went wrong in BST");
+//                                System.out.println("something went wrong in BST");
+                                defaultCase();
                             }
                         }
+//                        todo fix duplication
                         else if (wantsAVL){
                             if (avlTree.find(wordToFind) == null){
                                 System.out.println("word not found");
@@ -272,7 +279,8 @@ public class Driver extends Read {
                                 break;
                             }
                             else {
-                                System.out.println("something went wrong in find AVL");
+//                                System.out.println("something went wrong in find AVL");
+                                defaultCase();
                                 break;
                             }
                         }
@@ -286,7 +294,8 @@ public class Driver extends Read {
                                 break;
                             }
                             else {
-                                System.out.println("something went wrong in find SPLAY");
+//                                System.out.println("something went wrong in find SPLAY");
+                                defaultCase();
                                 break;
                             }
                         }
@@ -302,10 +311,13 @@ public class Driver extends Read {
 
 //                which exception would it be
                     catch (NullPointerException e){
-                        System.out.println("what you were looking for created a null pointer");
+//                        todo
+//                        System.out.println("what you were looking for created a null pointer");
+                        System.out.println("did not find word");
                         break;
                     }
                     catch (Exception e ){
+//                        todo
                         System.out.println("Exception");
                         break;
                     }

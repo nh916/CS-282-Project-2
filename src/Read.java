@@ -43,7 +43,8 @@ public class Read {
             System.out.println("file not found");
         }
         catch (NullPointerException e) {
-            System.out.println("null pointer in read");
+//            System.out.println("null pointer in read");
+            System.out.println("file error");
         }
         finally {
             if (scan != null) {
