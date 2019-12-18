@@ -1,82 +1,96 @@
-/*
-Navid Hariri
-David
-*/
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Scanner;
-
-public class Read {
-
-
-    public ArrayList <String> fileName;
-    public ArrayList<String> fileData;
-
-
-    public Read(String file1, String file2, String file3, String file4){
-//        initialize ArrayList
-        fileData = new ArrayList<String>();
-
-//        initialize ArrayList
-        fileName = new ArrayList<String>();
-
-//        add all files to ArrayList
-        fileName.add(file1);
-        fileName.add(file2);
-        fileName.add(file3);
-        fileName.add(file4);
-    }
-
-
-    public void loadData(){
-        Scanner scan = null;
-
-        for (int i = 0; i <fileName.size(); i++) {
-            try {
-                scan = new Scanner(new FileInputStream(fileName.get(i)));
-                while (scan.hasNext()) {
-                    fileData.add(scan.nextLine());
-                }
-            }
-            catch (FileNotFoundException e) {
-//            e.printStackTrace();
-                System.out.println("file not found");
-            }
-            catch (NullPointerException e) {
-                System.out.println("file error");
-            }
-            finally {
-                try {
-                    scan.close();
-                }
-                catch (NullPointerException e) {
-                    System.out.println("file was never opened or closed");
-                }
-
-            }
-        }
-//        System.out.println(fileData);
-    }
-
-    public static void main(String[] args){
-        /*the Read class requires at least 4 files but you can later add more if needed
-        because fileName linkedList is public
-        you can just add it to the linkedList if needed*/
-
-        Read read = new Read("file1.txt", "file2.txt", "file3.txt", "file4.txt");
-
-        read.loadData();
-        System.out.println(read.fileData);
-        System.out.println(read.fileData.size());
-//        System.out.println(hellow world);
-    }
-
-
-
-
-
-
-
-}
+//import java.io.FileInputStream;
+//import java.io.FileNotFoundException;
+//import java.util.Scanner;
+//
+//public class Read {
+//
+//    public BST bst;
+//    public AVLTree avlTree;
+//    public SplayTree splayTree;
+//
+//    private String file1;
+//    private String file2;
+//    private String file3;
+//    private String file4;
+//
+//
+//    public Read() {
+//        file1 = "file1.txt";
+//        file2 = "file2.txt";
+//        file3 = "file3.txt";
+//        file4 = "file4.txt";
+//        bst = new BST();
+//        avlTree = new AVLTree();
+//        splayTree = new SplayTree();
+//    }
+//
+////inserting in this tree and not the other
+//    protected void readThenInsert(String file){
+//        Scanner scan = null;
+//        String wordFromFile;
+//
+//        try{
+//            scan = new Scanner(new FileInputStream(file));
+//            while (scan.hasNext()) {
+//                wordFromFile = (scan.nextLine());
+//                bst.insert(wordFromFile);
+//                avlTree.insert(wordFromFile);
+//                splayTree.insertSplay(wordFromFile);
+//            }
+//        }
+//
+//        catch (FileNotFoundException e) {
+//            System.out.println("file not found");
+//        }
+//        catch (NullPointerException e) {
+//            System.out.println("null pointer in read");
+//        }
+//        finally {
+//            if (scan != null) {
+//                scan.close();
+//            }
+//        }
+//    }
+//
+//
+//    public void readAndInsertToTreesWithFile(){
+//        readThenInsert(file1);
+//        readThenInsert(file2);
+//        readThenInsert(file3);
+//        readThenInsert(file4);
+////        doInOrder();
+//    }
+//
+//
+//
+//
+////    public void doInOrder(){
+////        System.out.println("BST INORDER");
+////        bst.inOrder(bst.root);
+////        System.out.println(bst.testing);
+////        bst.testing.clear();
+////
+////        System.out.println("AVL INORDER");
+////        avlTree.inOrder(avlTree.root);
+////        System.out.println(avlTree.testing);
+////        avlTree.testing.clear();
+////
+////        System.out.println("SPLAY");
+////        splayTree.inOrder(splayTree.root);
+////        System.out.println(splayTree.testing);
+////        splayTree.testing.clear();
+////    }
+//
+//
+//
+//
+//
+////    testing
+//    public static void main(String[] args){
+//        Read read = new Read();
+//        read.readAndInsertToTreesWithFile();
+//
+//
+//    }
+//
+//}
